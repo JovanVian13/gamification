@@ -1,116 +1,113 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto px-4 py-6">
+<div class="container mt-4">
     <!-- Grid Layout -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="row">
         <!-- Card Profil (Samping Kiri) -->
-        <div class="col-span-1">
-            <div class="max-w-sm bg-white shadow rounded-lg overflow-hidden flex flex-col justify-between">
-                <div class="flex items-center px-6 py-3 bg-indigo-600 h-20">
-                    <h1 class="text-white text-lg font-semibold">Profil Pengguna</h1>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h5 class="mb-0">Profil Pengguna</h5>
                 </div>
-                <div class="px-6 py-6">
+                <div class="card-body text-center">
                     <!-- Foto Profil -->
-                    <div class="flex justify-center">
-                        <img 
-                            class="w-28 h-28 rounded-full border-4 border-white -mt-14" 
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrI__BaxsSuU7xTbKjDif1LRRZu4TFo6Od3A&s" 
-                            alt="Profile Photo">
-                    </div>
-                        
+                    <img 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrI__BaxsSuU7xTbKjDif1LRRZu4TFo6Od3A&s" 
+                        alt="Profile Photo" 
+                        class="rounded-circle border border-white mb-3" 
+                        style="width: 120px; height: 120px;">
+                    
                     <!-- Informasi Pengguna -->
-                    <div class="text-center mt-6">
-                        <h2 class="text-2xl font-semibold text-gray-800">Name</h2>
-                        <p class="text-gray-600">name@example.com</p>
-                    </div>
+                    <h5 class="card-title">Name</h5>
+                    <p class="card-text text-muted">name@example.com</p>
                 </div>
-
                 <!-- Tombol Aksi -->
-                <div class="px-6 py-4 mt-auto mb-4">
-                    <div class="flex justify-center">
-                        <a href="#" 
-                            class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700">
-                            View Profil
-                        </a>
-                    </div>
+                <div class="card-footer text-center bg-light">
+                    <a href="#" class="btn btn-primary">View Profil</a>
                 </div>
             </div>
         </div>
 
         <!-- Leaderboard -->
-        <div class="col-span-1 md:col-span-2">
+        <div class="col-md-8">
             <!-- Informasi Poin Total -->
-            <div class="bg-white shadow rounded-lg p-6 mb-4">
-                <h2 class="text-2xl font-semibold mb-4">Poin Anda</h2>
-                <p class="text-4xl font-bold text-indigo-600">{{ $data['totalPoints'] }}</p>
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Poin Anda</h5>
+                    <p class="display-4 text-primary"><strong>{{ $data['totalPoints'] }}</strong></strong></p>
+                </div>
             </div>
 
-            <div class="bg-white shadow rounded-lg p-6 mb-6">
-                <h2 class="text-2xl font-semibold mb-4">Leaderboard</h2>
-                <ol class="list-decimal pl-5">
-                    @foreach ($data['leaderboard'] as $leader)
+            <!-- Leaderboard -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Leaderboard</h5>
+                    <ol class="pl-3">
+                        @foreach ($data['leaderboard'] as $leader)
                         <li>
-                            <span class="font-semibold">{{ $leader['name'] }}</span> - 
-                            <span class="text-gray-700">{{ $leader['points'] }} poin</span>
+                            <strong>{{ $leader['name'] }}</strong> - 
+                            <span class="text-muted">{{ $leader['points'] }} poin</span>
                         </li>
-                    @endforeach
-                </ol>
-                <div class="mt-4">
-                    <a href="/leaderboard" class="text-indigo-600 font-semibold hover:underline">Lihat Leaderboard Lengkap</a>
+                        @endforeach
+                    </ol>
+                    <div class="mt-3">
+                        <a href="/leaderboard" class="btn btn-link text-primary">Lihat Leaderboard Lengkap</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Tugas Harian & Baru (Lebar Penuh) -->
-    <div class="bg-white shadow rounded-lg p-6 mb-6 mt-6 w-full">
-        <h2 class="text-2xl font-semibold mb-4">Tugas Harian & Baru</h2>
+    <div class="card shadow-sm mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Tugas Harian & Baru</h5>
 
-        <!-- Header Kolom -->
-        <div class="flex justify-between items-center border-b-2 pb-2">
-            <span class="text-gray-800 font-semibold w-1/4">Tugas</span>
-            <span class="text-gray-800 font-semibold w-1/4 text-center">Prioritas</span>
-            <span class="text-gray-800 font-semibold w-1/4 text-center">Deadline</span>
-            <span class="text-gray-800 font-semibold w-1/4 text-center">Status</span>
-        </div>
+            <!-- Header Kolom -->
+            <div class="d-flex border-bottom pb-2 mb-3">
+                <div class="w-25"><strong>Tugas</strong></div>
+                <div class="w-25 text-center"><strong>Prioritas</strong></div>
+                <div class="w-25 text-center"><strong>Deadline</strong></div>
+                <div class="w-25 text-center"><strong>Status</strong></div>
+            </div>
 
-        <!-- Daftar Tugas -->
-        <ul>
-            @foreach ($data['tasks'] as $task)
-                <li class="flex justify-between items-center py-2 border-b">
+            <!-- Daftar Tugas -->
+            <ul class="list-unstyled">
+                @foreach ($data['tasks'] as $task)
+                <li class="d-flex align-items-center py-2 border-bottom">
                     <!-- Nama Tugas -->
-                    <span class="text-gray-800 w-1/4">{{ $task['title'] }}</span>
-                    
+                    <div class="w-25">{{ $task['title'] }}</div>
+
                     <!-- Prioritas -->
-                    <span class="text-sm font-semibold w-1/4 text-center">
+                    <div class="w-25 text-center">
                         @if ($task['priority'] ?? false)
-                            <span class="text-red-600">Prioritas</span>
+                            <span class="text-danger font-weight-bold">Prioritas</span>
                         @else
-                            <span class="text-gray-500">-</span>
+                            <span class="text-muted">-</span>
                         @endif
-                    </span>
-                    
+                    </div>
+
                     <!-- Deadline -->
-                    <span class="text-gray-500 text-sm w-1/4 text-center">
+                    <div class="w-25 text-center">
                         @if (isset($task['deadline']))
-                            {{ $task['deadline'] }}
+                            <span class="text-muted">{{ $task['deadline'] }}</span>
                         @else
-                            <span class="text-gray-500">-</span>
+                            <span class="text-muted">-</span>
                         @endif
-                    </span>
+                    </div>
 
-                    <span class="text-gray-500 text-sm w-1/4 text-center">
-                        Done
-                    </span>
+                    <!-- Status -->
+                    <div class="w-25 text-center text-muted">Done</div>
                 </li>
-            @endforeach
-        </ul>
+                @endforeach
+            </ul>
 
-        <!-- Tombol Aksi -->
-        <div class="mt-4">
-            <a href="#" class="text-indigo-600 font-semibold hover:underline">Lihat Semua Tugas</a>
-            <a href="#" class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 ml-4">Mulai Tugas Prioritas</a>
+            <!-- Tombol Aksi -->
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="#" class="btn btn-link text-primary">Lihat Semua Tugas</a>
+                <a href="#" class="btn btn-primary">Mulai Tugas Prioritas</a>
+            </div>
         </div>
     </div>
 </div>
