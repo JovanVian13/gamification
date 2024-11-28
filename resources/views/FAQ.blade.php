@@ -3,7 +3,7 @@
 @section('title', 'FAQ')
 
 @section('content')
-<div class="container mt-5 mb-5">
+<div class="container">
     <h3>Frequently Asked Questions</h3>
     <div class="accordion" id="faqAccordion">
         @php

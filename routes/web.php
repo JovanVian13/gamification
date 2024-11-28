@@ -4,9 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\http\Middleware\RoleMiddleware;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\UserDashboardController;
+
+use App\Http\Controllers\AdminDashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,16 +50,12 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard routes
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard/admin', function () {
-        return 'Admin Dashboard'; // Replace with admin dashboard view
-    })->name('admin.dashboard')->middleware('role:admin');
-
-    Route::get('/dashboard/user', function () {
-        return 'User Dashboard'; // Replace with user dashboard view
-    })->name('user.dashboard')->middleware('role:user');
+Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
+    Route::get('/dashboard/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });
 
-use App\Http\Controllers\TaskController;
+Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
+    Route::get('/dashboard/user', [UserDashboardController::class, 'index'])->name('user.dashboard');
+});
 
-Route::get('/tasks', [TaskController::class, 'index'])->name('task');
+
