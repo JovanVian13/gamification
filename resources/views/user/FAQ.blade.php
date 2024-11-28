@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.userapp')
 
 @section('title', 'FAQ')
 
@@ -9,6 +9,30 @@
         @php
             // Hardcoded FAQ questions and answers
             $faq = [
+                [
+                    'question' => 'Bagaimana cara mendapatkan poin?',
+                    'answer' => 'Anda bisa mendapatkan poin dengan menyelesaikan tugas seperti menonton video, memberikan like, atau membagikan konten.',
+                ],
+                [
+                    'question' => 'Bagaimana cara menukar voucher?',
+                    'answer' => 'Anda dapat menukar voucher melalui halaman "Penukaran Poin" setelah poin Anda mencukupi.',
+                ],
+                [
+                    'question' => 'Apa yang harus dilakukan jika tugas tidak diverifikasi?',
+                    'answer' => 'Silakan hubungi customer support kami melalui halaman "Kontak" untuk bantuan lebih lanjut.',
+                ],
+                [
+                    'question' => 'Bagaimana cara mendapatkan poin?',
+                    'answer' => 'Anda bisa mendapatkan poin dengan menyelesaikan tugas seperti menonton video, memberikan like, atau membagikan konten.',
+                ],
+                [
+                    'question' => 'Bagaimana cara menukar voucher?',
+                    'answer' => 'Anda dapat menukar voucher melalui halaman "Penukaran Poin" setelah poin Anda mencukupi.',
+                ],
+                [
+                    'question' => 'Apa yang harus dilakukan jika tugas tidak diverifikasi?',
+                    'answer' => 'Silakan hubungi customer support kami melalui halaman "Kontak" untuk bantuan lebih lanjut.',
+                ],
                 [
                     'question' => 'Bagaimana cara mendapatkan poin?',
                     'answer' => 'Anda bisa mendapatkan poin dengan menyelesaikan tugas seperti menonton video, memberikan like, atau membagikan konten.',

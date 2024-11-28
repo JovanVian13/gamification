@@ -26,6 +26,6 @@ class DashboardController extends Controller
             ],
         ];
 
-        return view('dashboard', compact('data'));
+        return view('user.dashboard', compact('data'));
     }
 }

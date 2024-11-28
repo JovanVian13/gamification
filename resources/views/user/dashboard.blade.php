@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.userapp')
 
 @section('content')
 <div class="container mt-4">
@@ -57,10 +57,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Tugas Harian & Baru (Lebar Penuh) -->
-    <div class="card shadow-sm mt-4">
+    <div class="card shadow-sm mt-4 mb-4">
         <div class="card-body">
             <h5 class="card-title">Tugas Harian & Baru</h5>
 

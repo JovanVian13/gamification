@@ -9,7 +9,7 @@ class FeedbackController extends Controller
     // Show feedback form
     public function showForm()
     {
-        return view('feedback.form');
+        return view('user.form');
     }
 
     // Handle feedback submission
@@ -45,12 +45,12 @@ class FeedbackController extends Controller
             ],
         ];
 
-        return view('faq', compact('faq'));
+        return view('user.faq', compact('faq'));
     }
 
     // Show contact support page
     public function contactSupport()
     {
-        return view('feedback.contact');
+        return view('user.contact');
     }
 }

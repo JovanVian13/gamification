@@ -100,14 +100,17 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Gamification</a>
+            <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 5%;">
+            <a class="navbar-brand" href="dashboard">Gamification</a>
             <ul class="navbar-nav ms-auto">
                 @guest
-                <li class="nav-item"><a class="nav-link" href="{{ route('homepage') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('tasks') }}">Tasks</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('leaderboard') }}">Leaderboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('faq') }}">FAQ</a></li>
                 @else
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
@@ -126,7 +129,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="text-white text-center py-3 m-bg-secondary">
+    <footer class="text-white text-center py-3 m-bg-secondary sticky-bottom">
         <p>&copy; 2024 Gamification Platform. All rights reserved.</p>
     </footer>
 
