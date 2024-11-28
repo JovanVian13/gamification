@@ -15,8 +15,6 @@ use App\Http\Controllers\AdminDashboardController;
 
 use App\Http\Controllers\ProfileController;
 
-use App\Http\Controllers\VoucherController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,10 +73,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/edit', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
-Route::middleware('auth')->group(function () {
-    // Show vouchers and redemption history
-    Route::get('/redeem-vouchers', [VoucherController::class, 'showVouchers'])->name('voucher.redeem');
-
-    // Redeem a voucher
-    Route::post('/redeem-voucher/{voucherId}', [VoucherController::class, 'redeemVoucher'])->name('voucher.redeem.action');
-});
+Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/users', [AdminDashboardController::class, 'manageUsers'])->name('admin.users');
+Route::get('/tasks', [AdminDashboardController::class, 'manageTasks'])->name('admin.tasks');
