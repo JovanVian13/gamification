@@ -46,4 +46,17 @@ class User extends Authenticatable
                     ->withPivot('status', 'completed_at')
                     ->withTimestamps();
     }
+
+    public function vouchers()
+    {
+        return $this->belongsToMany(Voucher::class, 'voucher_redemptions')
+            ->withPivot('status')
+            ->withTimestamps();
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('status')->withTimestamps();
+    }
+
 }
