@@ -8,7 +8,7 @@ use App\http\Middleware\RoleMiddleware;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserDashboardController;
 
 use App\Http\Controllers\AdminDashboardController;
@@ -48,6 +48,9 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/task', [TaskController::class, 'index'])->name('task');
+
 
 // Dashboard routes
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
