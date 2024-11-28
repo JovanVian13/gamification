@@ -7,7 +7,7 @@
     <h1>Edit Task</h1>
     <form action="{{ route('admin.taskupdate', $task->id) }}" method="POST">
         @csrf
-        @method('PUT')
+        @method('PATCH')
 
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>

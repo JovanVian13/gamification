@@ -73,9 +73,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/edit', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
-Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/users', [AdminDashboardController::class, 'manageUsers'])->name('admin.users');
-Route::get('/admin/users/{id}/edit', [AdminDashboardController::class, 'useredit'])->name('admin.useredit');
+Route::get('/admin/users/{id}/edit', [AdminDashboardController::class, 'editUser'])->name('admin.useredit');
+Route::patch('/admin/users/{id}/update', [AdminDashboardController::class, 'updateUser'])->name('admin.userupdate');
+Route::delete('/admin/users/{id}', [AdminDashboardController::class, 'deleteuser'])->name('admin.userdelete');
 
 use App\Http\Controllers\VoucherController;
 
@@ -89,5 +91,5 @@ Route::get('/tasks/manage', [AdminDashboardController::class, 'manageTasks'])->n
 Route::get('/tasks/create', [AdminDashboardController::class, 'createTask'])->name('admin.taskcreate');
 Route::post('/tasks/manage', [AdminDashboardController::class, 'storeTask'])->name('admin.taskstore');
 Route::get('/tasks/{id}/edit', [AdminDashboardController::class, 'editTask'])->name('admin.taskedit');
-Route::put('/tasks/{id}', [AdminDashboardController::class, 'updateTask'])->name('admin.taskupdate');
+Route::patch('/tasks/{id}', [AdminDashboardController::class, 'updateTask'])->name('admin.taskupdate');
 Route::delete('/tasks/{id}', [AdminDashboardController::class, 'deleteTask'])->name('admin.taskdelete');
