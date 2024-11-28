@@ -91,8 +91,6 @@ Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name
 Route::get('/users', [AdminDashboardController::class, 'manageUsers'])->name('admin.users');
 Route::get('/admin/users/{id}/edit', [AdminDashboardController::class, 'useredit'])->name('admin.useredit');
 
-use App\Http\Controllers\VoucherController;
-
 // Route untuk menampilkan daftar voucher dan riwayat penukaran
 Route::get('/vouchers', [VoucherController::class, 'showVouchers'])->name('vouchers.index');
 

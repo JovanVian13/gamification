@@ -60,7 +60,7 @@
             <!-- Tombol Penukaran Voucher -->
             <div class="card shadow-sm mt-4 mb-4">
                 <div class="card-body text-center">
-                    <a href="" class="btn btn-warning btn-lg">Tukar Voucher</a>
+                    <a href="{{ route('voucher.redeem') }}" class="btn btn-warning btn-lg">Tukar Voucher</a>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
 
             <!-- Tombol Aksi -->
             <div class="mt-4 d-flex justify-content-between">
-                <a href="/tasks" class="btn btn-link text-primary">Lihat Semua Tugas</a>
+                <a href="/task" class="btn btn-link text-primary">Lihat Semua Tugas</a>
                 <a href="#" class="btn btn-primary m-btn-secondary">Mulai Tugas Prioritas</a>
             </div>
         </div>
