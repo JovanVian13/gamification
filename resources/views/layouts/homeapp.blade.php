@@ -100,7 +100,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Gamification</a>
             <ul class="navbar-nav ms-auto">

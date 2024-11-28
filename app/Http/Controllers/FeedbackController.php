@@ -51,6 +51,6 @@ class FeedbackController extends Controller
     // Show contact support page
     public function contactSupport()
     {
-        return view('feedback.contact');
+        return view('contact');
     }
 }

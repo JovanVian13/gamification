@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.userapp')
 
 @section('content')
-<div class="container mt-4">
-    <h1 class="display-4 font-weight-bold text-dark mb-4">Leaderboard</h1>
+<div class="container">
+    <h1 class="display-4 text-dark mb-4"><strong>Leaderboard</strong></h1>
 
     <!-- Leaderboard Ranking -->
     <div class="card mb-4">

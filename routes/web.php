@@ -54,3 +54,6 @@ Route::middleware('auth')->group(function () {
     })->name('user.dashboard')->middleware('role:user');
 });
 
+use App\Http\Controllers\TaskController;
+
+Route::get('/tasks', [TaskController::class, 'index'])->name('task');
