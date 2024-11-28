@@ -24,12 +24,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->is_active ? 'Active' : 'Inactive' }}</td>
                     <td>
-                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
+                        <a href="{{ route('admin.useredit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     </td>
                 </tr>
             @endforeach
