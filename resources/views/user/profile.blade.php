@@ -13,8 +13,8 @@
                         <ul class="list-unstyled">
                             <li><strong>Nama:</strong> {{ Auth::user()->name }}</li>
                             <li><strong>Email:</strong> {{ Auth::user()->email }}</li>
-                            <li><strong>Jenis Kelamin:</strong> {{ Auth::user()->gender }}</li>
-                            <li><strong>Tanggal Lahir:</strong> {{ Auth::user()->birthdate }}</li>
+                            <li><strong>Umur:</strong> {{ Auth::user()->age }}</li>
+                            <li><strong>Lokasi:</strong> {{ Auth::user()->location }}</li>
                         </ul>
                         <a href="{{ route('profile.edit') }}" class="btn m-btn-secondary btn-block">Edit Profil</a>
                     </div>

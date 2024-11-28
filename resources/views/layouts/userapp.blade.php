@@ -94,6 +94,23 @@
         .feature-card {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        /* Dropdown visibility */
+        #notification-dropdown {
+            z-index: 1050; /* Ensure dropdown appears on top */
+        }
+
+        /* Hover effect for dropdown items */
+        #notification-dropdown .dropdown-item:hover {
+            background-color: #f8f9fa; /* Light gray background */
+            cursor: pointer;
+        }
+
+        /* Adjust notification count position */
+        #notification-count {
+            transform: translate(-50%, -50%);
+        }
+
     </style>
     @stack('styles')
 </head>
@@ -104,6 +121,32 @@
         <div class="container-fluid">
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 5%;">
             <a class="navbar-brand" href="dashboard">Gamification</a>
+            <div class="position-relative">
+                <!-- Tombol Notifikasi -->
+                <button id="notification-button" class="btn position-relative d-flex align-items-center">
+                    <i class="fas fa-bell text-white me-1"></i>
+                    <!-- Indikator Notifikasi -->
+                    <span 
+                        id="notification-count" 
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="font-size: 0.75rem;"
+                    >
+                        3
+                    </span>
+                </button>
+                <!-- Dropdown Notifikasi -->
+                <div 
+                    id="notification-dropdown" 
+                    class="dropdown-menu dropdown-menu-end mt-2 shadow rounded"
+                    style="display: none; width: 16rem;"
+                >
+                    <ul class="list-unstyled mb-0">
+                        <li class="dropdown-item text-wrap">Tugas "Tonton Video A" hampir selesai.</li>
+                        <li class="dropdown-item text-wrap">Selamat, Anda telah menyelesaikan 50 tugas!</li>
+                        <li class="dropdown-item text-wrap">Voucher baru tersedia di penukaran poin.</li>
+                    </ul>
+                </div>
+            </div>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('tasks') }}">Tasks</a></li>
@@ -134,6 +177,26 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('notification-button');
+            const dropdown = document.getElementById('notification-dropdown');
+
+            // Toggle dropdown on button click
+            button.addEventListener('click', () => {
+                const isDropdownVisible = dropdown.style.display === 'block';
+                dropdown.style.display = isDropdownVisible ? 'none' : 'block';
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
     @stack('scripts')
 </body>
 
