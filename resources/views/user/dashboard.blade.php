@@ -7,7 +7,7 @@
         <!-- Card Profil (Samping Kiri) -->
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white text-center py-4">
+                <div class="card-header m-bg-primary text-white text-center py-4">
                     <h5 class="mb-0">Profil Pengguna</h5>
                 </div>
                 <div class="card-body text-center">
@@ -24,7 +24,7 @@
                 </div>
                 <!-- Tombol Aksi -->
                 <div class="card-footer text-center bg-light">
-                    <a href="{{ route('profile.show') }}" class="btn btn-primary">View Profil</a>
+                    <a href="{{ route('profile.show') }}" class="btn btn-primary m-btn-secondary">View Profil</a>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
             <!-- Tombol Aksi -->
             <div class="mt-4 d-flex justify-content-between">
                 <a href="#" class="btn btn-link text-primary">Lihat Semua Tugas</a>
-                <a href="#" class="btn btn-primary">Mulai Tugas Prioritas</a>
+                <a href="#" class="btn btn-primary m-btn-secondary">Mulai Tugas Prioritas</a>
             </div>
         </div>
     </div>
