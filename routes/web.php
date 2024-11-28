@@ -15,6 +15,8 @@ use App\Http\Controllers\AdminDashboardController;
 
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\VoucherController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,8 +53,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/tasks', [TaskController::class, 'index'])->name('tasks');
-Route::post('/tasks/{id}/complete', [TaskController::class, 'completeTask'])->name('tasks.complete');
+Route::get('/task', [TaskController::class, 'index'])->name('tasks');
+Route::post('/task/{id}/complete', [TaskController::class, 'completeTask'])->name('tasks.complete');
 
 
 
@@ -64,6 +66,18 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard/user', [UserDashboardController::class, 'index'])->name('user.dashboard');
 });
+
+
+Route::middleware('auth')->group(function () {
+    // Show vouchers and redemption history
+    Route::get('/redeem-vouchers', [VoucherController::class, 'showVouchers'])->name('voucher.redeem');
+
+    // Redeem a voucher
+    Route::post('/redeem-voucher/{voucherId}', [VoucherController::class, 'redeemVoucher'])->name('voucher.redeem.action');
+});
+
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');
@@ -78,8 +92,6 @@ Route::get('/users', [AdminDashboardController::class, 'manageUsers'])->name('ad
 Route::get('/admin/users/{id}/edit', [AdminDashboardController::class, 'editUser'])->name('admin.useredit');
 Route::patch('/admin/users/{id}/update', [AdminDashboardController::class, 'updateUser'])->name('admin.userupdate');
 Route::delete('/admin/users/{id}', [AdminDashboardController::class, 'deleteuser'])->name('admin.userdelete');
-
-use App\Http\Controllers\VoucherController;
 
 // Route untuk menampilkan daftar voucher dan riwayat penukaran
 Route::get('/vouchers', [VoucherController::class, 'showVouchers'])->name('vouchers.index');

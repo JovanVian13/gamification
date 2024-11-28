@@ -47,16 +47,12 @@ class User extends Authenticatable
                     ->withTimestamps();
     }
 
+
     public function vouchers()
     {
-        return $this->belongsToMany(Voucher::class, 'voucher_redemptions')
-            ->withPivot('status')
-            ->withTimestamps();
-    }
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class)->withPivot('status')->withTimestamps();
+        return $this->belongsToMany(Voucher::class)
+            ->withPivot('status', 'redeemed_at')  // Tambahkan 'redeemed_at' di sini
+            ->withTimestamps();  // Menambahkan timestamps otomatis
     }
 
 }
