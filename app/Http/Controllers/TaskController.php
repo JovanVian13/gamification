@@ -10,24 +10,31 @@ class TaskController extends Controller
     // Menampilkan Daftar Tugas
     public function index()
     {
-        // Ambil semua tugas dari database
-        $tasks = Task::all();
+        // Ambil tugas berdasarkan pengguna yang login
+        $tasks = auth()->user()->tasks;
+
         return view('user.task', compact('tasks'));
     }
 
     // Menyelesaikan Tugas
     public function completeTask($id)
     {
-        // Cari tugas berdasarkan ID
-        $task = Task::find($id);
+        $user = auth()->user();
+        $userTask = $user->tasks()->where('task_id', $id)->first();
 
-        if (!$task) {
-            return back()->with('error', "Tugas dengan ID {$id} tidak ditemukan.");
+        if (!$userTask) {
+            return back()->with('error', "Tugas dengan ID {$id} tidak ditemukan untuk pengguna ini.");
         }
 
-        // Simulasi perubahan status tugas
-        $task->status = 'completed'; // Pastikan Anda memiliki kolom status di tabel tasks
-        $task->save();
+        if ($userTask->pivot->status === 'completed') {
+            return back()->with('info', "Tugas dengan ID {$id} sudah selesai.");
+        }
+
+        // Perbarui status menjadi completed
+        $user->tasks()->updateExistingPivot($id, [
+            'status' => 'completed',
+            'completed_at' => now(),
+        ]);
 
         return back()->with('success', "Tugas dengan ID {$id} berhasil diselesaikan!");
     }
