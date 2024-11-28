@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
+use App\Models\UserTasks;
 use App\Models\VoucherRedemption;
 
 class ProfileController extends Controller
@@ -14,8 +15,8 @@ class ProfileController extends Controller
         $user = Auth::user();
         
         // Example data: replace with actual logic to get user's statistics
-        $completedTasksCount = Task::where('user_id', $user->id)->where('status', 'completed')->count();
-        $inProgressTasksCount = Task::where('user_id', $user->id)->where('status', 'in-progress')->count();
+        $completedTasksCount = UserTasks::where('user_id', $user->id)->where('status', 'completed')->count();
+        $inProgressTasksCount = UserTasks::where('user_id', $user->id)->where('status', 'in-progress')->count();
         $totalPoints = $user->total_points; // Assuming this field exists or is calculated
         $totalRedemptionCount = VoucherRedemption::where('user_id', $user->id)->count();
 
