@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.userapp')
 
 @section('title', 'Formulir Feedback')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <h3>Formulir Feedback</h3>
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>

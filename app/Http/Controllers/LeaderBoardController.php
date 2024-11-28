@@ -43,7 +43,7 @@ class LeaderBoardController extends Controller
             ],
         ];
 
-        return view('leaderboard', compact('data'));
+        return view('user.leaderboard', compact('data'));
     }
 
 }

@@ -14,6 +14,7 @@ class CreateTasksTable extends Migration
             $table->text('description')->nullable();
             $table->enum('type', ['video', 'like', 'comment', 'share']);
             $table->integer('points');
+            $table->enum('status', ['incomplete', 'completed'])->default('incomplete');
             $table->string('url')->nullable();
             $table->timestamp('deadline')->nullable();
             $table->timestamps();
