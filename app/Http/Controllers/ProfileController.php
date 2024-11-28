@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
+use App\Models\UserTasks;
 use App\Models\VoucherRedemption;
 
 class ProfileController extends Controller
@@ -12,16 +13,15 @@ class ProfileController extends Controller
     public function showProfile()
     {
         $user = Auth::user();
+        
+        // Example data: replace with actual logic to get user's statistics
+        $completedTasksCount = UserTasks::where('user_id', $user->id)->where('status', 'completed')->count();
+        $inProgressTasksCount = UserTasks::where('user_id', $user->id)->where('status', 'in-progress')->count();
+        $totalPoints = $user->total_points; // Assuming this field exists or is calculated
+        $totalRedemptionCount = VoucherRedemption::where('user_id', $user->id)->count();
 
-        // Ambil statistik tugas menggunakan tabel pivot user_tasks
-        $completedTasksCount = $user->tasks()->wherePivot('status', 'completed')->count();
-        $inProgressTasksCount = $user->tasks()->wherePivot('status', 'in-progress')->count();
-
-        $totalPoints = $user->points; // Pastikan kolom points ada di tabel users
-
-        return view('user.profile', compact('completedTasksCount', 'inProgressTasksCount', 'totalPoints'));
+        return view('user.profile', compact('completedTasksCount', 'inProgressTasksCount', 'totalPoints', 'totalRedemptionCount'));
     }
-
 
     // Show the profile edit form
     public function editProfile()
