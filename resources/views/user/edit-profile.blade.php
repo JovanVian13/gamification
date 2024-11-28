@@ -3,7 +3,7 @@
 @section('title', 'Edit Profil')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <h3>Edit Profil</h3>
         
         <form action="{{ route('profile.update') }}" method="POST">

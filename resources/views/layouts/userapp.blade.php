@@ -105,20 +105,18 @@
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 5%;">
             <a class="navbar-brand" href="dashboard">Gamification</a>
             <ul class="navbar-nav ms-auto">
-                @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('tasks') }}">Tasks</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('leaderboard') }}">Leaderboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('faq') }}">FAQ</a></li>
-                @else
+                <li class="nav-item"><a class="nav-link" href="{{ route('profile.show') }}">Profile</a></li>
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button class="btn btn-danger">Logout</button>
                     </form>
                 </li>
-                @endguest
             </ul>
         </div>
     </nav>
