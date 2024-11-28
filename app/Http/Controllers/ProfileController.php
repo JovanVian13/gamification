@@ -12,15 +12,16 @@ class ProfileController extends Controller
     public function showProfile()
     {
         $user = Auth::user();
-        
-        // Example data: replace with actual logic to get user's statistics
-        $completedTasksCount = Task::where('user_id', $user->id)->where('status', 'completed')->count();
-        $inProgressTasksCount = Task::where('user_id', $user->id)->where('status', 'in-progress')->count();
-        $totalPoints = $user->total_points; // Assuming this field exists or is calculated
-        $totalRedemptionCount = VoucherRedemption::where('user_id', $user->id)->count();
 
-        return view('user.profile', compact('completedTasksCount', 'inProgressTasksCount', 'totalPoints', 'totalRedemptionCount'));
+        // Ambil statistik tugas menggunakan tabel pivot user_tasks
+        $completedTasksCount = $user->tasks()->wherePivot('status', 'completed')->count();
+        $inProgressTasksCount = $user->tasks()->wherePivot('status', 'in-progress')->count();
+
+        $totalPoints = $user->points; // Pastikan kolom points ada di tabel users
+
+        return view('user.profile', compact('completedTasksCount', 'inProgressTasksCount', 'totalPoints'));
     }
+
 
     // Show the profile edit form
     public function editProfile()
