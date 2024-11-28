@@ -13,6 +13,7 @@ use App\Http\Controllers\UserDashboardController;
 
 use App\Http\Controllers\AdminDashboardController;
 
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +59,10 @@ Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () 
     Route::get('/dashboard/user', [UserDashboardController::class, 'index'])->name('user.dashboard');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');
 
+    // Route for editing the user's profile
+    Route::get('/profile/edit', [ProfileController::class, 'editProfile'])->name('profile.edit');
+    Route::post('/profile/edit', [ProfileController::class, 'updateProfile'])->name('profile.update');
+});
