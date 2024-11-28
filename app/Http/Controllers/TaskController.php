@@ -17,25 +17,31 @@ class TaskController extends Controller
     }
 
     // Menyelesaikan Tugas
-    public function completeTask($id)
-    {
-        $user = auth()->user();
-        $userTask = $user->tasks()->where('task_id', $id)->first();
+public function completeTask($id)
+{
+    // Ambil pengguna yang sedang login
+    $user = auth()->user();
 
-        if (!$userTask) {
-            return back()->with('error', "Tugas dengan ID {$id} tidak ditemukan untuk pengguna ini.");
-        }
+    // Cek apakah tugas tersebut milik pengguna
+    $userTask = $user->tasks()->where('task_id', $id)->first(); // Cek tugas yang terkait
 
-        if ($userTask->pivot->status === 'completed') {
-            return back()->with('info', "Tugas dengan ID {$id} sudah selesai.");
-        }
-
-        // Perbarui status menjadi completed
-        $user->tasks()->updateExistingPivot($id, [
-            'status' => 'completed',
-            'completed_at' => now(),
-        ]);
-
-        return back()->with('success', "Tugas dengan ID {$id} berhasil diselesaikan!");
+    // Jika tugas tidak ditemukan
+    if (!$userTask) {
+        return back()->with('error', "Tugas dengan ID {$id} tidak ditemukan untuk pengguna ini.");
     }
+
+    // Jika tugas sudah selesai
+    if ($userTask->pivot->status === 'completed') {
+        return back()->with('info', "Tugas dengan ID {$id} sudah selesai.");
+    }
+
+    // Perbarui status tugas menjadi completed
+    $user->tasks()->updateExistingPivot($id, [
+        'status' => 'completed',         // Status tugas menjadi selesai
+        'completed_at' => now(),         // Waktu penyelesaian tugas
+    ]);
+
+    // Kembalikan pesan sukses
+    return back()->with('success', "Tugas dengan ID {$id} berhasil diselesaikan!");
+}
 }

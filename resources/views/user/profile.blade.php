@@ -1,4 +1,4 @@
-@extends('layouts.homeapp')
+@extends('layouts.userapp')
 
 @section('title', 'Profil Pengguna')
 
@@ -28,7 +28,7 @@
                         <h4 class="m-bg-primary text-white p-3">Statistik Tugas</h4>
                         <p><strong>Total Tugas Selesai:</strong> {{ $completedTasksCount }}</p>
                         <p><strong>Tugas yang Sedang Dikerjakan:</strong> {{ $inProgressTasksCount }}</p>
-                        <a href="{{ route('tasks.index') }}" class="btn m-btn-secondary">Lihat Semua Tugas</a>
+                        <a  class="btn m-btn-secondary">Lihat Semua Tugas</a>
                     </div>
                 </div>
 

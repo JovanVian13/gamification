@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Voucher;
-use App\Models\UserVoucher;
 use App\Models\VoucherRedemption;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +32,7 @@ class VoucherController extends Controller
         }
     
         // Periksa apakah voucher sudah pernah ditukarkan oleh pengguna
-        if ($user->user_vouchers()->where('voucher_id', $voucherId)->exists()) {
+        if ($user->vouchers()->where('voucher_id', $voucherId)->exists()) {
             return redirect()->back()->with('error', 'Anda sudah menukarkan voucher ini sebelumnya.');
         }
     
@@ -42,9 +42,18 @@ class VoucherController extends Controller
     
         // Tambahkan catatan penukaran ke tabel pivot
         $user->vouchers()->attach($voucher->id, [
-            'status' => 'redeemed', // Status default
-            'created_at' => now(), // Timestamp otomatis
+            'status' => 'redeemed', // Status voucher (misalnya: redeemed)
+            'redeemed_at' => now(), // Menyimpan waktu penukaran voucher
+            'created_at' => now(),   // Timestamp otomatis
             'updated_at' => now(),
+        ]);
+    
+        // Catat transaksi di tabel VoucherRedemption
+        VoucherRedemption::create([
+            'user_id' => $user->id,
+            'voucher_id' => $voucher->id,
+            'points_used' => $voucher->points_required, 
+            'status' => 'redeemed',  // Status penukaran voucher
         ]);
     
         // Redirect dengan pesan sukses
@@ -52,3 +61,4 @@ class VoucherController extends Controller
     }
     
 }
+
