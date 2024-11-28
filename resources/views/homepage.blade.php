@@ -74,7 +74,7 @@
         <div class="col-md-4">
             <div class="card h-100">
                 <div class="card-body d-flex flex-column align-items-center">
-                    <img src="../../assets/img/poin.png" alt="Shop and Enjoy" class="img-fluid mb-3 rounded">
+                    <img src="../../assets/img/Shop.png" alt="Shop and Enjoy" class="img-fluid mb-3 rounded">
                     <h5 class="card-title m-p-secondary">Shop and Enjoy</h5>
                     <p class="card-text">Use your vouchers to shop your favorite products.</p>
                 </div>
