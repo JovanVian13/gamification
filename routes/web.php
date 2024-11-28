@@ -89,4 +89,19 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/users', [AdminDashboardController::class, 'manageUsers'])->name('admin.users');
-Route::get('/tasks', [AdminDashboardController::class, 'manageTasks'])->name('admin.tasks');
+Route::get('/admin/users/{id}/edit', [AdminDashboardController::class, 'useredit'])->name('admin.useredit');
+
+use App\Http\Controllers\VoucherController;
+
+// Route untuk menampilkan daftar voucher dan riwayat penukaran
+Route::get('/vouchers', [VoucherController::class, 'showVouchers'])->name('vouchers.index');
+
+// Route untuk menukarkan voucher
+Route::post('/vouchers/redeem/{voucherId}', [VoucherController::class, 'redeemVoucher'])->name('vouchers.redeem');
+
+Route::get('/tasks/manage', [AdminDashboardController::class, 'manageTasks'])->name('admin.tasks');
+Route::get('/tasks/create', [AdminDashboardController::class, 'createTask'])->name('admin.taskcreate');
+Route::post('/tasks/manage', [AdminDashboardController::class, 'storeTask'])->name('admin.taskstore');
+Route::get('/tasks/{id}/edit', [AdminDashboardController::class, 'editTask'])->name('admin.taskedit');
+Route::put('/tasks/{id}', [AdminDashboardController::class, 'updateTask'])->name('admin.taskupdate');
+Route::delete('/tasks/{id}', [AdminDashboardController::class, 'deleteTask'])->name('admin.taskdelete');

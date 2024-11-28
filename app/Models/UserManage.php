@@ -12,6 +12,13 @@ class UserManage extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * Table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users'; // Mengarah ke tabel users
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
