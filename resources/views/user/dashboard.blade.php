@@ -24,7 +24,7 @@
                 </div>
                 <!-- Tombol Aksi -->
                 <div class="card-footer text-center bg-light">
-                    <a href="{{ route('profile.show') }}" class="btn btn-primary m-btn-secondary">View Profil</a>
+                    <a href="{{ route('profile.show') }}" class="btn btn-primary m-btn-secondary mb-2 mt-2">View Profil</a>
                 </div>
             </div>
         </div>

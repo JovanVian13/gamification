@@ -16,6 +16,14 @@
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}">
             </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Umur</label>
+                <input type="number" class="form-control" id="age" name="age" value="{{ old('age', $user->age) }}">
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Lokasi</label>
+                <input type="text" class="form-control" id="location" name="location" value="{{ old('location', $user->location) }}">
+            </div>
 
             <!-- Add other fields as needed -->
 

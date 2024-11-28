@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <h3>Frequently Asked Questions</h3>
-    <div class="accordion" id="faqAccordion">
+    <div class="accordion mb-5" id="faqAccordion">
         @php
             // Hardcoded FAQ questions and answers
             $faq = [
