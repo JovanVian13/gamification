@@ -27,15 +27,29 @@ class NotificationController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'message' => 'required|string',
-            'user_id' => 'required|exists:users,id', // Validate recipient user
+            'user_id' => 'required', // Can be "all" or a specific user ID
         ]);
 
-        Notification::create([
-            'user_id' => $request->user_id,
-            'title' => $request->title,
-            'message' => $request->message,
-            'read_status' => 'unread',
-        ]);
+        if ($request->user_id === 'all') {
+            // Kirim ke semua pengguna
+            $users = User::all();
+            foreach ($users as $user) {
+                Notification::create([
+                    'user_id' => $user->id,
+                    'title' => $request->title,
+                    'message' => $request->message,
+                    'read_status' => 'unread',
+                ]);
+            }
+        } else {
+            // Kirim ke satu pengguna
+            Notification::create([
+                'user_id' => $request->user_id,
+                'title' => $request->title,
+                'message' => $request->message,
+                'read_status' => 'unread',
+            ]);
+        }
 
         return redirect()->route('admin.notification')->with('success', 'Notification created successfully.');
     }
