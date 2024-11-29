@@ -1,4 +1,4 @@
-@extends('layouts.homeapp')
+@extends('layouts.userapp')
 
 @section('content')
 <div class="container mt-4">
@@ -13,7 +13,7 @@
                     <div class="col-md-4 mb-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h6 class="card-title">{{ $voucher->name }}</h6>
+                                <h6 class="card-title">{{ $voucher->title }}</h6>
                                 <p class="card-text">{{ $voucher->description }}</p>
                                 <p class="card-text"><strong>{{ $voucher->points_required }} poin</strong></p>
 
@@ -21,7 +21,7 @@
                                 @if($userPoints >= $voucher->points_required)
                                     <form action="{{ route('voucher.redeem', $voucher->id) }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary">Tukar Voucher</button>
+                                        <button type="submit" class="btn m-btn-primary">Tukar Voucher</button>
                                     </form>
                                 @else
                                     <p class="text-muted">Poin tidak cukup.</p>
@@ -35,7 +35,7 @@
     </div>
 
     <!-- Riwayat Penukaran Voucher -->
-    <div class="card shadow-sm">
+    <div class="card shadow-sm mb-4">
         <div class="card-body">
             <h5 class="card-title">Riwayat Penukaran Voucher</h5>
             

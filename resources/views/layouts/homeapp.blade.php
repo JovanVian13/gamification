@@ -23,7 +23,7 @@
         }
 
         .m-btn-primary:hover {
-            background-color: #efe2ba;
+            background-color: #fcc066;
             color: #ffffff;
         }
 
@@ -100,7 +100,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Gamification</a>
             <ul class="navbar-nav ms-auto">

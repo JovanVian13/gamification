@@ -17,13 +17,13 @@
             <div class="card shadow-sm text-center border-0">
                 <div class="card-body py-4">
                     <div class="mb-3">
-                        <i class="bi bi-envelope-fill text-primary" style="font-size: 3rem;"></i>
+                        <i class="bi bi-envelope-fill m-p-secondary" style="font-size: 3rem;"></i>
                     </div>
                     <h5 class="card-title fw-bold">Email</h5>
                     <p class="card-text text-muted">
                         Kirimkan pertanyaan Anda miliki melalui email kami.
                     </p>
-                    <a href="mailto:support@website.com" class="btn btn-primary">
+                    <a href="mailto:support@website.com" class="btn  m-btn-primary">
                         Kirim Email
                     </a>
                 </div>
@@ -41,7 +41,7 @@
                     <p class="card-text text-muted">
                         Hubungi kami melalui WhatsApp untuk respons cepat.
                     </p>
-                    <a href="https://wa.me/123456789" class="btn btn-success">
+                    <a href="https://web.whatsapp.com/" class="btn btn-success">
                         Kirim Pesan
                     </a>
                 </div>
@@ -49,7 +49,7 @@
         </div>
     </div>
     <!-- Additional Message -->
-    <div class="text-center mt-5">
+    <div class="text-center mt-5 mb-4">
         <p class="text-muted">
             <small>Jam operasional: Senin - Jumat, pukul 09:00 - 17:00 WIB</small>
         </p>

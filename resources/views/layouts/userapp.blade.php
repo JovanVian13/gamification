@@ -23,7 +23,7 @@
         }
 
         .m-btn-primary:hover {
-            background-color: #efe2ba;
+            background-color: #fcc066;
             color: #ffffff;
         }
 

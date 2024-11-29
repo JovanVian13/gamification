@@ -36,11 +36,12 @@ class ProfileController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
-            // Add validation rules for other fields here
+            'age' => 'required|integer|min:1',
+            'location' => 'required|string|max:255',
         ]);
 
         $user = Auth::user();
-        $user->update($request->only(['name', 'email'])); // Update other fields as necessary
+        $user->update($request->only(['name', 'email', 'age', 'location']));
 
         return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
     }

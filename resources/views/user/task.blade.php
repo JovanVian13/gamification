@@ -45,7 +45,7 @@
                                 @if ($task->status === 'incomplete')
                                     <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
                                         @csrf
-                                        <button class="btn btn-primary btn-sm">Selesaikan</button>
+                                        <button class="btn m-btn-primary btn-sm">Selesaikan</button>
                                     </form>
                                 @else
                                     <button class="btn btn-secondary btn-sm" disabled>Selesai</button>

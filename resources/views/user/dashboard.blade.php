@@ -24,7 +24,7 @@
                 </div>
                 <!-- Tombol Aksi -->
                 <div class="card-footer text-center bg-light">
-                    <a href="{{ route('profile.show') }}" class="btn btn-primary m-btn-secondary mb-2 mt-2">View Profil</a>
+                    <a href="{{ route('profile.show') }}" class="btn m-btn-secondary mb-2 mt-2">View Profil</a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="card shadow-sm mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Poin Anda</h5>
-                    <p class="display-4 text-primary"><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
+                    <p class="display-4 m-p-secondary"><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
             <!-- Tombol Penukaran Voucher -->
             <div class="card shadow-sm mt-4 mb-4">
                 <div class="card-body text-center">
-                    <a href="{{ route('voucher.redeem') }}" class="btn btn-warning btn-lg">Tukar Voucher</a>
+                    <a href="{{ route('voucher.redeem') }}" class="btn btn-warning btn-lg m-btn-primary">Tukar Voucher</a>
                 </div>
             </div>
         </div>
@@ -112,7 +112,7 @@
             <!-- Tombol Aksi -->
             <div class="mt-4 d-flex justify-content-between">
                 <a href="/task" class="btn btn-link text-primary">Lihat Semua Tugas</a>
-                <a href="#" class="btn btn-primary m-btn-secondary">Mulai Tugas Prioritas</a>
+                <a href="#" class="btn m-btn-secondary">Mulai Tugas Prioritas</a>
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@
             <label for="message" class="form-label">Pesan</label>
             <textarea name="message" id="message" class="form-control" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Kirim Feedback</button>
+        <button type="submit" class="btn m-btn-primary">Kirim Feedback</button>
     </form>
 </div>
 @endsection
