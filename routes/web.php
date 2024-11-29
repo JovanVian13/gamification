@@ -5,18 +5,15 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\http\Middleware\RoleMiddleware;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserDashboardController;
-
 use App\Http\Controllers\AdminDashboardController;
-
 use App\Http\Controllers\ProfileController;
-
 use App\Http\Controllers\VoucherController;
-
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LeaderBoardController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,10 +25,6 @@ use App\Http\Controllers\VoucherController;
 |
 */
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LeaderBoardController;
-use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\NotificationController;
 
 Route::get('/feedback', [FeedbackController::class, 'showForm'])->name('feedback.form');
 Route::post('/feedback', [FeedbackController::class, 'submitFeedback'])->name('feedback.submit');
@@ -91,23 +84,31 @@ Route::middleware(['auth'])->group(function () {
 // Grup middleware untuk admin
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
     Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('/users', [AdminDashboardController::class, 'manageUsers'])->name('admin.users');
+    Route::get('admin/users', [AdminDashboardController::class, 'manageUsers'])->name('admin.users');
     Route::get('/admin/users/{id}/edit', [AdminDashboardController::class, 'editUser'])->name('admin.useredit');
     Route::patch('/admin/users/{id}/update', [AdminDashboardController::class, 'updateUser'])->name('admin.userupdate');
     Route::delete('/admin/users/{id}', [AdminDashboardController::class, 'deleteuser'])->name('admin.userdelete');
 
     // Rute untuk manajemen tugas
-    Route::get('/tasks/manage', [AdminDashboardController::class, 'manageTasks'])->name('admin.tasks');
-    Route::get('/tasks/create', [AdminDashboardController::class, 'createTask'])->name('admin.taskcreate');
-    Route::post('/tasks/manage', [AdminDashboardController::class, 'storeTask'])->name('admin.taskstore');
-    Route::get('/tasks/{id}/edit', [AdminDashboardController::class, 'editTask'])->name('admin.taskedit');
-    Route::patch('/tasks/{id}', [AdminDashboardController::class, 'updateTask'])->name('admin.taskupdate');
-    Route::delete('/tasks/{id}', [AdminDashboardController::class, 'deleteTask'])->name('admin.taskdelete');
+    Route::get('admin/tasks', [AdminDashboardController::class, 'manageTasks'])->name('admin.tasks');
+    Route::get('admin/tasks/create', [AdminDashboardController::class, 'createTask'])->name('admin.taskcreate');
+    Route::post('admin/tasks/manage', [AdminDashboardController::class, 'storeTask'])->name('admin.taskstore');
+    Route::get('admin/tasks/{id}/edit', [AdminDashboardController::class, 'editTask'])->name('admin.taskedit');
+    Route::patch('admin/tasks/{id}', [AdminDashboardController::class, 'updateTask'])->name('admin.taskupdate');
+    Route::delete('admin/tasks/{id}', [AdminDashboardController::class, 'deleteTask'])->name('admin.taskdelete');
 
     // Rute untuk manajemen notification
-    Route::get('/notifications', [NotificationController::class, 'manageNotification'])->name('admin.notification');
-    Route::get('/notifications/create', [NotificationController::class, 'createNotification'])->name('admin.notificationcreate');
-    Route::post('/notifications', [NotificationController::class, 'storeNotification'])->name('admin.notificationstore');
+    Route::get('admin/notifications', [NotificationController::class, 'manageNotification'])->name('admin.notification');
+    Route::get('admin/notifications/create', [NotificationController::class, 'createNotification'])->name('admin.notificationcreate');
+    Route::post('admin/notifications', [NotificationController::class, 'storeNotification'])->name('admin.notificationstore');
+
+    // Voucher Management
+    Route::get('admin/vouchers', [AdminDashboardController::class, 'manageVoucher'])->name('admin.voucher');
+    Route::get('admin/vouchers/create', [AdminDashboardController::class, 'createVoucher'])->name('admin.vouchercreate');
+    Route::post('admin/vouchers', [AdminDashboardController::class, 'storeVoucher'])->name('admin.voucherstore');
+    Route::get('admin/vouchers/{voucher}/edit', [AdminDashboardController::class, 'editVoucher'])->name('admin.voucheredit');
+    Route::patch('admin/vouchers/{voucher}', [AdminDashboardController::class, 'updateVoucher'])->name('admin.voucherupdate');
+    Route::delete('admin/vouchers/{voucher}', [AdminDashboardController::class, 'deleteVoucher'])->name('admin.voucherdelete');
 });
 
 // Route untuk menampilkan daftar voucher dan riwayat penukaran
