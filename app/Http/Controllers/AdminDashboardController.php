@@ -35,12 +35,11 @@ class AdminDashboardController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'is_active' => 'required|boolean',
         ]);
 
-        $user->update($request->only(['name', 'email', 'is_active']));
+        $user->update($request->only(['name', 'email']));
 
-        return redirect()->route('admin.usermanage')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.users')->with('success', 'User updated successfully.');
     }
 
     public function deleteUser($id)
@@ -48,7 +47,7 @@ class AdminDashboardController extends Controller
         $user = UserManage::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('admin.usermanage')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.users')->with('success', 'User deleted successfully.');
     }
 
     // Tampilkan semua tugas
@@ -72,7 +71,7 @@ class AdminDashboardController extends Controller
             'type' => 'required|in:video,like,comment,share',
             'points' => 'required|integer|min:1',
             'url' => 'nullable|url',
-            'deadline' => 'nullable|datetimes',
+            'deadline' => 'nullable|date',
         ]);
 
         TaskManage::create($request->all());
@@ -97,7 +96,7 @@ class AdminDashboardController extends Controller
             'type' => 'required|in:video,like,comment,share',
             'points' => 'required|integer|min:1',
             'url' => 'nullable|url',
-            'deadline' => 'nullable|datetimes',
+            'deadline' => 'nullable|date',
         ]);
 
         $task->update($request->all());
