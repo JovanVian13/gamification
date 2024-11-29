@@ -14,6 +14,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LeaderBoardController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\UserVoucherController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
