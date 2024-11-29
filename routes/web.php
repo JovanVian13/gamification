@@ -82,6 +82,18 @@ Route::middleware('auth')->group(function () {
 Route::get('/redeem-vouchers', [UserVoucherController::class, 'redeemVouchers'])->name('redeem.vouchers');
 
 
+// Halaman forgot password
+Route::get('forgot-password', [LoginController::class, 'showForgot'])->name('password.request');
+
+// Kirim link reset password
+Route::post('forgot-password', [LoginController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// Halaman reset password
+Route::get('reset-password/{token}', [LoginController::class, 'showResetForm'])->name('password.reset');
+
+// Proses reset password
+Route::post('reset-password', [LoginController::class, 'resetPassword'])->name('password.update');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');

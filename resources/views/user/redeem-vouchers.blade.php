@@ -5,7 +5,7 @@
     <!-- Katalog Voucher -->
     <div class="card shadow-sm mb-4">
         <div class="card-body">
-            <h5 class="card-title">Katalog Voucher</h5>
+            <h5 class="card-title">Voucher Shop</h5>
 
             <!-- Menampilkan Informasi Poin yang Dibutuhkan untuk Setiap Voucher -->
             <div class="row">
@@ -35,7 +35,7 @@
     </div>
 
     <!-- Riwayat Penukaran Voucher -->
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow-sm mb-5">
         <div class="card-body">
             <h5 class="card-title">Riwayat Penukaran Voucher</h5>
             
