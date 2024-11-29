@@ -10,7 +10,6 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoucherController;
-use App\Http\Controllers\LeaderBoardController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserVoucherController;
@@ -56,7 +55,6 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard/user', [UserDashboardController::class, 'index'])->name('user.dashboard');
-    Route::get('/leaderboard', [LeaderBoardController::class, 'index'])->name('user.leaderboard');
 });
 
 

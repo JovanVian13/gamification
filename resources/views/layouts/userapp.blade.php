@@ -150,7 +150,6 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('tasks') }}">Tasks</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('leaderboard') }}">Leaderboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('faq') }}">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('profile.show') }}">Profile</a></li>
