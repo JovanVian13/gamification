@@ -15,6 +15,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserVoucherController;
 use App\Http\Controllers\AdminLeaderBoardController;
 use App\Http\Controllers\BadgesController;
+use App\Http\Controllers\LeaderBoardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,17 +47,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/task', [TaskController::class, 'index'])->name('tasks');
 Route::post('/task/{id}/complete', [TaskController::class, 'completeTask'])->name('tasks.complete');
 
-
-
-// Dashboard routes
-Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
-    Route::get('/dashboard/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-});
-
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard/user', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('/dashboard/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('user.leaderboard');
 });
-
 
 Route::middleware('auth')->group(function () {
     // Show vouchers and redemption history
@@ -116,7 +110,7 @@ Route::post('/vouchers/redeem/{voucherId}', [VoucherController::class, 'redeemVo
 
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
     // Leaderboard
-    Route::get('/leaderboard', [AdminLeaderBoardController::class, 'showLeaderboard'])->name('admin.leaderboard');
+    Route::get('/admin/leaderboards', [AdminLeaderBoardController::class, 'showLeaderboard'])->name('admin.leaderboard');
 
     // Badge Management
     Route::get('/admin/badges', [BadgesController::class, 'manageBadges'])->name('admin.badge');
