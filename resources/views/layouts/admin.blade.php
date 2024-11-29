@@ -27,6 +27,8 @@
                 <li><a href="{{ route('admin.tasks') }}" class="text-decoration-none d-block py-2">Task Management</a></li>
                 <li><a href="{{ route('admin.notification') }}" class="text-decoration-none d-block py-2">Notification Management</a></li>
                 <li><a href="{{ route('admin.voucher') }}" class="text-decoration-none d-block py-2">Voucher Management</a></li>
+                <li><a href="{{ route('admin.leaderboard') }}" class="text-decoration-none d-block py-2">Leaderboard Management</a></li>
+                <li><a href="{{ route('admin.badge') }}" class="text-decoration-none d-block py-2">Badge Management</a></li>
                 <li>
                     <a href="{{ route('logout') }}" 
                        class="text-decoration-none d-block py-2"

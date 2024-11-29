@@ -10,11 +10,12 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoucherController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LeaderBoardController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserVoucherController;
+use App\Http\Controllers\AdminLeaderBoardController;
+use App\Http\Controllers\BadgesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +33,6 @@ Route::get('/feedback', [FeedbackController::class, 'showForm'])->name('feedback
 Route::post('/feedback', [FeedbackController::class, 'submitFeedback'])->name('feedback.submit');
 Route::get('/faq', [FeedbackController::class, 'showFaq'])->name('faq');
 Route::get('/contact', [FeedbackController::class, 'contactSupport'])->name('contact');
-
-// Route ke Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-// Route ke Leaderboard
-Route::get('/leaderboard', [LeaderBoardController::class, 'index'])->name('leaderboard');
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
@@ -61,6 +56,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard/user', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('/leaderboard', [LeaderBoardController::class, 'index'])->name('user.leaderboard');
 });
 
 
@@ -119,3 +115,13 @@ Route::get('/vouchers', [VoucherController::class, 'showVouchers'])->name('vouch
 
 // Route untuk menukarkan voucher
 Route::post('/vouchers/redeem/{voucherId}', [VoucherController::class, 'redeemVoucher'])->name('vouchers.redeem');
+
+Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
+    // Leaderboard
+    Route::get('/leaderboard', [AdminLeaderBoardController::class, 'showLeaderboard'])->name('admin.leaderboard');
+
+    // Badge Management
+    Route::get('/admin/badges', [BadgesController::class, 'manageBadges'])->name('admin.badge');
+    Route::post('/admin/badges', [BadgesController::class, 'createBadge'])->name('admin.badgecreate');
+    Route::post('/admin/badges/{badge}/assign', [BadgesController::class, 'assignBadge'])->name('admin.badgeassign');
+});
