@@ -40,12 +40,16 @@
             <h5 class="card-title">Riwayat Penukaran Voucher</h5>
             
             <ul class="list-group">
-                @foreach($redemptions as $redemption)
+                @forelse($userVouchers as $userVoucher)
                     <li class="list-group-item">
-                        <strong>{{ $redemption->voucher->name }}</strong> - 
-                        {{ $redemption->status }}
+                        <strong>{{ $userVoucher->voucher->title }}</strong> - 
+                        <span class="badge bg-info text-dark">{{ $userVoucher->status }}</span>
+                        <br>
+                        <small>Ditukar pada: {{ $userVoucher->redeemed_at ?? 'Belum Ditukar' }}</small>
                     </li>
-                @endforeach
+                @empty
+                    <li class="list-group-item text-muted">Belum ada riwayat penukaran voucher.</li>
+                @endforelse
             </ul>
         </div>
     </div>

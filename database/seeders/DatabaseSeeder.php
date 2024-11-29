@@ -12,8 +12,12 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-{
-    $this->call(VoucherSeeder::class);
-}
+    {
+        $this->call([
+            /*VoucherSeeder::class,*/
+            UserVoucherSeeder::class,
+        ]);
+    }
+    
 
 }

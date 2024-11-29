@@ -55,4 +55,10 @@ class User extends Authenticatable
             ->withTimestamps();  // Menambahkan timestamps otomatis
     }
 
+    public function userVouchers()
+    {
+        return $this->hasMany(UserVoucher::class);
+    }
+
+
 }

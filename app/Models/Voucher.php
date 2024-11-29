@@ -8,7 +8,7 @@ class Voucher extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'points_required', 'status'];
+    protected $fillable = ['title', 'description', 'points_required', 'code', 'status'];
 
     // Relasi dengan User
     public function users()
