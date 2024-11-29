@@ -28,7 +28,7 @@
                         <h4 class="m-bg-primary text-white p-3">Statistik Tugas</h4>
                         <p><strong>Total Tugas Selesai:</strong> {{ $completedTasksCount }}</p>
                         <p><strong>Tugas yang Sedang Dikerjakan:</strong> {{ $inProgressTasksCount }}</p>
-                        <a href="{{ route('tasks') }}" class="btn m-btn-secondary">Lihat Semua Tugas</a>
+                        <a href="{{ route('tasks') }}" class="btn m-btn-secondary mb-3 mt-3">Lihat Semua Tugas</a>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                             <li><strong>Total Poin:</strong> {{ $totalPoints }}</li>
                             <li><strong>Total Penukaran Voucher:</strong> {{ $totalRedemptionCount }}</li>
                         </ul>
-                        <a href="{{ route('redeem.vouchers') }}" class="btn m-btn-secondary">Tukar Voucher</a>
+                        <a href="{{ route('redeem.vouchers') }}" class="btn m-btn-secondary mb-3 mt-3">Tukar Voucher</a>
                     </div>
                 </div>
             </div>

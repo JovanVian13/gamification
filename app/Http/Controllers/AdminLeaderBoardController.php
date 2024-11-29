@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Badge;
+use App\Models\Point;
 
-class LeaderBoardController extends Controller
+class AdminLeaderBoardController extends Controller
 {
     // Show leaderboard
     public function showLeaderboard(Request $request)
@@ -21,6 +23,6 @@ class LeaderBoardController extends Controller
             ->get();
 
         // Kirim data ke view
-        return view('user.leaderboard', compact('leaderboard', 'period'));
+        return view('admin.leaderboard', compact('leaderboard', 'period'));
     }
 }

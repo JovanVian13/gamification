@@ -17,10 +17,12 @@ class UserDashboardController extends Controller
             'leaderboard' => [
                 ['name' => 'User 1', 'points' => 200],
                 ['name' => 'User 2', 'points' => 150],
+                ['name' => 'User 1', 'points' => 200],
             ],
             'tasks' => [
                 ['title' => 'Task 1', 'priority' => true, 'deadline' => '2024-11-30'],
                 ['title' => 'Task 2', 'priority' => false, 'deadline' => '2024-12-01'],
+                ['title' => 'Task 3', 'priority' => false, 'deadline' => '2024-12-01'],
             ]
         ];
 
