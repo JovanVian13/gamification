@@ -12,6 +12,7 @@ class CreateUserVouchersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('voucher_id')->constrained()->onDelete('cascade');
+            $table->string('status')->default('pending');
             $table->timestamp('redeemed_at')->nullable();
             $table->timestamps();
         });
@@ -22,4 +23,3 @@ class CreateUserVouchersTable extends Migration
         Schema::dropIfExists('user_vouchers');
     }
 }
-

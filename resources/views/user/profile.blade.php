@@ -40,7 +40,7 @@
                             <li><strong>Total Poin:</strong> {{ $totalPoints }}</li>
                             <li><strong>Total Penukaran Voucher:</strong> {{ $totalRedemptionCount }}</li>
                         </ul>
-                        <a href="{{ route('voucher.redeem') }}" class="btn m-btn-secondary">Tukar Voucher</a>
+                        <a href="{{ route('redeem.vouchers') }}" class="btn m-btn-secondary">Tukar Voucher</a>
                     </div>
                 </div>
             </div>

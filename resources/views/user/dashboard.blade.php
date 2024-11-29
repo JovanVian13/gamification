@@ -60,7 +60,7 @@
             <!-- Tombol Penukaran Voucher -->
             <div class="card shadow-sm mt-4 mb-4">
                 <div class="card-body text-center">
-                    <a href="{{ route('voucher.redeem') }}" class="btn btn-warning btn-lg m-btn-primary">Tukar Voucher</a>
+                    <a href="{{ route('redeem.vouchers') }}" class="btn btn-warning btn-lg m-btn-primary">Tukar Voucher</a>
                 </div>
             </div>
         </div>
