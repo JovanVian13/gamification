@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/redeem-voucher/{voucherId}', [VoucherController::class, 'redeemVoucher'])->name('voucher.redeem.action');
 });
 
+Route::get('/redeem-vouchers', [UserVoucherController::class, 'redeemVouchers'])->name('redeem.vouchers');
 
 
 
