@@ -80,6 +80,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/edit', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
+
+Route::get('user/notifications', [NotificationController::class, 'userNotifications'])->name('user.notifications');
+Route::post('user/notifications/read/{id}', [NotificationController::class, 'markAsRead'])->name('user.notifications.read');
+Route::delete('user/notifications/{id}', [NotificationController::class, 'deleteNotification'])->name('user.notifications.delete');
+
+
 // Grup middleware untuk admin
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
     Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
