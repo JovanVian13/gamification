@@ -59,6 +59,8 @@ class VoucherController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Voucher berhasil ditukarkan!');
     }
+
+    
     
 }
 
