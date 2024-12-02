@@ -137,5 +137,5 @@ use App\Http\Controllers\UserTaskController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/task', [UserTaskController::class, 'index'])->name('usertask'); // URL: /tasks
-    Route::get('/tasks/{id}/complete', [UserTaskController::class, 'markAsComplete'])->name('usertask.complete');
+    Route::post('/task/{id}/complete', [UserTaskController::class, 'markAsComplete'])->name('usertask.complete');
 });
