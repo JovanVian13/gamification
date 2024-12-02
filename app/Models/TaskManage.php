@@ -23,4 +23,10 @@ class TaskManage extends Model
     protected $casts = [
         'deadline' => 'datetime',
     ];
+
+    // Relasi dengan UserTask
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_tasks', 'task_id', 'user_id');
+    }
 }

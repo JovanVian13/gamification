@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         /* Custom Styles */
         html, body {
@@ -149,7 +150,7 @@
             </div>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('tasks') }}">Tasks</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('usertask') }}">Tasks</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('user.leaderboard') }}">Leaderboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('faq') }}">FAQ</a></li>

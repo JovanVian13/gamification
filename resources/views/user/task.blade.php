@@ -1,64 +1,73 @@
 @extends('layouts.userapp')
 
-@section('title', 'Daftar Tugas')
+@section('title', 'My Tasks')
 
 @section('content')
-<div class="container mt-4 mb-4">
-    <div class="text-center mb-4">
-        <h3 class="fw-bold">Daftar Tugas</h3>
-        <p class="text-muted">Pilih tugas untuk diselesaikan dan dapatkan poin!</p>
-    </div>
-
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @elseif (session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
-
+<div class="container mt-5 mb-5">
     <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h1 class="h3 mb-0">My Tasks</h1>
+        </div>
         <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Tugas</th>
-                        <th>Jenis</th>
-                        <th>Poin</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($tasks as $task)
-                        <tr>
-                            <td>{{ $task->id }}</td>
-                            <td>{{ $task->title }}</td>
-                            <td>{{ ucfirst($task->type) }}</td>
-                            <td>{{ $task->points }} poin</td>
-                            <td>
-                                <span class="badge 
-                                    {{ $task->status === 'completed' ? 'bg-success' : 'bg-warning text-dark' }}">
-                                    {{ ucfirst($task->status) }}
-                                </span>
-                            </td>
-                            <td>
-                                @if ($task->status === 'incomplete')
-                                    <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
-                                        @csrf
-                                        <button class="btn m-btn-primary btn-sm">Selesaikan</button>
-                                    </form>
-                                @else
-                                    <button class="btn btn-secondary btn-sm" disabled>Selesai</button>
-                                @endif
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center">Tidak ada tugas yang tersedia.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+            @if($userTasks->isEmpty())
+                <div class="text-center">
+                    <strong>No tasks available.</strong>
+                </div>
+            @else
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Status</th>
+                                <th>Points</th>
+                                <th>URL</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($userTasks as $userTask)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $userTask->task->title }}</td>
+                                    <td>
+                                        @if($userTask->status === 'completed')
+                                            <span class="badge bg-success">Completed</span>
+                                        @else
+                                            <span class="badge bg-warning text-dark">Pending</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $userTask->task->points }}</td>
+                                    <td>
+                                        @if ($userTask->task->url)
+                                            <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link">
+                                                <i class="bi bi-box-arrow-up-right"></i> Open
+                                            </a>
+                                        @else
+                                            <span class="text-muted">No URL</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($userTask->status === 'incomplete')
+                                        <form action="{{ route('usertask.complete', $userTask->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <i class="bi bi-check-circle"></i> Complete
+                                            </button>
+                                        </form>
+                                        @else
+                                            <button class="btn btn-secondary btn-sm" disabled>
+                                                <i class="bi bi-check-circle-fill"></i> Completed
+                                            </button>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
         </div>
     </div>
 </div>

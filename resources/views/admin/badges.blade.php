@@ -43,9 +43,14 @@
                 <!-- Assign Badge Form -->
                 <form action="{{ route('admin.badgeassign', $badge) }}" method="POST">
                     @csrf
-                    <input type="number" name="user_id" class="form-control mb-2" placeholder="User ID">
+                    <select name="user_id" class="form-select mb-2">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
                     <button type="submit" class="btn btn-sm btn-success">Assign to User</button>
                 </form>
+
             </td>
         </tr>
         @endforeach

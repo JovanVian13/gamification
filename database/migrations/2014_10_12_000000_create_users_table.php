@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->integer('age')->nullable();
             $table->string('location')->nullable();
             $table->string('remember_token')->nullable();
-            $table->enum('role', ['user', 'admin'])->default('user');
+            $table->string('role')->default('user');
             $table->timestamps();
         });
     }
