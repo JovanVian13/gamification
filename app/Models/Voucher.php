@@ -13,8 +13,9 @@ class Voucher extends Model
     // Relasi dengan User
     public function users()
     {
-        return $this->belongsToMany(User::class)
-            ->withPivot('status', 'redeemed_at') // Menambahkan kolom pivot yang digunakan
-            ->withTimestamps(); // Menambahkan waktu pembuatan dan update
+        return $this->belongsToMany(User::class, 'user_voucher')
+            ->withPivot('status', 'redeemed_at')
+            ->withTimestamps();
     }
+    
 }

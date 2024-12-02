@@ -50,10 +50,11 @@ class User extends Authenticatable
 
     public function vouchers()
     {
-        return $this->belongsToMany(Voucher::class)
-            ->withPivot('status', 'redeemed_at')  // Tambahkan 'redeemed_at' di sini
-            ->withTimestamps();  // Menambahkan timestamps otomatis
+        return $this->belongsToMany(Voucher::class, 'user_voucher')
+            ->withPivot('status', 'redeemed_at') // Kolom tambahan di tabel pivot
+            ->withTimestamps(); // Untuk timestamps otomatis
     }
+    
 
     public function userVouchers()
     {
@@ -68,7 +69,7 @@ class User extends Authenticatable
 
     public function points()
     {
-        return $this->hasMany(Points::class);
+        return $this->hasMany(Points::class, 'user_id'); // Relasi one-to-many
     }
 
     public function role()

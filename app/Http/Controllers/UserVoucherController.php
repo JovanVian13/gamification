@@ -19,7 +19,7 @@ class UserVoucherController extends Controller
         $userVouchers = auth()->user()->userVouchers()->with('voucher')->get();
     
         // Hitung total poin pengguna (misalnya disimpan di tabel users)
-        $userPoints = auth()->user()->points;
+        $userPoints = auth()->user()->points()->sum('points');
     
         // Kirimkan data ke view
         return view('user.redeem-vouchers', compact('vouchers', 'userVouchers', 'userPoints'));

@@ -2,6 +2,20 @@
 
 @section('content')
 <div class="container mt-4">
+
+    <!-- Menampilkan Pesan Sukses atau Error -->
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <!-- Katalog Voucher -->
     <div class="card shadow-sm mb-4">
         <div class="card-body">
@@ -18,8 +32,8 @@
                                 <p class="card-text"><strong>{{ $voucher->points_required }} poin</strong></p>
 
                                 <!-- Tombol Tukar jika Poin Cukup -->
-                                @if($userPoints >= $voucher->points_required)
-                                    <form action="{{ route('voucher.redeem', $voucher->id) }}" method="POST">
+                                @if($userPoints ?? 0 >= $voucher->points_required)
+                                    <form action="{{ route('voucher.redeem.action', $voucher->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn m-btn-primary">Tukar Voucher</button>
                                     </form>

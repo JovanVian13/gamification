@@ -19,8 +19,8 @@
                         style="width: 120px; height: 120px;">
                     
                     <!-- Informasi Pengguna -->
-                    <h5 class="card-title">Name</h5>
-                    <p class="card-text text-muted">name@example.com</p>
+                    <h5 class="card-title">{{ Auth::user()->name }}</h5>
+                    <p class="card-text text-muted">{{ Auth::user()->email }}</p>
                 </div>
                 <!-- Tombol Aksi -->
                 <div class="card-footer text-center bg-light">
