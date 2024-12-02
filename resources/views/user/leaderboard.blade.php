@@ -6,7 +6,7 @@
 
     <!-- Leaderboard Ranking -->
     <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header m-bg-secondary text-white">
             <h2 class="h4 mb-0">Ranking Pengguna</h2>
         </div>
         <div class="card-body">

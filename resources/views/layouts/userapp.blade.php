@@ -120,30 +120,25 @@
     <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary">
         <div class="container-fluid">
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 5%;">
-            <a class="navbar-brand" href="dashboard">Gamification</a>
+            <a class="navbar-brand" href="{{ route('user.dashboard') }}">Gamification</a>
             <div class="position-relative">
-                <!-- Tombol Notifikasi -->
-                <button id="notification-button" class="btn position-relative d-flex align-items-center">
-                    <i class="fas fa-bell text-white me-1"></i>
-                    <!-- Indikator Notifikasi -->
-                    <span 
-                        id="notification-count" 
-                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                        style="font-size: 0.75rem;"
-                    >
-                        3
-                    </span>
-                </button>
+
                 <!-- Dropdown Notifikasi -->
-                <div 
-                    id="notification-dropdown" 
-                    class="dropdown-menu dropdown-menu-end mt-2 shadow rounded"
-                    style="display: none; width: 16rem;"
-                >
-                    <ul class="list-unstyled mb-0">
-                        <li class="dropdown-item text-wrap">Tugas "Tonton Video A" hampir selesai.</li>
-                        <li class="dropdown-item text-wrap">Selamat, Anda telah menyelesaikan 50 tugas!</li>
-                        <li class="dropdown-item text-wrap">Voucher baru tersedia di penukaran poin.</li>
+                <div class="dropdown">
+                    <button class="btn m-btn-secondary dropdown-toggle position-relative d-flex align-items-center" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                        @if($notifications->where('read_status', 'unread')->count() > 0)
+                            <span class="badge bg-danger">{{ $notifications->where('read_status', 'unread')->count() }}</span>
+                        @endif
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
+                        @foreach ($notifications as $notification)
+                        <li class="dropdown-item">
+                            <strong>{{ $notification->title }}</strong>
+                            <p>{{ $notification->message }}</p>
+                        </li>
+                        @endforeach
+                        <li><a href="{{ route('user.notifications') }}" class="dropdown-item text-center">View All Notifications</a></li>
                     </ul>
                 </div>
             </div>
@@ -195,6 +190,13 @@
                 }
             });
         });
+
+        public function __construct()
+        {
+            view()->composer('layouts.userapp', function ($view) {
+                $view->with('notifications', Notification::where('user_id', auth()->id())->latest()->take(3)->get());
+            });
+        }
     </script>
 
     @stack('scripts')

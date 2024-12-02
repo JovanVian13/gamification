@@ -53,4 +53,34 @@ class NotificationController extends Controller
 
         return redirect()->route('admin.notification')->with('success', 'Notification created successfully.');
     }
+
+    public function userNotifications()
+    {
+        $userId = auth()->id(); // Mendapatkan ID pengguna yang sedang login
+        $notifications = Notification::where('user_id', $userId)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        $allNotifications = Notification::where('user_id', $userId)->latest()->get();
+
+        return view('user.notifications', compact('notifications', 'allNotifications'));
+    }
+
+    public function markAsRead($id)
+    {
+        $notification = Notification::findOrFail($id);
+        $notification->update(['read_status' => 'read']);
+
+        return redirect()->route('user.notifications')->with('success', 'Notification marked as read.');
+    }
+
+    public function deleteNotification($id)
+    {
+        $notification = Notification::findOrFail($id);
+        $notification->delete();
+
+        return redirect()->route('user.notifications')->with('success', 'Notification deleted successfully.');
+    }
+
 }

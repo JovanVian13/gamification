@@ -52,7 +52,7 @@
                         @endforeach
                     </ol>
                     <div class="mt-3">
-                        <a href="/leaderboard" class="btn btn-link text-primary">Lihat Leaderboard Lengkap</a>
+                        <a href="{{ route('user.leaderboard') }}" class="btn btn-link text-primary text-decoration-none">Lihat Leaderboard Lengkap</a>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
 
             <!-- Tombol Aksi -->
             <div class="mt-4 d-flex justify-content-between">
-                <a href="/task" class="btn btn-link text-primary">Lihat Semua Tugas</a>
+                <a href="/task" class="btn btn-link text-primary text-decoration-none">Lihat Semua Tugas</a>
                 <a href="#" class="btn m-btn-secondary">Mulai Tugas Prioritas</a>
             </div>
         </div>
