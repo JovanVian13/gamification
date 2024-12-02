@@ -11,26 +11,50 @@
         </div>
         <div class="card-body">
             @if (count($leaderboard) > 0)
-            <table class="table table-striped table-hover">
-                <thead class="thead-light">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Poin</th>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Points</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($leaderboard as $index => $leader)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $leader->name }}</td>
-                        <td class="text-primary font-weight-bold">{{ $leader->points }} poin</td>
-                    </tr>
+                    @foreach ($leaderboard as $index => $entry)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $entry->name }}</td> <!-- Corrected this line -->
+                            <td>{{ $entry->points }}</td> <!-- Corrected the points property -->
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
             @else
             <p class="text-muted">Belum ada data leaderboard tersedia.</p>
+            @endif
+        </div>
+    </div>
+
+    <!-- User's Badges -->
+    <div class="card mt-4">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">Badges Anda</h2>
+        </div>
+        <div class="card-body">
+            @if ($userBadges->count() > 0)
+                <div class="d-flex flex-wrap">
+                    @foreach ($userBadges as $badge)
+                        <div class="badge-item text-center me-3 mb-3">
+                            <img src="{{ asset('storage/' . $badge->image) }}" 
+                                 alt="{{ $badge->name }}" 
+                                 class="img-thumbnail" 
+                                 style="width: 80px; height: 80px;">
+                            <p class="small mt-2">{{ $badge->name }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p class="text-muted">Anda belum memiliki badge.</p>
             @endif
         </div>
     </div>

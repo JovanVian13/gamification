@@ -47,7 +47,6 @@ class User extends Authenticatable
                     ->withTimestamps();
     }
 
-
     public function vouchers()
     {
         return $this->belongsToMany(Voucher::class)
@@ -60,5 +59,15 @@ class User extends Authenticatable
         return $this->hasMany(UserVoucher::class);
     }
 
+    public function badges()
+    {
+        return $this->belongsToMany(Badge::class, 'user_badges')
+                    ->withTimestamps(); // Assuming a pivot table `user_badges` exists
+    }
+
+    public function points()
+    {
+        return $this->hasMany(Points::class);
+    }
 
 }

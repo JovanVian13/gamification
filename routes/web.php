@@ -43,10 +43,6 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
-Route::get('/task', [TaskController::class, 'index'])->name('tasks');
-Route::post('/task/{id}/complete', [TaskController::class, 'completeTask'])->name('tasks.complete');
-
 Route::middleware(['auth', RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard/user', [UserDashboardController::class, 'index'])->name('user.dashboard');
     Route::get('/dashboard/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('user.leaderboard');
@@ -102,7 +98,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     Route::get('admin/tasks', [AdminDashboardController::class, 'manageTasks'])->name('admin.tasks');
     Route::get('admin/tasks/create', [AdminDashboardController::class, 'createTask'])->name('admin.taskcreate');
     Route::post('admin/tasks/manage', [AdminDashboardController::class, 'storeTask'])->name('admin.taskstore');
-    Route::get('admin/tasks/{id}/edit', [AdminDashboardController::class, 'editTask'])->name('admin.taskedit');
+    Route::get('/admin/tasks/{id}/edit', [AdminDashboardController::class, 'editTask'])->name('admin.taskedit');
     Route::patch('admin/tasks/{id}', [AdminDashboardController::class, 'updateTask'])->name('admin.taskupdate');
     Route::delete('admin/tasks/{id}', [AdminDashboardController::class, 'deleteTask'])->name('admin.taskdelete');
 
@@ -134,4 +130,12 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     Route::get('/admin/badges', [BadgesController::class, 'manageBadges'])->name('admin.badge');
     Route::post('/admin/badges', [BadgesController::class, 'createBadge'])->name('admin.badgecreate');
     Route::post('/admin/badges/{badge}/assign', [BadgesController::class, 'assignBadge'])->name('admin.badgeassign');
+});
+
+
+use App\Http\Controllers\UserTaskController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/task', [UserTaskController::class, 'index'])->name('usertask'); // URL: /tasks
+    Route::post('/task/{id}/complete', [UserTaskController::class, 'markAsComplete'])->name('usertask.complete');
 });

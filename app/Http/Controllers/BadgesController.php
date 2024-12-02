@@ -11,11 +11,9 @@ class BadgesController extends Controller
 {
     public function manageBadges()
     {
-        // Ambil semua badge dari database
         $badges = Badge::all();
-
-        // Kirim data badges ke view
-        return view('admin.badges', compact('badges'));
+        $users = User::all(); // Fetch all users
+        return view('admin.badges', compact('badges', 'users'));
     }
 
     // Create a new badge
@@ -41,10 +39,21 @@ class BadgesController extends Controller
     // Assign badge to a user
     public function assignBadge(Request $request, Badge $badge)
     {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
         $user = User::findOrFail($request->user_id);
+
+        if ($user->badges->contains($badge->id)) {
+            return redirect()->route('admin.badge')
+                            ->with('error', 'Badge already assigned to this user.');
+        }
+
         $user->badges()->attach($badge);
 
-        return redirect()->route('admin.badge')->with('success', 'Badge assigned to user.');
-    }
+        return redirect()->route('admin.badge')->with('success', 'Badge assigned to user successfully.');
+}
+
 }
 

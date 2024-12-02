@@ -9,6 +9,7 @@ class Points extends Model
 {
     use HasFactory;
 
+    protected $table = 'points';
     protected $fillable = ['user_id', 'points', 'period', 'date'];
 
     public function user()

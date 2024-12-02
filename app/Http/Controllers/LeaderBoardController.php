@@ -14,13 +14,16 @@ class LeaderBoardController extends Controller
 
         // Ambil leaderboard dengan join tabel points
         $leaderboard = User::join('points', 'users.id', '=', 'points.user_id')
-            ->select('users.name', \DB::raw('SUM(points.points) as points')) // Total poin
-            ->groupBy('users.id', 'users.name') // Grup berdasarkan ID dan nama
-            ->orderByDesc('points') // Urutkan dari poin tertinggi
-            ->take(10) // Ambil 10 teratas
+            ->select('users.id', 'users.name', \DB::raw('SUM(points.points) as points'))
+            ->groupBy('users.id', 'users.name')
+            ->orderByDesc('points')
+            ->take(10)
             ->get();
 
+        
+        $userBadges = auth()->user()->badges;
+
         // Kirim data ke view
-        return view('user.leaderboard', compact('leaderboard', 'period'));
+        return view('user.leaderboard', compact('leaderboard', 'period', 'userBadges'));
     }
 }
