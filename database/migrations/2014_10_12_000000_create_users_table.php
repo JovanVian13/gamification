@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('remember_token')->nullable();
             $table->string('role')->default('user');
             $table->timestamps();
+            $table->integer('points')->default('0');
         });
     }
 
