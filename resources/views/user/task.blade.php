@@ -22,7 +22,7 @@
                                 <th>Title</th>
                                 <th>Status</th>
                                 <th>Points</th>
-                                <th>URL</th>
+                                <th>Video Link</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -40,13 +40,9 @@
                                     </td>
                                     <td>{{ $userTask->task->points }}</td>
                                     <td>
-                                        @if ($userTask->task->url)
-                                            <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link">
-                                                <i class="bi bi-box-arrow-up-right"></i> Open
-                                            </a>
-                                        @else
-                                            <span class="text-muted">No URL</span>
-                                        @endif
+                                        <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link">
+                                            Watch Video
+                                        </a>
                                     </td>
                                     <td>
                                         @if($userTask->status === 'incomplete')

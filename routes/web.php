@@ -139,6 +139,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 Route::middleware(['auth'])->group(function () {
     Route::get('/task', [UserTaskController::class, 'index'])->name('usertask'); // URL: /tasks
     Route::post('/task/{id}/complete', [UserTaskController::class, 'markAsComplete'])->name('usertask.complete');
+    Route::post('/video-interaction', [UserTaskController::class, 'trackInteraction'])->name('video.interaction');
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {

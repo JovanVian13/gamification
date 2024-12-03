@@ -21,5 +21,11 @@ class Task extends Model
                     ->withPivot('status', 'completed_at')
                     ->withTimestamps();
     }
+
+    public function userTasks()
+    {
+        return $this->hasMany(UserTask::class);
+    }
+
 }
 
