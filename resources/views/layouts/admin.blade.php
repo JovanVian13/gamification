@@ -31,6 +31,7 @@
                 <li><a href="{{ route('admin.badge') }}" class="text-decoration-none d-block py-2">Badge Management</a></li>
                 <li><a href="{{ route('admin.reports') }}" class="text-decoration-none d-block py-2">Reports and Analytics</a></li>
                 <li><a href="{{ route('admin.securityLogs') }}" class="text-decoration-none d-block py-2">Security Management</a></li>
+                <li><a href="{{ route('admin.settings') }}" class="text-decoration-none d-block py-2">Settings</a></li>
                 <li>
                     <button href="{{ route('logout') }}" 
                        class="btn btn-danger"
