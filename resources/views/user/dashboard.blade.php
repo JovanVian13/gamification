@@ -62,7 +62,7 @@
             <!-- Tombol Penukaran Voucher -->
             <div class="card shadow-sm mt-4 mb-4">
                 <div class="card-body text-center">
-                    <a href="{{ route('redeem.vouchers') }}" class="btn btn-warning btn-lg m-btn-primary">Tukar Voucher</a>
+                    <a href="{{ route('redeem.vouchers') }}" class="btn btn-warning btn-lg m-btn-primary">Voucher Shop</a>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Points</th>
@@ -97,7 +97,7 @@
                                 <td>{{ $task->task->points ?? '0' }}</td>
                                 <td>
                                     @if (!empty($task->task->url))
-                                    <a href="{{ $task->task->url }}" target="_blank" class="btn btn-link text-primary">
+                                    <a href="{{ $task->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none">
                                         Watch Video
                                     </a>
                                     @else

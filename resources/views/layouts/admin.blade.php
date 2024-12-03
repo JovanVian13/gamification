@@ -1,5 +1,3 @@
-<!-- resources/views/layouts/admin.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,36 +6,130 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Dashboard')</title>
     
-    <!-- Bootstrap CSS (You can also use Tailwind or other frameworks) -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}"> {{-- Optional for custom styles --}}
-    
-    @stack('styles') {{-- For additional styles from specific views --}}
+    <!-- Bootstrap Icons (Optional for icons) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    @stack('styles') {{-- For additional styles --}}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .sidebar {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .sidebar h3 {
+            color: #ffc107;
+        }
+        .sidebar a {
+            color: #adb5bd;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #495057;
+            color: #ffffff;
+        }
+        .content {
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .navbar .nav-link {
+            color: #495057;
+        }
+        .navbar .nav-link:hover {
+            color: #007bff;
+        }
+
+        .m-btn-primary {
+            background-color: #fbb041;
+            color: #ffffff;
+        }
+
+        .m-btn-primary:hover {
+            background-color: #fcc066;
+            color: #ffffff;
+        }
+
+        .m-btn-secondary {
+            background-color: #232E66;
+            color: #ffffff;
+        }
+
+        .m-btn-secondary:hover {
+            background-color: #4056A1;
+            color: #ffffff;
+        }
+
+        .m-bg-primary {
+            background-color: #fbb041;
+        }
+
+        .m-bg-secondary {
+            background-color: #232E66;
+        }
+
+        .m-p-primary {
+            color: #fbb041;
+        }
+
+        .m-p-secondary {
+            color: #232E66;
+        }
+
+        .bg-gray {
+            background-color: #495057;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                z-index: 1050;
+                height: 100%;
+                width: 250px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="app" class="d-flex">
         <!-- Sidebar -->
-        <nav class="sidebar bg-light flex-shrink-0 p-3" style="width: 250px; height: 100vh; position: fixed;">
-            <h3 class="mb-4">Admin Panel</h3>
-            <ul class="list-unstyled">
-                <li><a href="{{ route('admin.dashboard') }}" class="text-decoration-none d-block py-2">Dashboard</a></li>
-                <li><a href="{{ route('admin.users') }}" class="text-decoration-none d-block py-2">User Management</a></li>
-                <li><a href="{{ route('admin.tasks') }}" class="text-decoration-none d-block py-2">Task Management</a></li>
-                <li><a href="{{ route('admin.notification') }}" class="text-decoration-none d-block py-2">Notification Management</a></li>
-                <li><a href="{{ route('admin.voucher') }}" class="text-decoration-none d-block py-2">Voucher Management</a></li>
-                <li><a href="{{ route('admin.leaderboard') }}" class="text-decoration-none d-block py-2">Leaderboard Management</a></li>
-                <li><a href="{{ route('admin.badge') }}" class="text-decoration-none d-block py-2">Badge Management</a></li>
-                <li><a href="{{ route('admin.reports') }}" class="text-decoration-none d-block py-2">Reports and Analytics</a></li>
-                <li><a href="{{ route('admin.securityLogs') }}" class="text-decoration-none d-block py-2">Security Management</a></li>
-                <li><a href="{{ route('admin.settings') }}" class="text-decoration-none d-block py-2">Settings</a></li>
+        <nav class="sidebar flex-shrink-0 p-3" id="sidebar">
+            <h3 class="mb-4 text-center">Admin Panel</h3>
+            <ul class="nav flex-column">
+                <li><a href="{{ route('admin.dashboard') }}" class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                <li><a href="{{ route('admin.users') }}" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}"><i class="bi bi-people"></i> User Management</a></li>
+                <li><a href="{{ route('admin.tasks') }}" class="nav-link {{ Request::is('admin/tasks') ? 'active' : '' }}"><i class="bi bi-list-task"></i> Task Management</a></li>
+                <li><a href="{{ route('admin.notification') }}" class="nav-link {{ Request::is('admin/notification') ? 'active' : '' }}"><i class="bi bi-bell"></i> Notification Management</a></li>
+                <li><a href="{{ route('admin.voucher') }}" class="nav-link {{ Request::is('admin/voucher') ? 'active' : '' }}"><i class="bi bi-gift"></i> Voucher Management</a></li>
+                <li><a href="{{ route('admin.leaderboard') }}" class="nav-link {{ Request::is('admin/leaderboard') ? 'active' : '' }}"><i class="bi bi-trophy"></i> Leaderboard</a></li>
+                <li><a href="{{ route('admin.badge') }}" class="nav-link {{ Request::is('admin/badge') ? 'active' : '' }}"><i class="bi bi-award"></i> Badge Management</a></li>
+                <li><a href="{{ route('admin.reports') }}" class="nav-link {{ Request::is('admin/reports') ? 'active' : '' }}"><i class="bi bi-graph-up"></i> Reports</a></li>
+                <li><a href="{{ route('admin.securityLogs') }}" class="nav-link {{ Request::is('admin/securityLogs') ? 'active' : '' }}"><i class="bi bi-shield-lock"></i> Security Logs</a></li>
+                <li><a href="{{ route('admin.settings') }}" class="nav-link {{ Request::is('admin/settings') ? 'active' : '' }}"><i class="bi bi-gear"></i> Settings</a></li>
                 <li>
-                    <button href="{{ route('logout') }}" 
-                       class="btn btn-danger"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </button>
+                    <a href="#" class="btn btn-danger w-100 mt-3" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -46,32 +138,24 @@
         </nav>
 
         <!-- Main Content -->
-        <div class="content flex-grow-1" style="margin-left: 250px;">
-            <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Welcome, {{ Auth::user()->name }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </header>
+        <div class="content flex-grow-1" style="">
+            <!-- Navbar -->
 
+
+            <!-- Page Content -->
             <main class="p-4">
-                @yield('content') {{-- Content will be injected here --}}
+                @yield('content')
             </main>
         </div>
     </div>
 
-    <!-- Bootstrap JS (Optional for interactivity) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom Scripts -->
-    @stack('scripts') {{-- For additional scripts from specific views --}}
+    <script>
+        document.getElementById('toggle-sidebar').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+    </script>
+    @stack('scripts') {{-- For additional scripts --}}
 </body>
 </html>

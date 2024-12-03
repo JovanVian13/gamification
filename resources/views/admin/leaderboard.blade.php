@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h1 class="display-4 text-dark mb-4"><strong>Leaderboard ({{ ucfirst($period) }})</strong></h1>
+    <h1 class="display-6 text-dark mb-4"><strong>Leaderboard ({{ ucfirst($period) }})</strong></h1>
 
     <!-- Leaderboard Ranking -->
     <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header bg-gray text-white">
             <h2 class="h4 mb-0">Ranking Pengguna</h2>
         </div>
         <div class="card-body">
