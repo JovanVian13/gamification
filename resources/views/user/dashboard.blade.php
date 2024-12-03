@@ -13,10 +13,11 @@
                 <div class="card-body text-center">
                     <!-- Foto Profil -->
                     <img 
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrI__BaxsSuU7xTbKjDif1LRRZu4TFo6Od3A&s" 
-                        alt="Profile Photo" 
-                        class="rounded-circle border border-white mb-3" 
-                        style="width: 120px; height: 120px;">
+                    src="{{ Auth::user()->profile_picture}}" 
+                    alt="Profile Photo" 
+                    class="rounded-circle border border-white mb-3" 
+                    style="width: 120px; height: 120px;">
+                
                     
                     <!-- Informasi Pengguna -->
                     <h5 class="card-title">{{ Auth::user()->name }}</h5>
@@ -111,8 +112,7 @@
 
             <!-- Tombol Aksi -->
             <div class="mt-4 d-flex justify-content-between">
-                <a href="/task" class="btn btn-link text-primary text-decoration-none">Lihat Semua Tugas</a>
-                <a href="#" class="btn m-btn-secondary">Mulai Tugas Prioritas</a>
+                <a href="/task" class="btn m-btn-secondary">Lihat Semua Tugas</a>
             </div>
         </div>
     </div>

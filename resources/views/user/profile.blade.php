@@ -9,17 +9,30 @@
                 <!-- User Information Section -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
-                        <h4 class="m-bg-primary text-white p-3">Informasi Pribadi</h4>
+                        <h4 class="m-bg-primary text-white p-3 text-center mb-3">Informasi Pribadi</h4>
                         <ul class="list-unstyled">
-                            <li><strong>Nama:</strong> {{ Auth::user()->name }}</li>
-                            <li><strong>Email:</strong> {{ Auth::user()->email }}</li>
-                            <li><strong>Umur:</strong> {{ Auth::user()->age }}</li>
-                            <li><strong>Lokasi:</strong> {{ Auth::user()->location }}</li>
+                            <!-- Foto Profil -->
+                            <li class="mb-3 text-center">
+                                <img 
+                                    src="{{ Auth::user()->profile_picture }}" 
+                                    alt="Profile Photo" 
+                                    class="rounded-circle border border-white mb-3" 
+                                    style="width: 120px; height: 120px;">
+                            </li>
+                            <!-- Nama Pengguna -->
+                            <li><strong>Name: {{ Auth::user()->name }}</strong></li>
+                            <!-- Email Pengguna -->
+                            <li><strong>Email: {{ Auth::user()->email }}</strong></li>
+                            <!-- Umur Pengguna -->
+                            <li><strong>Age: {{ Auth::user()->age }}</strong></li>
+                            <!-- Lokasi Pengguna -->
+                            <li><strong>Location: {{ Auth::user()->location }}</strong></li>
                         </ul>
                         <a href="{{ route('profile.edit') }}" class="btn m-btn-secondary btn-block">Edit Profil</a>
                     </div>
                 </div>
             </div>
+            
 
             <div class="col-lg-8">
                 <!-- Task Statistics Section -->

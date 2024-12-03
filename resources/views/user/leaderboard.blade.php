@@ -6,7 +6,7 @@
 
     <!-- Leaderboard Ranking -->
     <div class="card mb-4">
-        <div class="card-header m-bg-secondary text-white">
+        <div class="card-header m-bg-primary text-white">
             <h2 class="h4 mb-0">Ranking Pengguna</h2>
         </div>
         <div class="card-body">
@@ -14,7 +14,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>User</th>
                         <th>Points</th>
                     </tr>
@@ -36,8 +36,8 @@
     </div>
 
     <!-- User's Badges -->
-    <div class="card mt-4">
-        <div class="card-header bg-primary text-white">
+    <div class="card mt-4 mb-4">
+        <div class="card-header m-bg-primary text-white">
             <h2 class="h4 mb-0">Badges Anda</h2>
         </div>
         <div class="card-body">

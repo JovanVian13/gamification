@@ -9,6 +9,13 @@
         <form action="{{ route('profile.update') }}" method="POST">
             @csrf
             <div class="mb-3">
+                <label for="profile_picture" class="form-label">Foto Profil</label>
+                <input type="file" class="form-control" id="profile_picture" name="profile_picture">
+                @if ($user->profile_picture)
+                    <img src="{{ Auth::user()->profile_picture}}" alt="Profile Picture" class="img-thumbnail mt-2" style="max-width: 150px;">
+                @endif
+            </div>
+            <div class="mb-3">
                 <label for="name" class="form-label">Nama</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}">
             </div>

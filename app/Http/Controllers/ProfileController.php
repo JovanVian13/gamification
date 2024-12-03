@@ -38,10 +38,11 @@ class ProfileController extends Controller
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
             'age' => 'required|integer|min:1',
             'location' => 'required|string|max:255',
+            'profile_picture' => 'nullable|string|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
 
         $user = Auth::user();
-        $user->update($request->only(['name', 'email', 'age', 'location']));
+        $user->update($request->only(['name', 'email', 'age', 'location', 'profile_picture']));
 
         return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
     }
