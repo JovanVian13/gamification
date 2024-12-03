@@ -20,6 +20,22 @@ class UserTaskController extends Controller
         return view('user.task', compact('userTasks'));
     }
 
+    public function trackInteraction(Request $request)
+    {
+        $taskId = $request->input('task_id');
+        $eventType = $request->input('event_type');
+
+        // Save interaction logic
+        if ($eventType === 'completed') {
+            $userTask = UserTask::find($taskId);
+            if ($userTask && $userTask->status === 'incomplete') {
+                $userTask->status = 'completed';
+                $userTask->save();
+            }
+        }
+
+        return response()->json(['message' => 'Interaction tracked successfully']);
+    }
 
     // Menyelesaikan tugas
     public function markAsComplete($id)
