@@ -5,7 +5,7 @@
 @section('content')
 <div class="container mt-5">
     <h1>Task Management</h1>
-    <a href="{{ route('admin.taskcreate') }}" class="btn btn-primary mb-3">Create Task</a>
+    <a href="{{ route('admin.taskcreate') }}" class="btn m-btn-primary mb-3">Create Task</a>
     @if($tasks->isEmpty())
         <div class="alert alert-warning">
             No tasks found.

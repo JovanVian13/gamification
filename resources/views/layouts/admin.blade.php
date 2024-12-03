@@ -22,9 +22,6 @@
             background-color: #343a40;
             color: #ffffff;
         }
-        .sidebar h3 {
-            color: #ffc107;
-        }
         .sidebar a {
             color: #adb5bd;
             text-decoration: none;
@@ -114,7 +111,7 @@
     <div id="app" class="d-flex">
         <!-- Sidebar -->
         <nav class="sidebar flex-shrink-0 p-3" id="sidebar">
-            <h3 class="mb-4 text-center">Admin Panel</h3>
+            <h3 class="mb-4 text-center m-p-primary">Admin</h3>
             <ul class="nav flex-column">
                 <li><a href="{{ route('admin.dashboard') }}" class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
                 <li><a href="{{ route('admin.users') }}" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}"><i class="bi bi-people"></i> User Management</a></li>

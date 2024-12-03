@@ -19,7 +19,7 @@
             <label for="image" class="form-label">Badge Image</label>
             <input type="file" id="image" name="image" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Create Badge</button>
+        <button type="submit" class="btn m-btn-primary">Create Badge</button>
     </form>
 
     <!-- Badge List -->

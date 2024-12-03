@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Daftar Voucher</h1>
-    <a href="{{ route('admin.vouchercreate') }}" class="btn btn-primary mb-3">Buat Voucher Baru</a>
+    <a href="{{ route('admin.vouchercreate') }}" class="btn m-btn-primary mb-3">Buat Voucher Baru</a>
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
