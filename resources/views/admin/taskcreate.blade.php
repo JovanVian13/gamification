@@ -47,7 +47,7 @@
             <label for="deadline" class="form-label">Deadline</label>
             <input type="datetime-local" class="form-control" name="deadline">
         </div>
-        <button type="submit" class="btn btn-primary">Create Task</button>
+        <button type="submit" class="btn m-btn-primary">Create Task</button>
     </form>
 
     <script>

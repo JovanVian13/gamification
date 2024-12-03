@@ -52,7 +52,7 @@
 
     <!-- Tombol Ekspor -->
     <div class="mt-4">
-        <a href="{{ route('admin.exportcsv') }}" class="btn btn-primary">Export CSV</a>
+        <a href="{{ route('admin.exportcsv') }}" class="btn m-btn-primary">Export CSV</a>
         <a href="{{ route('admin.exportexcel') }}" class="btn btn-success">Export Excel</a>
     </div>
 </div>

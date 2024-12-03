@@ -21,7 +21,7 @@
         </div>
 
         <button type="submit" class="btn btn-success">Save Changes</button>
-        <a href="{{ route('admin.users') }}" class="btn btn-secondary">Cancel</a>
+        <a href="{{ route('admin.users') }}" class="btn btn-danger">Cancel</a>
     </form>
 </div>
 @endsection

@@ -34,7 +34,7 @@
 
     <!-- Tombol Simpan -->
     <div class="mt-4 text-end">
-        <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+        <button type="submit" class="btn m-btn-primary">Simpan Pengaturan</button>
     </div>
 </div>
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Notification History</h1>
-    <a href="{{ route('admin.notificationcreate') }}" class="btn btn-primary mb-3">Create New Notification</a>
+    <a href="{{ route('admin.notificationcreate') }}" class="btn m-btn-primary mb-3">Create New Notification</a>
 
     <table class="table">
         <thead>
