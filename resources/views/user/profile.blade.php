@@ -13,11 +13,12 @@
                         <ul class="list-unstyled">
                             <!-- Foto Profil -->
                             <li class="mb-3 text-center">
-                                <img 
-                                    src="{{ Auth::user()->profile_picture }}" 
-                                    alt="Profile Photo" 
-                                    class="rounded-circle border border-white mb-3" 
-                                    style="width: 120px; height: 120px;">
+                            <img 
+                                src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
+                                alt="Profile Photo" 
+                                class="rounded-circle border border-white mb-3" 
+                                style="width: 120px; height: 120px;"
+                            >
                             </li>
                             <!-- Nama Pengguna -->
                             <li><strong>Name: {{ Auth::user()->name }}</strong></li>

@@ -11,12 +11,11 @@
                 </div>
                 <div class="card-body text-center">
                     <img 
-                    src="{{ Auth::user()->profile_picture}}" 
-                    alt="Profile Photo" 
-                    class="rounded-circle border border-white mb-3" 
-                    style="width: 120px; height: 120px;">
-                
-                    
+                        src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
+                        alt="Profile Photo" 
+                        class="rounded-circle border border-white mb-3" 
+                        style="width: 120px; height: 120px;"
+                    >
                     <!-- Informasi Pengguna -->
                     <h5 class="card-title">{{ Auth::user()->name }}</h5>
                     <p class="card-text text-muted">{{ Auth::user()->email }}</p>

@@ -6,14 +6,18 @@
     <div class="container mt-5 mb-5">
         <h3>Edit Profil</h3>
         
-        <form action="{{ route('profile.update') }}" method="POST">
+        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="profile_picture" class="form-label">Foto Profil</label>
-                <input type="file" class="form-control" id="profile_picture" name="profile_picture">
-                @if ($user->profile_picture)
-                    <img src="{{ Auth::user()->profile_picture}}" alt="Profile Picture" class="img-thumbnail mt-2" style="max-width: 150px;">
-                @endif
+                <input type="file" class="form-control" id="profile_picture" name="profile_picture" accept="image/*">
+                <img 
+                    id="preview-image" 
+                    src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
+                    alt="Preview Image" 
+                    class="rounded-circle border border-white mb-3 mt-3" 
+                    style="width: 120px; height: 120px;"
+                >
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Nama</label>
@@ -37,4 +41,20 @@
             <button type="submit" class="btn m-btn-secondary">Simpan Perubahan</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById('profile_picture').addEventListener('change', function(event) {
+            const previewImage = document.getElementById('preview-image');
+            const file = event.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result; // Update the image source
+                };
+                reader.readAsDataURL(file); // Convert file to DataURL for preview
+            }
+        });
+    </script>
+
 @endsection
