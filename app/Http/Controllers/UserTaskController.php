@@ -24,24 +24,29 @@ class UserTaskController extends Controller
     // Menyelesaikan tugas
     public function markAsComplete($id)
     {
-        // Cari UserTask berda  sarkan ID
+        // Cari UserTask berdasarkan ID
         $userTask = UserTask::findOrFail($id);
-
+    
         // Pastikan status masih pending sebelum mengubah
         if ($userTask->status !== 'completed') {
             $userTask->update(['status' => 'completed']);
         }
-
-         // Tambahkan poin ke tabel points
-         Points::create([
+    
+        // Tambahkan poin ke tabel points
+        Points::create([
             'user_id' => $userTask->user_id,
             'points' => $userTask->task->points,
             'period' => 'daily', // Atur period sesuai logika Anda
             'date' => now()->toDateString(),
         ]);
-
+    
+        // **Perbaikan di sini**: Tambahkan poin ke tabel users
+        $user = $userTask->user; // Ambil user yang terkait dengan userTask
+        $user->increment('points', $userTask->task->points); // Menambahkan poin ke kolom 'points' di tabel users
+    
         // Redirect kembali ke halaman My Tasks dengan pesan sukses
         return redirect()->route('usertask')->with('success', 'Task marked as completed!');
     }
+    
 
 }

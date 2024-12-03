@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('role')->default('user');
             $table->timestamp('last_login')->nullable();
             $table->timestamps();
+            $table->integer('points')->default('0');
         });
     }
 
