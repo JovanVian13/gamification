@@ -18,9 +18,10 @@
                     <th>Title</th>
                     <th>Type</th>
                     <th>Points</th>
-                    <th>URL</th> <!-- Tambahkan Kolom -->
+                    <th>URL</th>
                     <th>Assigned Users</th>
                     <th>Deadline</th>
+                    <th>Assign</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -38,8 +39,21 @@
                             No URL
                         @endif
                     </td>
-                    <td>{{ $task->userTasks ? $task->userTasks->count() : 0 }} Users</td>
+                    <td>{{ $task->userTasks->count() }} Users</td>
                     <td>{{ $task->deadline ? $task->deadline->format('Y-m-d H:i') : 'No Deadline' }}</td>
+                    <td>
+                        <form action="{{ route('admin.tasksassign', $task->id) }}" method="POST">
+                            @csrf
+                            <select name="user_id" required>
+                                <option value="">Select User</option>
+                                <option value="all">All Users</option> <!-- Tambahkan opsi All Users -->
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                            <button type="submit" class="btn btn-success btn-sm">Assign Task</button>
+                        </form>
+                    </td>
                     <td>
                         <a href="{{ route('admin.taskedit', $task->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('admin.taskdelete', $task->id) }}" method="POST" class="d-inline">

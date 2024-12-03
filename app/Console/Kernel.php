@@ -15,8 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('tasks:assign-new-users')->daily(); // Jalankan setiap hari
     }
+
 
     /**
      * Register the commands for the application.
@@ -29,4 +30,8 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    protected $commands = [
+        \App\Console\Commands\AssignTasksToNewUsers::class,
+    ];    
 }

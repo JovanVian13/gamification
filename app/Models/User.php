@@ -76,4 +76,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function userTasks()
+    {
+        return $this->hasMany(UserTask::class, 'user_id');
+    }
+
+    public function addPoints($points)
+    {
+        $this->points()->create([
+            'points' => $points,
+            'period' => now()->format('F Y'), // Bulan dan tahun
+            'date' => now(), // Tanggal poin diberikan
+        ]);
+    }
+
 }

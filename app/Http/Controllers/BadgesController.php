@@ -53,7 +53,6 @@ class BadgesController extends Controller
         $user->badges()->attach($badge);
 
         return redirect()->route('admin.badge')->with('success', 'Badge assigned to user successfully.');
-}
-
+    }
 }
 

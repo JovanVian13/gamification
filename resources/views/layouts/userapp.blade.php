@@ -147,6 +147,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('usertask') }}">Tasks</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('user.leaderboard') }}">Leaderboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('redeem.vouchers') }}">Vouchers</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('faq') }}">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('profile.show') }}">Profile</a></li>

@@ -29,4 +29,10 @@ class TaskManage extends Model
     {
         return $this->belongsToMany(User::class, 'user_tasks', 'task_id', 'user_id');
     }
+
+    public function userTasks()
+    {
+        return $this->hasMany(UserTask::class, 'task_id');
+    }
+
 }
