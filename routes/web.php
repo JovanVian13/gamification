@@ -145,8 +145,8 @@ use App\Http\Controllers\ReportController;
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/reports', [ReportController::class, 'index'])->name('reports'); // Pastikan ini ada
-    Route::get('/reports/export/csv', [ReportController::class, 'exportCSV'])->name('reports.exportcsv');
-    Route::get('/reports/export/excel', [ReportController::class, 'exportExcel'])->name('reports.exportexcel');
+    Route::get('/reports/export/csv', [ReportController::class, 'exportCSV'])->name('exportcsv');
+    Route::get('/reports/export/excel', [ReportController::class, 'exportExcel'])->name('exportexcel');
 });
 
 use App\Http\Controllers\SecurityLogController;
