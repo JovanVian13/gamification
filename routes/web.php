@@ -16,6 +16,7 @@ use App\Http\Controllers\UserVoucherController;
 use App\Http\Controllers\AdminLeaderBoardController;
 use App\Http\Controllers\BadgesController;
 use App\Http\Controllers\LeaderBoardController;
+use App\Http\Controllers\UserTaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,9 +134,25 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 });
 
 
-use App\Http\Controllers\UserTaskController;
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/task', [UserTaskController::class, 'index'])->name('usertask'); // URL: /tasks
     Route::post('/task/{id}/complete', [UserTaskController::class, 'markAsComplete'])->name('usertask.complete');
+});
+
+use App\Http\Controllers\ReportController;
+
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports'); // Pastikan ini ada
+    Route::get('/reports/export/csv', [ReportController::class, 'exportCSV'])->name('reports.exportcsv');
+    Route::get('/reports/export/excel', [ReportController::class, 'exportExcel'])->name('reports.exportexcel');
+});
+
+use App\Http\Controllers\SecurityLogController;
+
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/security-logs', [SecurityLogController::class, 'index'])->name('admin.securityLogs');
+    Route::post('/roles', [SecurityLogController::class, 'storeRole'])->name('admin.roles.store');
+    Route::delete('/roles/{role}', [SecurityLogController::class, 'deleteRole'])->name('admin.roles.delete');
 });
