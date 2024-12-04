@@ -22,6 +22,7 @@
                                 <th>Title</th>
                                 <th>Status</th>
                                 <th>Points</th>
+                                <th>Link</th>
                                 <th>Content</th>
                                 <th>Action</th>
                             </tr>
@@ -39,6 +40,15 @@
                                         @endif
                                     </td>
                                     <td>{{ $userTask->task->points }}</td>
+                                    <td>
+                                        @if (!empty($userTask->task->url))
+                                        <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none">
+                                            Watch Video
+                                        </a>
+                                        @else
+                                        <span class="text-muted">No Video</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         @php
                                             // Parsing YouTube ID

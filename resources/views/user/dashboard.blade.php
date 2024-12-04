@@ -30,11 +30,20 @@
         <div class="col-md-8">
             <!-- Informasi Poin Total -->
             <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Poin Anda</h5>
-                    <p class="display-4 m-p-secondary"><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
+                <div class="card-body d-flex align-items-center justify-content-between">
+                    <!-- Bagian Poin -->
+                    <div class="px-3">
+                        <h5 class="card-title">Poin Anda</h5>
+                        <p class="display-4 m-p-secondary"><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
+                    </div>
+                    <!-- Tombol Penukaran Voucher -->
+                    <div class="text-center px-3">
+                        <a href="{{ route('redeem.vouchers') }}" class="btn btn-warning btn-lg m-btn-primary">Voucher Shop</a>
+                    </div>
                 </div>
             </div>
+
+            <!-- Informasi Tugas Selesai -->
 
             <!-- Leaderboard -->
             <div class="card shadow-sm">
@@ -55,13 +64,6 @@
                     <div class="mt-3">
                         <a href="{{ route('user.leaderboard') }}" class="btn btn-link text-primary text-decoration-none">Lihat Leaderboard Lengkap</a>
                     </div>
-                </div>
-            </div>
-
-            <!-- Tombol Penukaran Voucher -->
-            <div class="card shadow-sm mt-4 mb-4">
-                <div class="card-body text-center">
-                    <a href="{{ route('redeem.vouchers') }}" class="btn btn-warning btn-lg m-btn-primary">Voucher Shop</a>
                 </div>
             </div>
         </div>
