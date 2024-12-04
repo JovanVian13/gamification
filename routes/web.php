@@ -92,6 +92,10 @@ Route::delete('user/notifications/{id}', [NotificationController::class, 'delete
 // Grup middleware untuk admin
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function () {
     Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/export/csv', [AdminDashboardController::class, 'exportCSV'])->name('exportcsv');
+    Route::get('/export/excel', [AdminDashboardController::class, 'exportExcel'])->name('exportexcel');
+
+    // Rute untuk manajemen user
     Route::get('admin/users', [UserManageController::class, 'manageUsers'])->name('admin.users');
     Route::get('/admin/users/{id}/edit', [UserManageController::class, 'editUser'])->name('admin.useredit');
     Route::patch('/admin/users/{id}/update', [UserManageController::class, 'updateUser'])->name('admin.userupdate');
@@ -146,11 +150,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/video-interaction', [UserTaskController::class, 'trackInteraction'])->name('video.interaction');
 });
 
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/reports', [ReportController::class, 'index'])->name('reports'); // Pastikan ini ada
-    Route::get('/reports/export/csv', [ReportController::class, 'exportCSV'])->name('exportcsv');
-    Route::get('/reports/export/excel', [ReportController::class, 'exportExcel'])->name('exportexcel');
-});
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/security-logs', [SecurityLogController::class, 'index'])->name('admin.securityLogs');
