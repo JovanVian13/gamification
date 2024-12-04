@@ -103,6 +103,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     Route::post('admin/tasks/manage', [TaskManageController::class, 'storeTask'])->name('admin.taskstore');
     Route::get('/admin/tasks/{id}/edit', [TaskManageController::class, 'editTask'])->name('admin.taskedit');
     Route::patch('admin/tasks/{id}', [TaskManageController::class, 'updateTask'])->name('admin.taskupdate');
+    Route::post('admin/tasks/assign/{task}', [TaskManageController::class, 'assignTask'])->name('admin.tasksassign');
     Route::delete('admin/tasks/{id}', [TaskManageController::class, 'deleteTask'])->name('admin.taskdelete');
 
     // Rute untuk manajemen notification

@@ -13,7 +13,8 @@ class TaskManageController extends Controller
     public function manageTasks()
     {
         $tasks = TaskManage::paginate(10); // Menampilkan 10 tugas per halaman
-        return view('admin.taskmanage', compact('tasks'));
+        $users = User::all();
+        return view('admin.taskmanage', compact('tasks', 'users'));
     }
 
     // Tampilkan form tambah tugas
@@ -73,23 +74,23 @@ class TaskManageController extends Controller
 
     public function assignTasksToNewUsers()
     {
-        $tasks = TaskManage::all();
-
-        foreach ($tasks as $task) {
-            // Cari pengguna yang belum menerima tugas ini
-            $users = User::whereDoesntHave('userTasks', function ($query) use ($task) {
-                $query->where('task_id', $task->id);
-            })->get();
-
-            foreach ($users as $user) {
-                UserTask::create([
-                    'user_id' => $user->id,
-                    'task_id' => $task->id,
-                ]);
+        TaskManage::chunk(50, function ($tasks) {
+            foreach ($tasks as $task) {
+                User::whereDoesntHave('userTasks', function ($query) use ($task) {
+                    $query->where('task_id', $task->id);
+                })->chunk(50, function ($users) use ($task) {
+                    foreach ($users as $user) {
+                        UserTask::create([
+                            'user_id' => $user->id,
+                            'task_id' => $task->id,
+                        ]);
+                    }
+                });
             }
-        }
-    }
+        });
 
+        return redirect()->back()->with('success', 'Tasks assigned to new users successfully.');
+    }
 
     // Tampilkan form edit tugas
     public function editTask($id)
@@ -118,6 +119,44 @@ class TaskManageController extends Controller
 
         return redirect()->route('admin.tasks')->with('success', 'Task updated successfully.');
     }
+
+    public function assignTask(Request $request, TaskManage $task)
+    {
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+
+        if ($request->user_id === 'all') {
+            // Assign task to all users who don't have it yet
+            $users = User::whereDoesntHave('userTasks', function ($query) use ($task) {
+                $query->where('task_id', $task->id);
+            })->get();
+
+            foreach ($users as $user) {
+                UserTask::create([
+                    'user_id' => $user->id,
+                    'task_id' => $task->id,
+                ]);
+            }
+
+            return redirect()->route('admin.tasks')->with('success', 'Task assigned to all users successfully.');
+        }
+
+        // Assign task to a specific user
+        $user = User::findOrFail($request->user_id);
+
+        if ($user->userTasks->where('task_id', $task->id)->isNotEmpty()) {
+            return redirect()->route('admin.tasks')->with('error', 'Task already assigned to this user.');
+        }
+
+        UserTask::create([
+            'user_id' => $user->id,
+            'task_id' => $task->id,
+        ]);
+
+        return redirect()->route('admin.tasks')->with('success', 'Task assigned to user successfully.');
+    }
+
 
     // Hapus tugas
     public function deleteTask($id)

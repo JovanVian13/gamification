@@ -58,7 +58,10 @@ class UserTaskController extends Controller
     
         // **Perbaikan di sini**: Tambahkan poin ke tabel users
         $user = $userTask->user; // Ambil user yang terkait dengan userTask
-        $user->increment('points', $userTask->task->points); // Menambahkan poin ke kolom 'points' di tabel users
+        if ($user) {
+            $user->increment('points', $userTask->task->points);
+        }
+
     
         // Redirect kembali ke halaman My Tasks dengan pesan sukses
         return redirect()->route('usertask')->with('success', 'Task marked as completed!');
