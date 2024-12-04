@@ -7,13 +7,11 @@ use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
 {
-    // Menampilkan form forgot password
     public function showLinkRequestForm()
     {
-        return view('auth.forgot-password'); // View ini adalah forgot-password.blade.php
+        return view('auth.forgot-password');
     }
 
-    // Mengirim email reset password
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
