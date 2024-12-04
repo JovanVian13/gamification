@@ -6,8 +6,8 @@
         <!-- Card Profil -->
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm">
-                <div class="card-header m-bg-primary text-white text-center py-4">
-                    <h5 class="mb-0">Profil Pengguna</h5>
+                <div class="card-header m-bg-secondary text-white text-center py-4">
+                    <h5 class="mb-0" style="font-size: 1.5rem;">Profil Pengguna</h5>
                 </div>
                 <div class="card-body text-center">
                     <img 
@@ -21,7 +21,7 @@
                     <p class="card-text text-muted">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="card-footer text-center bg-light">
-                    <a href="{{ route('profile.show') }}" class="btn m-btn-secondary mb-2 mt-2">View Profil</a>
+                    <a href="{{ route('profile.show') }}" class="btn m-btn-secondary mb-3 mt-2">View Profil</a>
                 </div>
             </div>
         </div>
@@ -30,15 +30,17 @@
         <div class="col-md-8">
             <!-- Informasi Poin Total -->
             <div class="card shadow-sm mb-4">
+                <div class="card-header m-bg-secondary text-white py-3">
+                    <h5 class="mb-0" style="font-size: 1.5rem;">Poin</h5>
+                </div>
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <!-- Bagian Poin -->
-                    <div class="px-3">
-                        <h5 class="card-title">Poin Anda</h5>
-                        <p class="display-4 m-p-secondary"><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
+                    <div class="text-center px-1">
+                        <p class="display-4 m-p-secondary" style="font-size:2rem"><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
                     </div>
                     <!-- Tombol Penukaran Voucher -->
                     <div class="text-center px-3">
-                        <a href="{{ route('redeem.vouchers') }}" class="btn btn-warning btn-lg m-btn-primary">Voucher Shop</a>
+                        <a href="{{ route('redeem.vouchers') }}" class="btn btn-warning m-btn-primary">Voucher Shop</a>
                     </div>
                 </div>
             </div>
@@ -47,8 +49,10 @@
 
             <!-- Leaderboard -->
             <div class="card shadow-sm">
+                <div class="card-header m-bg-secondary text-white mb-2 p-3">
+                    <h5 class="mb-0" style="font-size: 1.5rem;">LeaderBoard</h5>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Leaderboard</h5>
                     <ol class="pl-3">
                         @if ($leaderboard->isNotEmpty())
                             @foreach ($leaderboard as $entry)
@@ -61,7 +65,7 @@
                             <p class="text-muted">No leaderboard data available.</p>
                         @endif
                     </ol>
-                    <div class="mt-3">
+                    <div class="mt-2">
                         <a href="{{ route('user.leaderboard') }}" class="btn btn-link text-primary text-decoration-none">Lihat Leaderboard Lengkap</a>
                     </div>
                 </div>
@@ -70,14 +74,15 @@
         
         <!-- Tugas Harian & Baru -->
         <div class="card shadow-sm mt-4 mb-4">
+            <div class="card-header m-bg-secondary text-white mb-2 p-3">
+                <h5 class="mb-0" style="font-size: 1.5rem;">Tugas Harian & Baru</h5>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">Tugas Harian & Baru</h5>
-
                 <!-- Tabel Responsif -->
                 <div>
                     <table class="table table-hover">
                         <thead>
-                            <tr>
+                            <tr class="m-bg-primary text-white text-center py-4">
                                 <th scope="col">No</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Status</th>
@@ -85,7 +90,7 @@
                                 <th scope="col">Video Link</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                             @forelse ($data['tasks'] as $index => $task)
                             <tr>
                                 <th scope="row">{{ $index + 1 }}</th>
