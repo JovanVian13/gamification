@@ -24,7 +24,7 @@
                     <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Reset Password</button>
+                <button type="submit" class="btn m-btn-primary w-100">Reset Password</button>
             </form>
         </div>
     </div>
