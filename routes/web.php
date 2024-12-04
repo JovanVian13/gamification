@@ -110,6 +110,10 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     Route::get('admin/notifications', [NotificationController::class, 'manageNotification'])->name('admin.notification');
     Route::get('admin/notifications/create', [NotificationController::class, 'createNotification'])->name('admin.notificationcreate');
     Route::post('admin/notifications', [NotificationController::class, 'storeNotification'])->name('admin.notificationstore');
+    Route::get('admin/notifications/{id}/edit', [NotificationController::class, 'editNotification'])->name('admin.notificationedit');
+    Route::patch('admin/notifications/{id}', [NotificationController::class, 'updateNotification'])->name('admin.notificatioupdate');
+    Route::delete('admin/notifications/{id}', [NotificationController::class, 'deleteNotificationAdmin'])->name('admin.notificationdelete');
+    
 
     // Voucher Management
     Route::get('admin/vouchers', [VoucherManageController::class, 'manageVoucher'])->name('admin.voucher');

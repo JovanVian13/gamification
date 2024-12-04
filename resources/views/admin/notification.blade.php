@@ -13,6 +13,7 @@
                 <th>Recipient</th>
                 <th>Read Status</th>
                 <th>Created At</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,17 @@
                 <td>{{ $notification->user->name }} ({{ $notification->user->email }})</td>
                 <td>{{ ucfirst($notification->read_status) }}</td>
                 <td>{{ $notification->created_at }}</td>
+                <td>
+                    <!-- Edit Button -->
+                    <a href="{{ route('admin.notificationedit', $notification->id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+                    <!-- Delete Button -->
+                    <form action="{{ route('admin.notificationdelete', $notification->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

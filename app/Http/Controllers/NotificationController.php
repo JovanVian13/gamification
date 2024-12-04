@@ -83,4 +83,37 @@ class NotificationController extends Controller
         return redirect()->route('user.notifications')->with('success', 'Notification deleted successfully.');
     }
 
+    public function editNotification($id)
+    {
+        $notification = Notification::findOrFail($id); // Fetch notification by ID
+        $users = User::all(); // Pass users to the view for recipient selection
+        return view('admin.notificationedit', compact('notification', 'users'));
+    }
+
+    public function updateNotification(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'message' => 'required|string',
+            'user_id' => 'required',
+        ]);
+
+        $notification = Notification::findOrFail($id);
+        $notification->update([
+            'title' => $request->title,
+            'message' => $request->message,
+            'user_id' => $request->user_id,
+        ]);
+
+        return redirect()->route('admin.notification')->with('success', 'Notification updated successfully.');
+    }
+
+    public function deleteNotificationAdmin($id)
+    {
+        $notification = Notification::findOrFail($id);
+        $notification->delete();
+
+        return redirect()->route('admin.notification')->with('success', 'Notification deleted successfully.');
+    }
+
 }
