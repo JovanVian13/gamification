@@ -144,7 +144,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/task', [UserTaskController::class, 'index'])->name('usertask'); // URL: /tasks
     Route::post('/task/{id}/complete', [UserTaskController::class, 'markAsComplete'])->name('usertask.complete');
     Route::post('/video-interaction', [UserTaskController::class, 'trackInteraction'])->name('video.interaction');
-    Route::post('/track-interaction', [UserTaskController::class, 'trackInteraction'])->name('track.interaction');
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
@@ -163,7 +162,3 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('settings', [SettingsController::class, 'index'])->name('settings');
     Route::put('settings', [SettingsController::class, 'update'])->name('settingsupdate');
 });
-
-Route::get('/google/redirect', [UserTaskController::class, 'redirectToGoogle'])->name('google.auth');
-Route::get('/google/callback', [UserTaskController::class, 'handleGoogleCallback']);
-Route::post('/tasks/{id}/check-like', [UserTaskController::class, 'checkLikeStatus'])->name('task.check-like');

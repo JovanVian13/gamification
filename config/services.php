@@ -30,10 +30,4 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'youtube' => [
-        'api_key' => env('YOUTUBE_API_KEY'),
-        'client_id' => env('YOUTUBE_CLIENT_ID'),
-        'client_secret' => env('YOUTUBE_CLIENT_SECRET'),
-        'redirect_uri' => env('YOUTUBE_REDIRECT_URI'),
-    ],
 ];
