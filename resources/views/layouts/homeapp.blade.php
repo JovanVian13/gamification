@@ -94,6 +94,9 @@
         .feature-card {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        .color-red {
+            color: red;
+        }
     </style>
     @stack('styles')
 </head>
@@ -102,6 +105,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary fixed-top">
         <div class="container-fluid">
+            <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 4%;">
             <a class="navbar-brand" href="#">Gamification</a>
             <ul class="navbar-nav ms-auto">
                 @guest
