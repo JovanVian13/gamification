@@ -120,9 +120,7 @@
                 <li><a href="{{ route('admin.voucher') }}" class="nav-link {{ Request::is('admin/voucher') ? 'active' : '' }}"><i class="bi bi-gift"></i> Voucher Management</a></li>
                 <li><a href="{{ route('admin.leaderboard') }}" class="nav-link {{ Request::is('admin/leaderboard') ? 'active' : '' }}"><i class="bi bi-trophy"></i> Leaderboard</a></li>
                 <li><a href="{{ route('admin.badge') }}" class="nav-link {{ Request::is('admin/badge') ? 'active' : '' }}"><i class="bi bi-award"></i> Badge Management</a></li>
-                <li><a href="{{ route('admin.reports') }}" class="nav-link {{ Request::is('admin/reports') ? 'active' : '' }}"><i class="bi bi-graph-up"></i> Reports</a></li>
                 <li><a href="{{ route('admin.securityLogs') }}" class="nav-link {{ Request::is('admin/securityLogs') ? 'active' : '' }}"><i class="bi bi-shield-lock"></i> Security Logs</a></li>
-                <li><a href="{{ route('admin.settings') }}" class="nav-link {{ Request::is('admin/settings') ? 'active' : '' }}"><i class="bi bi-gear"></i> Settings</a></li>
                 <li>
                     <a href="#" class="btn btn-danger w-100 mt-3" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-box-arrow-right"></i> Logout
