@@ -1,11 +1,11 @@
-@extends('layouts.homeapp')
+@extends('layouts.homeapp2')
 
 @section('content')
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="">
         <h1>Welcome to Our Gamification Platform</h1>
-        <p>Earn reward points by completing tasks and redeem them for shopping vouchers!</p>
+        <p class="mb-5">Earn reward points by completing tasks and redeem them for shopping vouchers!</p>
         <a href="{{ route('register') }}" class="cta-button">Join Now</a>
     </div>
 </section>
