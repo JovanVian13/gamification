@@ -112,7 +112,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark m-bg-p2 fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light m-bg-primary fixed-top">
         <div class="container-fluid">
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 4%;">
             <a class="navbar-brand" href="#">Gamification</a>

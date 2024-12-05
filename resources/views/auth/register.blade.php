@@ -1,9 +1,9 @@
 @extends('layouts.homeapp2')
 
 @section('content')
-<div class="d-flex justify-content-center align-items-center" style="min-height: 120vh; background: url('../../assets/img/Gugur.jpg') no-repeat center center/cover; background-size: 125%; position: relative;">
+<div class="d-flex justify-content-center align-items-center" style="min-height: 130vh; background: url('../../assets/img/homepageril.png') no-repeat center center/cover; background-size: 125%; position: relative;">
     <div class="position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
-    <div class="card shadow-lg border-0 mt-5"  style="width: 30rem; border-radius: 30px; background: rgba(255, 255, 255, 0.6); z-index: 2; box-shadow: 0 0 20px 4px rgba(215, 6, 215, 0.5);">
+    <div class="card shadow-lg border-0 mt-5"  style="width: 30rem; border-radius: 30px; background: rgba(255, 255, 255, 0.9); z-index: 2; box-shadow: 0 0 20px 4px rgba(215, 6, 215, 0.5);">
         <div class="card-body">
             <h2 class="card-title text-center mb-4 mt-4">Register</h2>
             <form action="{{ route('register') }}" method="POST">
