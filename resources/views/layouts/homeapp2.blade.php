@@ -45,6 +45,13 @@
             background-color: #232E66;
         }
 
+        .m-bg-p2 {
+            background-color: rgba(251, 176, 65, 0.6)
+        }
+        .m-bg-s2 {
+            background-color: rgba(35, 46, 102, 0.5)
+        }
+
         .m-p-primary {
             color: #fbb041;
         }
@@ -101,13 +108,40 @@
         .color-red {
             color: red;
         }
+
+        .card-register {
+            width: 30rem; 
+            border-radius: 30px; 
+            background: rgba(255, 255, 255, 0.9); 
+            z-index: 2; 
+            box-shadow: 0 0 20px 4px rgba(215, 6, 215, 0.5);
+        }
+        .m-bg-input {
+            background: rgba(255, 255, 255, 0.2)
+        }
+
+        .m-bg-input-main {
+            background: rgba(251, 176, 65, 0.8)
+        }
+
+        .m-layer {
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 1;
+        }
+
+        .m-bg-register {
+            min-height: 130vh; 
+            background: url('../../assets/img/homepageril.png') no-repeat center center/cover; 
+            background-size: 125%; 
+            position: relative;
+        }
     </style>
     @stack('styles')
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light m-bg-primary fixed-top">
         <div class="container-fluid">
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 4%;">
             <a class="navbar-brand" href="#">Gamification</a>
@@ -129,14 +163,14 @@
     </nav>
 
     <!-- Content Section -->
-    <div class="mt-5">
+    <div class="">
         @yield('content')
     </div>
 
-    <!-- Footer -->
+    <!-- Footer 
     <footer class="text-white text-center py-3 m-bg-secondary">
         <p>&copy; 2024 Gamification Platform. All rights reserved.</p>
-    </footer>
+    </footer> -->
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
