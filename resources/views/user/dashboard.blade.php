@@ -47,7 +47,7 @@
                     </div>
                     <!-- Tombol Penukaran Voucher -->
                     <div class="text-center px-4 py-3 shadow-sm border rounded">
-                        <a href="{{ route('redeem.vouchers') }}" class="text-black">Tukar Voucher ></a>
+                        <a href="{{ route('redeem.vouchers') }}" class="text-black text-decoration-none"><i class="bi bi-basket3-fill"></i> Tukar Voucher ></a>
                     </div>
                 </div>
             </div>
@@ -59,79 +59,79 @@
                 <div class="card-header m-bg-secondary text-white mb-2 p-3">
                     <h5 class="mb-0 text-center" style="font-size: 1.5rem;">LeaderBoard</h5>
                 </div>
-                <div class="card-body d-flex">
-                    <div class="col-md-6 d-flex align-items-center">
+                <div class="card-body row">
+                    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center mb-3 mb-md-0">
                         <!-- Gambar Piala -->
-                        <div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
                             @if(isset($leaderboard[1]))
                             <img
                                 src="{{ $leaderboard[1]->profile_picture ? asset('storage/' . $leaderboard[1]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 30px;"
+                                style="width: 40px; height: 40px;"
                             >
                             @else
                             <img
                                 src="{{ asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 30px;"
+                                style="width: 40px; height: 40px;"
                             >
                             @endif
                             <img
                                 src="{{ asset('assets/img/trophy2.png') }}" 
                                 alt="Trophy" 
-                                style="width: 90px; height: 90px; margin-left: auto;"
+                                style="width: 90px; height: 90px;"
                             >
                         </div>
 
-                        <div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
                             @if(isset($leaderboard[0]))
                             <img
                                 src="{{ $leaderboard[0]->profile_picture ? asset('storage/' . $leaderboard[0]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 30px;"
+                                style="width: 40px; height: 40px;"
                             >
                             @else
                             <img
                                 src="{{ asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 30px;"
+                                style="width: 40px; height: 40px;"
                             >
                             @endif
                             <img
                             src="{{ asset('assets/img/trophy1.png') }}" 
                                 alt="Trophy" 
-                                style="width: 110px; height: 110px; margin-left: auto;"
+                                style="width: 110px; height: 110px;"
                             >
                         </div>
 
-                        <div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
                             @if(isset($leaderboard[2]))
                             <img
                                 src="{{ $leaderboard[2]->profile_picture ? asset('storage/' . $leaderboard[2]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 30px;"
+                                style="width: 40px; height: 40px;"
                             >
                             @else
                             <img
                                 src="{{ asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 30px;"
+                                style="width: 40px; height: 40px;"
                             >
                             @endif
                             <img 
                                 src="{{ asset('assets/img/trophy3.png') }}" 
                                 alt="Trophy" 
-                                style="width: 100px; height: 100px; margin-left: auto;"
+                                style="width: 100px; height: 100px;"
                             >
                         </div>
                     </div>
-                    <div>
+                    <div class="col-12 col-md-6">
                         <ol class="mb-0">
                             @if ($leaderboard->isNotEmpty())
                                 @foreach ($leaderboard as $index => $entry)
@@ -141,7 +141,7 @@
                                         <span class="m-bg-primary px-2 rounded font-weight-bold text-white me-2">{{ $index + 1 }}</span>
                                         <strong class="me-4">{{ $entry->name }}</strong>
                                     </div>
-                                    <span class="text-muted" style="margin-left: 30px;">{{ $entry->total_points }} poin</span>
+                                    <span class="text-muted ms-4">{{ $entry->total_points }} poin</span>
                                 </li>
                                 @endforeach
                             @else
