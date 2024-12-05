@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <!-- Leaderboard Ranking -->
-    <div class="card mb-4">
+    <div class="card mb-4 shadow">
         <div class="card-header m-bg-primary text-white text-center py-3">
             <h2 class="h4 mb-0">Ranking Pengguna</h2>
         </div>
@@ -34,7 +34,7 @@
     </div>
 
     <!-- User's Badges -->
-    <div class="card mt-4 mb-4">
+    <div class="card mt-4 mb-4 shadow">
         <div class="card-header m-bg-secondary text-white text-center py-3">
             <h2 class="h4 mb-0">Badges Anda</h2>
         </div>

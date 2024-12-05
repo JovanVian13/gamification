@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="card-header m-bg-secondary text-white text-center p-4">
+    <div class="card-header m-bg-primary text-white text-center p-4">
         <h2 class="h4 mb-0">Frequently Asked Questions</h2>
     </div>
     <div class="accordion mb-5" id="faqAccordion">

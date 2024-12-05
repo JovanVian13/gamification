@@ -1,7 +1,7 @@
 @extends('layouts.userapp')
 
 @section('content')
-<div class="container mt-4">
+<div class="container">
 
     <!-- Menampilkan Pesan Sukses atau Error -->
     @if(session('success'))
@@ -17,7 +17,7 @@
     @endif
 
     <!-- Katalog Voucher -->
-    <div class="card shadow-sm mb-4">
+    <div class="card shadow mb-4">
         <div class="card-header m-bg-primary text-white text-center py-3">
             <h2 class="h4 mb-0">Voucher Shop</h2>
         </div>
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Riwayat Penukaran Voucher -->
-    <div class="card shadow-sm mb-5">
+    <div class="card shadow mb-5">
         <div class="card-header m-bg-secondary text-white text-center py-3">
             <h4 class="card-title">Riwayat Penukaran Voucher</h4>
         </div>

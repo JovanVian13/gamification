@@ -1,11 +1,11 @@
 @extends('layouts.userapp')
 
 @section('content')
-<div class="container mt-4">
+<div class="container">
     <div class="row">
         <!-- Card Profil -->
         <div class="col-md-5 mb-4">
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-header m-bg-secondary text-white text-center py-3">
                     <h5 class="mb-0" style="font-size: 1.5rem;">Profile</h5>
                 </div>
@@ -13,7 +13,7 @@
                     <img 
                         src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                         alt="Profile Photo" 
-                        class="rounded-circle border border-white mb-4 mt-3" 
+                        class="rounded-circle shadow mb-4 mt-3" 
                         style="width: 120px; height: 120px;"
                     >
                     <!-- Informasi Pengguna -->
@@ -29,7 +29,7 @@
         <!-- Dashboard -->
         <div class="col-md-7">
             <!-- Informasi Poin Total -->
-            <div class="card shadow-sm mb-4">
+            <div class="card shadow mb-4">
                 <div class="card-header m-bg-secondary text-white py-3">
                     <h5 class="mb-0 text-center" style="font-size: 1.5rem;">Poin</h5>
                 </div>
@@ -55,7 +55,7 @@
             <!-- Informasi Tugas Selesai -->
 
             <!-- Leaderboard -->
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-header m-bg-secondary text-white mb-2 p-3">
                     <h5 class="mb-0 text-center" style="font-size: 1.5rem;">LeaderBoard</h5>
                 </div>
@@ -67,14 +67,14 @@
                             <img
                                 src="{{ $leaderboard[1]->profile_picture ? asset('storage/' . $leaderboard[1]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
-                                class="rounded-circle" 
+                                class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
                             >
                             @else
                             <img
                                 src="{{ asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
-                                class="rounded-circle" 
+                                class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
                             >
                             @endif
@@ -90,14 +90,14 @@
                             <img
                                 src="{{ $leaderboard[0]->profile_picture ? asset('storage/' . $leaderboard[0]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
-                                class="rounded-circle" 
+                                class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
                             >
                             @else
                             <img
                                 src="{{ asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
-                                class="rounded-circle" 
+                                class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
                             >
                             @endif
@@ -113,14 +113,14 @@
                             <img
                                 src="{{ $leaderboard[2]->profile_picture ? asset('storage/' . $leaderboard[2]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
-                                class="rounded-circle" 
+                                class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
                             >
                             @else
                             <img
                                 src="{{ asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
-                                class="rounded-circle" 
+                                class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
                             >
                             @endif
@@ -158,7 +158,7 @@
     </div>
 
     <!-- Tugas Harian & Baru -->
-    <div class="shadow-sm mt-4 mb-4 rounded border">
+    <div class="shadow mt-4 mb-4 rounded border">
         <div class="m-bg-primary text-white text-center mb-2 p-3">
             <h5 class="mb-0" style="font-size: 1.5rem;">Tugas Harian</h5>
         </div>

@@ -23,7 +23,7 @@
                     <p class="card-text text-muted">
                         Kirimkan pertanyaan Anda miliki melalui email kami.
                     </p>
-                    <a href="mailto:support@website.com" class="btn m-btn-secondary">
+                    <a href="mailto:support@website.com" class="btn m-btn-primary">
                         Kirim Email
                     </a>
                 </div>
@@ -50,8 +50,8 @@
     </div>
     <!-- Additional Message -->
     <div class="text-center mt-3 mb-4">
-        <p class="text-muted">
-            <small>Jam operasional: Senin - Jumat, pukul 09:00 - 17:00 WIB</small>
+        <p>
+            <strong>Jam operasional: Senin - Jumat, pukul 09:00 - 17:00 WIB</strong>
         </p>
     </div>
 </div>

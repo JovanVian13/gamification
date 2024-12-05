@@ -16,6 +16,13 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .m-btn-primary {
@@ -112,6 +119,9 @@
             transform: translate(-50%, -50%);
         }
 
+        .flex-grow-1 {
+            flex: 1;
+        }
     </style>
     @stack('styles')
 </head>
@@ -152,9 +162,11 @@
                 <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'faq' ? 'm-p-primary' : 'text-white' }}" href="{{ route('faq') }}">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'profile.show' ? 'm-p-primary' : 'text-white' }}" href="{{ route('profile.show') }}">Profile</a></li>
                 <li class="nav-item">
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center">
                         @csrf
-                        <button class="btn btn-danger">Logout</button>
+                        <button type="submit" class="btn nav-link text-white border-0" style="background: none;">
+                            Logout
+                        </button>
                     </form>
                 </li>
             </ul>
@@ -163,12 +175,12 @@
 
 
     <!-- Content Section -->
-    <div class="mt-5">
+    <div class="flex-grow-1 mt-5">
         @yield('content')
     </div>
 
     <!-- Footer -->
-    <footer class="text-white text-center py-3 m-bg-secondary sticky-bottom">
+    <footer class="text-white text-center py-3 m-bg-secondary">
         <p>&copy; 2024 Gamification Platform. All rights reserved.</p>
     </footer>
 

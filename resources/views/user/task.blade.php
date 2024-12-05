@@ -3,9 +3,9 @@
 @section('title', 'My Tasks')
 
 @section('content')
-<div class="container mt-5 mb-5">
-    <div class="card shadow-sm">
-        <div class="card-header m-bg-primary text-white">
+<div class="container mb-5">
+    <div class="card shadow">
+        <div class="card-header m-bg-primary text-white p-3">
             <h1 class="h3 mb-0 text-center">My Tasks</h1>
         </div>
         <div class="card-body">
