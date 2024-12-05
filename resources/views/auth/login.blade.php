@@ -1,7 +1,7 @@
 @extends('layouts.homeapp')
 
 @section('content')
-<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background: url('../../assets/img/Gugur.jpg') no-repeat center center/cover; background-size: 125%; position: relative;">
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background: url('../../assets/img/homepageril.png') no-repeat center center/cover; background-size: 125%; position: relative;">
     <!-- Dark overlay layer for background -->
     <div class="position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
 
