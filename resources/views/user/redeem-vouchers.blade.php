@@ -18,9 +18,10 @@
 
     <!-- Katalog Voucher -->
     <div class="card shadow-sm mb-4">
+        <div class="card-header m-bg-primary text-white text-center py-3">
+            <h2 class="h4 mb-0">Voucher Shop</h2>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">Voucher Shop</h5>
-
             <!-- Menampilkan Informasi Poin yang Dibutuhkan untuk Setiap Voucher -->
             <div class="row">
                 @foreach($vouchers as $voucher)
@@ -35,7 +36,7 @@
                                 @if($userPoints ?? 0 >= $voucher->points_required)
                                     <form action="{{ route('voucher.redeem.action', $voucher->id) }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn m-btn-primary">Tukar Voucher</button>
+                                        <button type="submit" class="btn m-btn-secondary">Tukar Voucher</button>
                                     </form>
                                 @else
                                     <p class="text-muted">Poin tidak cukup.</p>
@@ -50,17 +51,20 @@
 
     <!-- Riwayat Penukaran Voucher -->
     <div class="card shadow-sm mb-5">
+        <div class="card-header m-bg-secondary text-white text-center py-3">
+            <h4 class="card-title">Riwayat Penukaran Voucher</h4>
+        </div>
         <div class="card-body">
-            <h5 class="card-title">Riwayat Penukaran Voucher</h5>
-            
             <ul class="list-group">
                 @forelse($userVouchers as $userVoucher)
-                    <li class="list-group-item">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-4">
+                    <div>
                         <strong>{{ $userVoucher->voucher->title }}</strong> - 
                         <span class="badge bg-info text-dark">{{ $userVoucher->status }}</span>
-                        <br>
-                        <small>Ditukar pada: {{ $userVoucher->redeemed_at ?? 'Belum Ditukar' }}</small>
-                    </li>
+                    </div>
+                    <small class="ms-auto">{{ $userVoucher->redeemed_at ? 'Ditukar pada: ' . $userVoucher->redeemed_at : 'Belum Ditukar' }}</small>
+                </li>
+
                 @empty
                     <li class="list-group-item text-muted">Belum ada riwayat penukaran voucher.</li>
                 @endforelse

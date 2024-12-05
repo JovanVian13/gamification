@@ -42,16 +42,12 @@
             @if ($userBadges->count() > 0)
                 <div class="d-flex flex-wrap">
                     @foreach ($userBadges as $badge)
-                        <div class="badge-item text-center me-3 mb-3 p-4" style="width: 20%;">
+                        <div class="badge-item text-center me-3 mb-3 p-4" style="width: 20%;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $badge->criteria }}<br>Earned: {{ $badge->pivot->earned_at ? \Carbon\Carbon::parse($badge->pivot->earned_at)->format('d F Y') : 'N/A' }}">
                             <img src="{{ asset('storage/' . $badge->image) }}" 
                                  alt="{{ $badge->name }}" 
                                  class="rounded-circle border border-dark" 
                                  style="width: 100px; height: 100px;">
                             <p style="font-size: 1.25rem;font-weight: bold mt-2">{{ $badge->name }}</p>
-                            <!-- <p>
-                                {{ $badge->pivot->earned_at ? \Carbon\Carbon::parse($badge->pivot->earned_at)->format('d F Y') : 'N/A' }}
-                            </p>
-                            <p>{{ $badge->criteria }}</p> -->
                         </div>
                     @endforeach
                 </div>
@@ -62,3 +58,17 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize all tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+            new bootstrap.Tooltip(tooltipTriggerEl, {
+                html: true
+            });
+        });
+    });
+</script>
+@endpush
