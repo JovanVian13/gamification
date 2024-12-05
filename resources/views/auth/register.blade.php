@@ -49,7 +49,7 @@
                 </div>
                 <button type="submit" class="btn w-100 m-btn-primary mt-2" style="background: rgba(251, 176, 65, 0.8">Register</button>
                 <div class="text-center mt-3">
-                    <span>Already have an account? <a href="{{ route('register') }}" class="text-decoration-none mb-4 mt-1">Login</a></span>
+                    <span>Already have an account? <a href="{{ route('login') }}" class="text-decoration-none mb-4 mt-1">Login</a></span>
                 </div>
             </form>
         </div>
