@@ -106,6 +106,34 @@
         .color-red {
             color: red;
         }
+
+        .card-login {
+            width: 25rem; 
+            border-radius: 30px; 
+            background: rgba(255, 255, 255, 0.9); 
+            z-index: 2; 
+            box-shadow: 0 0 20px 4px rgba(215, 6, 215, 0.5);
+        }
+
+        .m-bg-input {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .m-bg-input-main {
+            background: rgba(251, 176, 65, 0.8);
+        }
+
+        .m-layer {
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 1;
+        }
+
+        .m-bg-login {
+            min-height: 110vh; 
+            background: url('../../assets/img/homepageril.png') no-repeat center center/cover; 
+            background-size: 125%; 
+            position: relative;
+        }
     </style>
     @stack('styles')
 </head>
