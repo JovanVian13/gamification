@@ -2,11 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h1 class="display-4 text-dark mb-4"><strong>Leaderboard ({{ ucfirst($period) }})</strong></h1>
-
     <!-- Leaderboard Ranking -->
     <div class="card mb-4">
-        <div class="card-header m-bg-primary text-white">
+        <div class="card-header m-bg-primary text-white text-center py-3">
             <h2 class="h4 mb-0">Ranking Pengguna</h2>
         </div>
         <div class="card-body">
@@ -37,19 +35,23 @@
 
     <!-- User's Badges -->
     <div class="card mt-4 mb-4">
-        <div class="card-header m-bg-primary text-white">
+        <div class="card-header m-bg-secondary text-white text-center py-3">
             <h2 class="h4 mb-0">Badges Anda</h2>
         </div>
         <div class="card-body">
             @if ($userBadges->count() > 0)
                 <div class="d-flex flex-wrap">
                     @foreach ($userBadges as $badge)
-                        <div class="badge-item text-center me-3 mb-3">
+                        <div class="badge-item text-center me-3 mb-3 p-4" style="width: 20%;">
                             <img src="{{ asset('storage/' . $badge->image) }}" 
                                  alt="{{ $badge->name }}" 
-                                 class="img-thumbnail" 
-                                 style="width: 80px; height: 80px;">
-                            <p class="small mt-2">{{ $badge->name }}</p>
+                                 class="rounded-circle border border-dark" 
+                                 style="width: 100px; height: 100px;">
+                            <p style="font-size: 1.25rem;font-weight: bold mt-2">{{ $badge->name }}</p>
+                            <!-- <p>
+                                {{ $badge->pivot->earned_at ? \Carbon\Carbon::parse($badge->pivot->earned_at)->format('d F Y') : 'N/A' }}
+                            </p>
+                            <p>{{ $badge->criteria }}</p> -->
                         </div>
                     @endforeach
                 </div>

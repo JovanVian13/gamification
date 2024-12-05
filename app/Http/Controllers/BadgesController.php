@@ -50,7 +50,7 @@ class BadgesController extends Controller
                             ->with('error', 'Badge already assigned to this user.');
         }
 
-        $user->badges()->attach($badge);
+        $user->badges()->attach($badge->id, ['earned_at' => now()]);
 
         return redirect()->route('admin.badge')->with('success', 'Badge assigned to user successfully.');
     }

@@ -65,7 +65,8 @@ class User extends Authenticatable
     public function badges()
     {
         return $this->belongsToMany(Badge::class, 'user_badges')
-                    ->withTimestamps(); // Assuming a pivot table `user_badges` exists
+                    ->withPivot('earned_at') // Kolom tambahan di tabel pivot
+                    ->withTimestamps(); // Untuk otomatis mengelola timestamps
     }
 
     public function points()
