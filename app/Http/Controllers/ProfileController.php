@@ -19,8 +19,42 @@ class ProfileController extends Controller
         $inProgressTasksCount = UserTask::where('user_id', $user->id)->where('status', 'in-progress')->count();
         $totalPoints = $user->total_points; // Assuming this field exists or is calculated
         $totalRedemptionCount = VoucherRedemption::where('user_id', $user->id)->count();
-
-        return view('user.profile', compact('completedTasksCount', 'inProgressTasksCount', 'totalPoints', 'totalRedemptionCount'));
+        $totalPointCount = VoucherRedemption::where('user_id', $user->id)->sum('points_used');
+        $statistics = [
+            'video' => [
+                'completed' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'video'))
+                    ->where('status', 'completed')->count(),
+                'incomplete' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'video'))
+                    ->where('status', 'incomplete')->count(),
+            ],
+            'like' => [
+                'completed' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'like'))
+                    ->where('status', 'completed')->count(),
+                'incomplete' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'like'))
+                    ->where('status', 'incomplete')->count(),
+            ],
+            'comment' => [
+                'completed' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'comment'))
+                    ->where('status', 'completed')->count(),
+                'incomplete' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'comment'))
+                    ->where('status', 'incomplete')->count(),
+            ],
+            'share' => [
+                'completed' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'share'))
+                    ->where('status', 'completed')->count(),
+                'incomplete' => UserTask::where('user_id', $user->id)
+                    ->whereHas('task', fn($query) => $query->where('type', 'share'))
+                    ->where('status', 'incomplete')->count(),
+            ],
+        ];
+        return view('user.profile', compact('completedTasksCount', 'inProgressTasksCount', 'totalPoints', 'totalRedemptionCount', 'totalPointCount', 'statistics'));
     }
 
     // Show the profile edit form

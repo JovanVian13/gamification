@@ -47,7 +47,7 @@
                     </div>
                     <!-- Tombol Penukaran Voucher -->
                     <div class="text-center px-4 py-3 shadow-sm border rounded">
-                        <a href="{{ route('redeem.vouchers') }}" class="text-black">Tukar Voucher ></a>
+                        <a href="{{ route('redeem.vouchers') }}" class="text-black text-decoration-none">Tukar Voucher ></a>
                     </div>
                 </div>
             </div>

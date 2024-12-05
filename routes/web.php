@@ -84,6 +84,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+
+
 Route::get('user/notifications', [NotificationController::class, 'userNotifications'])->name('user.notifications');
 Route::post('user/notifications/read/{id}', [NotificationController::class, 'markAsRead'])->name('user.notifications.read');
 Route::delete('user/notifications/{id}', [NotificationController::class, 'deleteNotification'])->name('user.notifications.delete');

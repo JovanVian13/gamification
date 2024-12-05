@@ -67,12 +67,14 @@ class UserDashboardController extends Controller
         $completedTasksCount = UserTask::where('user_id', $user->id)->where('status', 'completed')->count();
         $inProgressTasksCount = UserTask::where('user_id', $user->id)->where('status', 'in-progress')->count();
         $totalRedemptionCount = VoucherRedemption::where('user_id', $user->id)->count();
+        $totalPointCount = VoucherRedemption::where('user_id', $user->id)->sum('points_used');
 
-        return view('user.profil', compact(
+        return view('user.profile', compact(
             'user',
             'completedTasksCount',
             'inProgressTasksCount',
-            'totalRedemptionCount'
+            'totalRedemptionCount',
+            'totalPointCount',
         ));
     }
 }
