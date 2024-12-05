@@ -3,11 +3,11 @@
 @section('title', 'My Tasks')
 
 @section('content')
-<!--<div class="container mt-5 mb-5">
-    <div class="card shadow-sm">
-        <div class="card-header m-bg-secondary text-white">
+<div class="container mb-5">
+    <div class="card shadow">
+        <div class="card-header m-bg-primary text-white p-3">
             <h1 class="h3 mb-0 text-center">My Tasks</h1>
-        </div>-->
+        </div>
         <div class="card-body">
             @if($userTasks->isEmpty())
                 <div class="text-center">
@@ -16,14 +16,13 @@
             @else
                 <div class="table-responsive">
                     <table class="table table-striped table-hover align-middle text-center">
-                        <thead class="table m-bg-primary">
+                        <thead class="table">
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
                                 <th>Status</th>
                                 <th>Points</th>
-                                <th>Link</th>
-                                <th>Content</th>
+                                <th>Link Tugas</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -47,50 +46,6 @@
                                         </a>
                                         @else
                                         <span class="text-muted">No Video</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @php
-                                            // Parsing YouTube ID
-                                            $videoId = null;
-                                            if (strpos($userTask->task->url, 'youtu.be') !== false) {
-                                                $videoId = basename($userTask->task->url);
-                                            } elseif (strpos($userTask->task->url, 'youtube.com') !== false) {
-                                                parse_str(parse_url($userTask->task->url, PHP_URL_QUERY), $queryParams);
-                                                $videoId = $queryParams['v'] ?? null;
-                                            }
-                                        @endphp
-
-                                        @if ($userTask->task->type === 'video' && $videoId)
-                                            <div class="ratio ratio-16x9">
-                                                <iframe 
-                                                    src="https://www.youtube.com/embed/{{ $videoId }}" 
-                                                    allowfullscreen>
-                                                </iframe>
-                                            </div>
-                                        @elseif ($userTask->task->type === 'like' && $videoId)
-                                            <div class="ratio ratio-16x9">
-                                                <iframe 
-                                                    src="https://www.youtube.com/embed/{{ $videoId }}" 
-                                                    allowfullscreen>
-                                                </iframe>
-                                            </div>
-                                        @elseif ($userTask->task->type === 'comment' && $videoId)
-                                            <div class="ratio ratio-16x9">
-                                                <iframe 
-                                                    src="https://www.youtube.com/embed/{{ $videoId }}" 
-                                                    allowfullscreen>
-                                                </iframe>
-                                            </div>
-                                        @elseif ($userTask->task->type === 'share' && $videoId)
-                                            <div class="ratio ratio-16x9">
-                                                <iframe 
-                                                    src="https://www.youtube.com/embed/{{ $videoId }}" 
-                                                    allowfullscreen>
-                                                </iframe>
-                                            </div>
-                                        @else
-                                            <span class="text-muted">Unknown Task Type or Invalid URL</span>
                                         @endif
                                     </td>
                                     <td>

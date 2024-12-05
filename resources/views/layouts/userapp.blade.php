@@ -16,6 +16,13 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .m-btn-primary {
@@ -112,21 +119,24 @@
             transform: translate(-50%, -50%);
         }
 
+        .flex-grow-1 {
+            flex: 1;
+        }
     </style>
     @stack('styles')
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark m-bg-secondary">
+    <nav class="navbar navbar-expand-lg m-bg-secondary text-white">
         <div class="container-fluid">
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 5%;">
-            <a class="navbar-brand" href="{{ route('user.dashboard') }}">Gamification</a>
+            <a class="navbar-brand text-white" href="{{ route('user.dashboard') ? 'm-p-primary' : 'text-white'}}">Gamification</a>
             <div class="position-relative">
-
                 <!-- Dropdown Notifikasi -->
                 <div class="dropdown">
-                    <button class="btn m-btn-secondary dropdown-toggle position-relative d-flex align-items-center" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn dropdown-toggle position-relative d-flex align-items-center text-white" 
+                        type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-bell"></i>
                         @if($notifications->where('read_status', 'unread')->count() > 0)
                             <span class="badge bg-danger">{{ $notifications->where('read_status', 'unread')->count() }}</span>
@@ -144,30 +154,33 @@
                 </div>
             </div>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{{ route('user.dashboard') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('usertask') }}">Tasks</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('user.leaderboard') }}">Leaderboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('redeem.vouchers') }}">Vouchers</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('faq') }}">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('profile.show') }}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'user.dashboard' ? 'm-p-primary' : 'text-white' }}" href="{{ route('user.dashboard') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'usertask' ? 'm-p-primary' : 'text-white' }}" href="{{ route('usertask') }}">Tasks</a></li>
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'user.leaderboard' ? 'm-p-primary' : 'text-white' }}" href="{{ route('user.leaderboard') }}">Leaderboard</a></li>
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'redeem.vouchers' ? 'm-p-primary' : 'text-white' }}" href="{{ route('redeem.vouchers') }}">Vouchers</a></li>
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'contact' ? 'm-p-primary' : 'text-white' }}" href="{{ route('contact') }}">Contact</a></li>
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'faq' ? 'm-p-primary' : 'text-white' }}" href="{{ route('faq') }}">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'profile.show' ? 'm-p-primary' : 'text-white' }}" href="{{ route('profile.show') }}">Profile</a></li>
                 <li class="nav-item">
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center">
                         @csrf
-                        <button class="btn btn-danger">Logout</button>
+                        <button type="submit" class="btn nav-link text-white border-0" style="background: none;">
+                            Logout
+                        </button>
                     </form>
                 </li>
             </ul>
         </div>
     </nav>
 
+
     <!-- Content Section -->
-    <div class="mt-5">
+    <div class="flex-grow-1 mt-5">
         @yield('content')
     </div>
 
     <!-- Footer -->
-    <footer class="text-white text-center py-3 m-bg-secondary sticky-bottom">
+    <footer class="text-white text-center py-3 m-bg-secondary">
         <p>&copy; 2024 Gamification Platform. All rights reserved.</p>
     </footer>
 

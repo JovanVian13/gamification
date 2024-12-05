@@ -4,10 +4,11 @@
 
 @section('content')
 <div class="container">
-    <h3>Frequently Asked Questions</h3>
+    <div class="card-header m-bg-primary text-white text-center p-4">
+        <h2 class="h4 mb-0">Frequently Asked Questions</h2>
+    </div>
     <div class="accordion mb-5" id="faqAccordion">
         @php
-            // Hardcoded FAQ questions and answers
             $faq = [
                 [
                     'question' => 'Bagaimana cara mendapatkan poin?',
@@ -30,20 +31,8 @@
                     'answer' => 'Anda dapat menukar voucher melalui halaman "Penukaran Poin" setelah poin Anda mencukupi.',
                 ],
                 [
-                    'question' => 'Apa yang harus dilakukan jika tugas tidak diverifikasi?',
-                    'answer' => 'Silakan hubungi customer support kami melalui halaman "Kontak" untuk bantuan lebih lanjut.',
-                ],
-                [
-                    'question' => 'Bagaimana cara mendapatkan poin?',
-                    'answer' => 'Anda bisa mendapatkan poin dengan menyelesaikan tugas seperti menonton video, memberikan like, atau membagikan konten.',
-                ],
-                [
                     'question' => 'Bagaimana cara menukar voucher?',
                     'answer' => 'Anda dapat menukar voucher melalui halaman "Penukaran Poin" setelah poin Anda mencukupi.',
-                ],
-                [
-                    'question' => 'Apa yang harus dilakukan jika tugas tidak diverifikasi?',
-                    'answer' => 'Silakan hubungi customer support kami melalui halaman "Kontak" untuk bantuan lebih lanjut.',
                 ],
             ];
         @endphp
