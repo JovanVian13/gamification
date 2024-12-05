@@ -63,27 +63,45 @@
                     <div class="col-md-6 d-flex align-items-center">
                         <!-- Gambar Piala -->
                         <div>
-                            <img 
-                                src="{{ $leaderboard[2]->profile_picture ? asset('storage/' . $leaderboard[2]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
+                            @if(isset($leaderboard[1]))
+                            <img
+                                src="{{ $leaderboard[1]->profile_picture ? asset('storage/' . $leaderboard[1]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 25px;"
+                                style="width: 40px; height: 40px; margin-left: 30px;"
                             >
+                            @else
                             <img
-                                src="{{ asset('assets/img/trophy3.png') }}" 
+                                src="{{ asset('assets/img/default-profile.jpg') }}" 
+                                alt="Profile Picture" 
+                                class="rounded-circle" 
+                                style="width: 40px; height: 40px; margin-left: 30px;"
+                            >
+                            @endif
+                            <img
+                                src="{{ asset('assets/img/trophy2.png') }}" 
                                 alt="Trophy" 
                                 style="width: 90px; height: 90px; margin-left: auto;"
                             >
                         </div>
 
                         <div>
-                            <img 
+                            @if(isset($leaderboard[0]))
+                            <img
                                 src="{{ $leaderboard[0]->profile_picture ? asset('storage/' . $leaderboard[0]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
-                                style="width: 40px; height: 40px; margin-left: 35px;"
+                                style="width: 40px; height: 40px; margin-left: 30px;"
                             >
-                            <img 
+                            @else
+                            <img
+                                src="{{ asset('assets/img/default-profile.jpg') }}" 
+                                alt="Profile Picture" 
+                                class="rounded-circle" 
+                                style="width: 40px; height: 40px; margin-left: 30px;"
+                            >
+                            @endif
+                            <img
                             src="{{ asset('assets/img/trophy1.png') }}" 
                                 alt="Trophy" 
                                 style="width: 110px; height: 110px; margin-left: auto;"
@@ -91,14 +109,23 @@
                         </div>
 
                         <div>
-                            <img 
-                                src="{{ $leaderboard[1]->profile_picture ? asset('storage/' . $leaderboard[1]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
+                            @if(isset($leaderboard[2]))
+                            <img
+                                src="{{ $leaderboard[2]->profile_picture ? asset('storage/' . $leaderboard[2]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle" 
                                 style="width: 40px; height: 40px; margin-left: 30px;"
                             >
+                            @else
+                            <img
+                                src="{{ asset('assets/img/default-profile.jpg') }}" 
+                                alt="Profile Picture" 
+                                class="rounded-circle" 
+                                style="width: 40px; height: 40px; margin-left: 30px;"
+                            >
+                            @endif
                             <img 
-                                src="{{ asset('assets/img/trophy2.png') }}" 
+                                src="{{ asset('assets/img/trophy3.png') }}" 
                                 alt="Trophy" 
                                 style="width: 100px; height: 100px; margin-left: auto;"
                             >
@@ -129,7 +156,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Tugas Harian & Baru -->
     <div class="shadow-sm mt-4 mb-4 rounded border">
         <div class="m-bg-primary text-white text-center mb-2 p-3">
