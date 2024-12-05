@@ -1,4 +1,4 @@
-@extends('layouts.homeapp2')
+@extends('layouts.homeappmain')
 
 @section('content')
 <!-- Hero Section -->
