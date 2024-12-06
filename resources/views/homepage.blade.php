@@ -18,7 +18,7 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <div class="card feature-card text-white border-2">
+            <div class="card feature-card text-white border-2 h-100">
                 <div class="card-body text-center m-p-secondary">
                     <i class="fas fa-video fa-4x mb-3"></i>
                     <h4 class="card-title">Watch Videos</h4>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card feature-card text-white border-2">
+            <div class="card feature-card text-white border-2 h-100">
                 <div class="card-body text-center m-p-secondary">
                     <i class="fas fa-thumbs-up fa-4x mb-3"></i>
                     <h4 class="card-title">Like Videos</h4>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card feature-card text-white border-2">
+            <div class="card feature-card text-white border-2 h-100">
                 <div class="card-body text-center m-p-secondary">
                     <i class="fas fa-share fa-4x mb-3"></i>
                     <h4 class="card-title">Share Videos</h4>
