@@ -132,7 +132,7 @@
         .m-bg-register {
             min-height: 130vh; 
             background: url('../../assets/img/homepageril.png') no-repeat center center/cover; 
-            background-size: 125%; 
+            background-size: 145%; 
             position: relative;
         }
     </style>
@@ -141,7 +141,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light m-bg-primary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light m-bg-primary">
         <div class="container-fluid">
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 4%;">
             <a class="navbar-brand" href="#">Gamification</a>
