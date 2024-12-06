@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center align-items-center m-bg-register">
     <div class="position-absolute w-100 h-100 m-layer"></div>
     <div class="card shadow-lg border-0 mt-5 card-register">
-        <div class="card-body">
+        <div class="card-body p-5">
             <h2 class="card-title text-center mb-4 mt-4">Register</h2>
             <form action="{{ route('register') }}" method="POST">
                 @csrf

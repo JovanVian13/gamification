@@ -14,9 +14,13 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="email" id="email" name="email" class="form-control m-bg-input" required>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" name="password" class="form-control m-bg-input" required>
+                    <!-- Eye Icon -->
+                    <span id="togglePassword" class="position-absolute" style="right: 10px; top: 38px; cursor: pointer;">
+                        <i class="fa fa-eye"></i>
+                    </span>
                 </div>
 
                 <div class="text-end mb-3">
@@ -31,4 +35,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const icon = this.querySelector('i');
+
+        // Toggle the type attribute
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+</script>
 @endsection

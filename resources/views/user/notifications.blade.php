@@ -32,18 +32,21 @@
                         <td>{{ ucfirst($notification->read_status) }}</td>
                         <td>{{ $notification->created_at->format('d M Y H:i') }}</td>
                         <td>
-                            @if($notification->read_status === 'unread')
-                            <form action="{{ route('user.notifications.read', $notification->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button type="submit" class="btn btn-sm m-btn-primary">Mark as Read</button>
-                            </form>
-                            @endif
-                            <form action="{{ route('user.notifications.delete', $notification->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
+                            <div class="d-flex gap-2">
+                                @if($notification->read_status === 'unread')
+                                <form action="{{ route('user.notifications.read', $notification->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-success">Read</button>
+                                </form>
+                                @endif
+                                <form action="{{ route('user.notifications.delete', $notification->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </div>
                         </td>
+                        
                     </tr>
                     @endforeach
                 </tbody>
