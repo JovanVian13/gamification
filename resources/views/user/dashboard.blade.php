@@ -21,7 +21,7 @@
                     <p class="card-text text-muted" style="font-size: 1.25rem">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="text-center">
-                    <a href="{{ route('profile.show') }}" class="btn m-btn-secondary mb-5 mt-3">View Profil</a>
+                    <a href="{{ route('profile.show') }}" class="btn m-btn-secondary mb-5 mt-3">Lihat Profil</a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
             <!-- Leaderboard -->
             <div class="card shadow border-2">
                 <div class="card-header text-white mb-2 p-3">
-                    <h5 class="mb-0 m-p-secondary text-center" style="font-size: 1.5rem;">LeaderBoard</h5>
+                    <h5 class="mb-0 m-p-secondary text-center" style="font-size: 1.5rem;">Leaderboard</h5>
                 </div>
                 <div class="card-body row">
                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center mb-3 mb-md-0">
