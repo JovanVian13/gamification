@@ -41,11 +41,16 @@
             <h2 class="h4 mb-0">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
-            <p class="h5">Halo, <strong>{{ Auth::user()->name }}</strong>!</p>
-            <p class="h6">
-                Anda berada di peringkat <strong>{{ $rank }}</strong>
-                dengan total poin sebesar <strong>{{ $leaderboard->where('id', Auth::id())->first()->points ?? 0 }}</strong>.
-            </p>
+            <!-- Rank in a Circle -->
+            <div class="rounded-circle text-white d-flex justify-content-center align-items-center mx-auto m-bg-primary" 
+                style="width: 120px; height: 120px; font-size: 2.5rem; font-weight: bold;">
+                {{ $rank }}
+            </div>
+            <!-- Points Below the Circle -->
+            <div class="mt-3" style="font-size: 1.5rem;">
+                <strong>{{ $leaderboard->where('id', Auth::id())->first()->points ?? 0 }}</strong>
+                <span>Points</span>
+            </div>
         </div>
     </div>
     @else
@@ -54,7 +59,16 @@
             <h2 class="h4 mb-0">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
-            <p class="text-muted">Anda belum memiliki ranking di leaderboard.</p>
+            <!-- Rank in a Circle -->
+            <div class="rounded-circle text-white d-flex justify-content-center align-items-center mx-auto m-bg-primary" 
+                style="width: 120px; height: 120px; font-size: 2.5rem; font-weight: bold;">
+                N/A
+            </div>
+            <!-- Points Below the Circle -->
+            <div class="mt-3" style="font-size: 1.5rem;">
+                <strong>{{ $leaderboard->where('id', Auth::id())->first()->points ?? 0 }}</strong>
+                <span>Points</span>
+            </div>
         </div>
     </div>
     @endif
