@@ -105,6 +105,26 @@
                 margin-left: 0;
             }
         }
+        .pagination {
+            justify-content: center; /* Menyelaraskan pagination di tengah */
+        }
+
+        .pagination .page-item .page-link {
+            padding: 0.5rem 0.75rem; /* Ukuran tombol */
+            font-size: 0.875rem;     /* Ukuran font */
+            border-radius: 5px;      /* Membuat tombol lebih melengkung */
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007bff; /* Warna tombol aktif */
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: #f8f9fa; /* Warna tombol saat hover */
+        }
+
     </style>
 </head>
 <body>

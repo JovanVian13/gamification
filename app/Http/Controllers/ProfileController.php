@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Task;
 use App\Models\UserTask;
 use App\Models\VoucherRedemption;
+use App\Models\ActivityLog;
 
 class ProfileController extends Controller
 {
@@ -68,6 +69,15 @@ class ProfileController extends Controller
     // Update the user's profile information
     public function updateProfile(Request $request)
     {
+        $user = Auth::user();
+        // Log aktivitas edit profil
+        ActivityLog::create([
+            'user_id' => $user->id,
+            'action' => 'Updated profile information',
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->header('User-Agent'),
+        ]);
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),

@@ -52,8 +52,6 @@
                 </div>
             </div>
 
-            <!-- Informasi Tugas Selesai -->
-
             <!-- Leaderboard -->
             <div class="card shadow">
                 <div class="card-header m-bg-secondary text-white mb-2 p-3">

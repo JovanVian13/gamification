@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\ActivityLog;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -26,6 +27,13 @@ class LoginController extends Controller
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $role = Auth::user()->role;
+            
+            ActivityLog::create([
+                'user_id' => Auth::id(),
+                'action' => 'User logged in',
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->header('User-Agent'),
+            ]);
 
             if ($role === 'user') {
                 return redirect()->route('user.dashboard');
@@ -37,8 +45,14 @@ class LoginController extends Controller
         return back()->withErrors(['email' => 'Invalid credentials.']);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
+        ActivityLog::create([
+            'user_id' => Auth::id(),
+            'action' => 'User logged out',
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->header('User-Agent'),
+        ]);
         Auth::logout();
         return redirect()->route('login');
     }
