@@ -7,7 +7,7 @@
 
 <div class="container custom-margin-top">
     <div class="text-center mb-3">
-        <h3 class="fw-bold">Kontak Customer Support</h3>
+        <h3 class="fw-bold m-p-secondary">Kontak Customer Support</h3>
         <p class="text-muted">Kami siap membantu Anda! Silakan hubungi kami melalui salah satu metode berikut.</p>
     </div>
 
@@ -51,7 +51,7 @@
     <!-- Additional Message -->
     <div class="text-center mt-3 mb-4">
         <p>
-            <strong>Jam operasional: Senin - Jumat, pukul 09:00 - 17:00 WIB</strong>
+            <strong class="m-p-secondary">Jam operasional: Senin - Jumat, pukul 09:00 - 17:00 WIB</strong>
         </p>
     </div>
 </div>

@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="card mb-4 shadow">
-        <div class="card-header m-bg-primary text-white text-center py-3">
-            <h1 class="h4 mb-0">Your Notifications</h1>
+        <div class="card-header text-center py-3">
+            <h1 class="h4 mb-0 m-p-secondary">Your Notifications</h1>
         </div>
 
         @if (session('success'))
