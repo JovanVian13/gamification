@@ -5,9 +5,9 @@
     <div class="row">
         <!-- Card Profil -->
         <div class="col-md-5 mb-4">
-            <div class="card shadow">
-                <div class="card-header m-bg-secondary text-white text-center py-3">
-                    <h5 class="mb-0" style="font-size: 1.5rem;">Profile</h5>
+            <div class="card shadow border-2">
+                <div class="card-header text-white text-center py-3">
+                    <h5 class="mb-0 m-p-secondary" style="font-size: 1.5rem;">Profile</h5>
                 </div>
                 <div class="card-body text-center">
                     <img 
@@ -29,9 +29,9 @@
         <!-- Dashboard -->
         <div class="col-md-7">
             <!-- Informasi Poin Total -->
-            <div class="card shadow mb-4">
-                <div class="card-header m-bg-secondary text-white py-3">
-                    <h5 class="mb-0 text-center" style="font-size: 1.5rem;">Poin</h5>
+            <div class="card shadow mb-4 border-2">
+                <div class="card-header text-white py-3">
+                    <h5 class="mb-0 text-center m-p-secondary" style="font-size: 1.5rem;">Poin</h5>
                 </div>
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <!-- Bagian Poin -->
@@ -53,9 +53,9 @@
             </div>
 
             <!-- Leaderboard -->
-            <div class="card shadow">
-                <div class="card-header m-bg-secondary text-white mb-2 p-3">
-                    <h5 class="mb-0 text-center" style="font-size: 1.5rem;">LeaderBoard</h5>
+            <div class="card shadow border-2">
+                <div class="card-header text-white mb-2 p-3">
+                    <h5 class="mb-0 m-p-secondary text-center" style="font-size: 1.5rem;">LeaderBoard</h5>
                 </div>
                 <div class="card-body row">
                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center mb-3 mb-md-0">
@@ -156,9 +156,9 @@
     </div>
 
     <!-- Tugas Harian & Baru -->
-    <div class="shadow mt-4 mb-4 rounded border">
-        <div class="m-bg-primary text-white text-center mb-2 p-3">
-            <h5 class="mb-0" style="font-size: 1.5rem;">Tugas Harian</h5>
+    <div class="card shadow mt-4 mb-4 rounded border-2">
+        <div class="card-header text-white text-center mb-2 p-3">
+            <h5 class="mb-0 m-p-secondary" style="font-size: 1.5rem;">Tugas Harian</h5>
         </div>
         <div class="card-body">
             <!-- Tabel Responsif -->

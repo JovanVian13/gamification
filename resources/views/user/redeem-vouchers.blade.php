@@ -17,9 +17,9 @@
     @endif
 
     <!-- Katalog Voucher -->
-    <div class="card shadow mb-4">
-        <div class="card-header m-bg-primary text-white text-center py-3">
-            <h2 class="h4 mb-0">Voucher Shop</h2>
+    <div class="card shadow mb-4 border-2">
+        <div class="card-header text-white text-center py-3">
+            <h2 class="h4 mb-0 m-p-secondary">Voucher Shop</h2>
         </div>
         <div class="card-body">
             <!-- Menampilkan Informasi Poin yang Dibutuhkan untuk Setiap Voucher -->
@@ -50,9 +50,9 @@
     </div>
 
     <!-- Riwayat Penukaran Voucher -->
-    <div class="card shadow mb-5">
-        <div class="card-header m-bg-secondary text-white text-center py-3">
-            <h4 class="card-title">Riwayat Penukaran Voucher</h4>
+    <div class="card shadow mb-5 border-2">
+        <div class="card-header text-white text-center py-3">
+            <h4 class="card-title m-p-secondary">Riwayat Penukaran Voucher</h4>
         </div>
         <div class="card-body">
             <ul class="list-group">

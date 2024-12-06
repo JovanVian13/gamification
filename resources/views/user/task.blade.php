@@ -4,9 +4,9 @@
 
 @section('content')
 <div class="container mb-5">
-    <div class="card shadow">
-        <div class="card-header m-bg-primary text-white p-3">
-            <h1 class="h3 mb-0 text-center">My Tasks</h1>
+    <div class="card shadow border-2">
+        <div class="card-header text-white p-3">
+            <h1 class="h3 mb-0 text-center m-p-secondary">My Tasks</h1>
         </div>
         <div class="card-body">
             @if($userTasks->isEmpty())
