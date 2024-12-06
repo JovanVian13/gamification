@@ -4,9 +4,9 @@
 
 <div class="container">
     <!-- Leaderboard Ranking -->
-    <div class="card mb-4 shadow">
-        <div class="card-header m-bg-primary text-white text-center py-3">
-            <h2 class="h4 mb-0">Leaderboard</h2>
+    <div class="card mb-4 shadow border-2">
+        <div class="card-header text-white text-center py-3">
+            <h2 class="h4 mb-0 m-p-secondary">Leaderboard</h2>
         </div>
         <div class="card-body">
             @if (count($leaderboard) > 0)
@@ -36,9 +36,9 @@
 
     <!-- User's Ranking -->
     @if ($rank !== null)
-    <div class="card mb-4 shadow">
-        <div class="card-header m-bg-secondary text-white text-center py-3">
-            <h2 class="h4 mb-0">Ranking Anda</h2>
+    <div class="card mb-4 shadow border-2">
+        <div class="card-header text-white text-center py-3">
+            <h2 class="h4 mb-0 m-p-secondary">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
             <!-- Rank in a Circle -->
@@ -54,9 +54,9 @@
         </div>
     </div>
     @else
-    <div class="card mb-4 shadow">
-        <div class="card-header m-bg-secondary text-white text-center py-3">
-            <h2 class="h4 mb-0">Ranking Anda</h2>
+    <div class="card mb-4 shadow border-2">
+        <div class="card-header text-white text-center py-3">
+            <h2 class="h4 mb-0 m-p-secondary">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
             <!-- Rank in a Circle -->
@@ -74,9 +74,9 @@
     @endif
 
     <!-- User's Badges -->
-    <div class="card mt-4 mb-4 shadow">
-        <div class="card-header m-bg-secondary text-white text-center py-3">
-            <h2 class="h4 mb-0">Badges Anda</h2>
+    <div class="card mt-4 mb-4 shadow border-2">
+        <div class="card-header text-white text-center py-3">
+            <h2 class="h4 mb-0 m-p-secondary">Badges Anda</h2>
         </div>
         <div class="card-body">
             @if ($userBadges->count() > 0)
