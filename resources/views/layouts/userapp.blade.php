@@ -122,6 +122,18 @@
         .flex-grow-1 {
             flex: 1;
         }
+
+        .legend-box {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            color: #fbb041 !important; /* Warna teks saat di-hover */
+        }
     </style>
     @stack('styles')
 </head>
@@ -131,7 +143,7 @@
     <nav class="navbar navbar-expand-lg m-bg-secondary text-white">
         <div class="container-fluid">
             <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 5%;">
-            <a class="navbar-brand text-white" href="{{ route('user.dashboard') ? 'm-p-primary' : 'text-white'}}">Gamification</a>
+            <a class="navbar-brand text-white" href="{{ route('user.dashboard') }}">Gamification</a>
             <div class="position-relative">
                 <!-- Dropdown Notifikasi -->
                 <div class="dropdown">
