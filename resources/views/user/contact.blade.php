@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         <!-- Email Contact -->
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm text-center border-1 rounded">
+            <div class="card shadow-sm text-center border-1 rounded h-100">
                 <div class="card-body py-4">
                     <div class="mb-3">
                         <i class="bi bi-envelope-fill m-p-secondary" style="font-size: 3rem;"></i>
@@ -32,7 +32,7 @@
 
         <!-- WhatsApp Contact -->
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm text-center border-1 rounded">
+            <div class="card shadow-sm text-center border-1 rounded h-100">
                 <div class="card-body py-4">
                     <div class="mb-3">
                         <i class="bi bi-whatsapp text-success" style="font-size: 3rem;"></i>
