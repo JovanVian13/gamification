@@ -1,11 +1,12 @@
 @extends('layouts.userapp')
 
 @section('content')
+
 <div class="container">
     <!-- Leaderboard Ranking -->
     <div class="card mb-4 shadow">
         <div class="card-header m-bg-primary text-white text-center py-3">
-            <h2 class="h4 mb-0">Ranking Pengguna</h2>
+            <h2 class="h4 mb-0">Leaderboard</h2>
         </div>
         <div class="card-body">
             @if (count($leaderboard) > 0)
@@ -21,8 +22,8 @@
                     @foreach ($leaderboard as $index => $entry)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ $entry->name }}</td> <!-- Corrected this line -->
-                            <td>{{ $entry->points }}</td> <!-- Corrected the points property -->
+                            <td>{{ $entry->name }}</td>
+                            <td>{{ $entry->points }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -32,6 +33,31 @@
             @endif
         </div>
     </div>
+
+    <!-- User's Ranking -->
+    @if ($rank !== null)
+    <div class="card mb-4 shadow">
+        <div class="card-header m-bg-secondary text-white text-center py-3">
+            <h2 class="h4 mb-0">Ranking Anda</h2>
+        </div>
+        <div class="card-body text-center">
+            <p class="h5">Halo, <strong>{{ Auth::user()->name }}</strong>!</p>
+            <p class="h6">
+                Anda berada di peringkat <strong>{{ $rank }}</strong>
+                dengan total poin sebesar <strong>{{ $leaderboard->where('id', Auth::id())->first()->points ?? 0 }}</strong>.
+            </p>
+        </div>
+    </div>
+    @else
+    <div class="card mb-4 shadow">
+        <div class="card-header m-bg-secondary text-white text-center py-3">
+            <h2 class="h4 mb-0">Ranking Anda</h2>
+        </div>
+        <div class="card-body text-center">
+            <p class="text-muted">Anda belum memiliki ranking di leaderboard.</p>
+        </div>
+    </div>
+    @endif
 
     <!-- User's Badges -->
     <div class="card mt-4 mb-4 shadow">
@@ -45,7 +71,7 @@
                         <div class="badge-item text-center me-3 mb-3 p-4" style="width: 20%;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $badge->criteria }}<br>Earned: {{ $badge->pivot->earned_at ? \Carbon\Carbon::parse($badge->pivot->earned_at)->format('d F Y') : 'N/A' }}">
                             <img src="{{ asset('storage/' . $badge->image) }}" 
                                  alt="{{ $badge->name }}" 
-                                 class="rounded-circle border border-dark" 
+                                 class="rounded-circle shadow" 
                                  style="width: 100px; height: 100px;">
                             <p style="font-size: 1.25rem;font-weight: bold mt-2">{{ $badge->name }}</p>
                         </div>

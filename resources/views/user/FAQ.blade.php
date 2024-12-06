@@ -7,7 +7,7 @@
     <div class="card-header m-bg-primary text-white text-center p-4">
         <h2 class="h4 mb-0">Frequently Asked Questions</h2>
     </div>
-    <div class="accordion mb-5" id="faqAccordion">
+    <div class="accordion mb-4" id="faqAccordion">
         @php
             $faq = [
                 [
@@ -25,10 +25,6 @@
                 [
                     'question' => 'Bagaimana cara mendapatkan poin?',
                     'answer' => 'Anda bisa mendapatkan poin dengan menyelesaikan tugas seperti menonton video, memberikan like, atau membagikan konten.',
-                ],
-                [
-                    'question' => 'Bagaimana cara menukar voucher?',
-                    'answer' => 'Anda dapat menukar voucher melalui halaman "Penukaran Poin" setelah poin Anda mencukupi.',
                 ],
                 [
                     'question' => 'Bagaimana cara menukar voucher?',
