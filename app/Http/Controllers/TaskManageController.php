@@ -36,12 +36,11 @@ class TaskManageController extends Controller
             'type' => 'required|in:video,like,comment,share',
             'points' => 'required|integer|min:1',
             'url' => 'nullable|url',
-            'users' => 'nullable|array', // Jika kosong, berarti untuk semua pengguna.
-            'users.*' => 'exists:users,id',
+            'deadline' => 'nullable|date',
         ]);
 
-        // Buat tugas
-        $task = TaskManage::create([
+        // Buat tugas baru
+        TaskManage::create([
             'title' => $request->title,
             'type' => $request->type,
             'points' => $request->points,
@@ -50,46 +49,32 @@ class TaskManageController extends Controller
             'created_by' => auth()->id(),
         ]);
 
-        // Jika ada `users`, hubungkan tugas ke pengguna tersebut
-        if ($request->users) {
-            foreach ($request->users as $userId) {
-                UserTask::create([
-                    'user_id' => $userId,
-                    'task_id' => $task->id,
-                ]);
-            }
-        } else {
-            // Jika tidak ada `users`, hubungkan ke semua pengguna
-            $users = User::all();
-            foreach ($users as $user) {
-                UserTask::create([
-                    'user_id' => $user->id,
-                    'task_id' => $task->id,
-                ]);
-            }
-        }
-
-        return redirect()->route('admin.tasks')->with('success', 'Task created successfully.');
+        return redirect()->route('admin.tasks')->with('success', 'Task created successfully. Please assign it to users.');
     }
 
     public function assignTasksToNewUsers()
     {
         TaskManage::chunk(50, function ($tasks) {
             foreach ($tasks as $task) {
-                User::whereDoesntHave('userTasks', function ($query) use ($task) {
-                    $query->where('task_id', $task->id);
-                })->chunk(50, function ($users) use ($task) {
-                    foreach ($users as $user) {
-                        UserTask::create([
-                            'user_id' => $user->id,
-                            'task_id' => $task->id,
-                        ]);
-                    }
+                $newUsers = User::where('role', '!=', 'admin') // Filter non-admin
+                    ->whereDoesntHave('userTasks', function ($query) use ($task) {
+                        $query->where('task_id', $task->id);
+                    })->pluck('id');
+
+                $taskAssignments = $newUsers->map(function ($userId) use ($task) {
+                    return [
+                        'user_id' => $userId,
+                        'task_id' => $task->id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ];
                 });
+
+                UserTask::insert($taskAssignments->toArray());
             }
         });
 
-        return redirect()->back()->with('success', 'Tasks assigned to new users successfully.');
+        return redirect()->back()->with('success', 'Tasks assigned to new non-admin users successfully.');
     }
 
     // Tampilkan form edit tugas
@@ -110,7 +95,6 @@ class TaskManageController extends Controller
             'title' => 'required|string|max:255',
             'type' => 'required|in:video,like,comment,share',
             'points' => 'required|integer|min:1',
-            'assign_to' => 'required|string',
             'url' => 'nullable|url',
             'deadline' => 'nullable|date',
         ]);

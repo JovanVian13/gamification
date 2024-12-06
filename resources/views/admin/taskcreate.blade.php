@@ -29,21 +29,6 @@
             <input type="url" class="form-control" name="url" value="{{ old('url') }}">
         </div>
         <div class="mb-3">
-            <label for="assign_to" class="form-label">Assign To</label>
-            <select name="assign_to" id="assign_to" class="form-control" required>
-                <option value="all">All Users</option>
-                <option value="specific">Specific Users</option>
-            </select>
-        </div>
-        <div class="mb-3" id="user-select" style="display: none;">
-            <label for="users" class="form-label">Select Users</label>
-            <select name="users[]" class="form-control" multiple>
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="mb-3">
             <label for="deadline" class="form-label">Deadline</label>
             <input type="datetime-local" class="form-control" name="deadline">
         </div>

@@ -143,7 +143,16 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- Legend Section -->
+                        <div class="mt-4 text-center">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="me-3 d-flex align-items-center">
+                                    <span class="legend-box" style="background-color: #fbb041;"></span> <span>Sudah Dikerjakan</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="legend-box" style="background-color: #232E66;"></span> <span>Belum Dikerjakan</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,8 +172,9 @@
                     labels: ['Sudah Dikerjakan', 'Belum Dikerjakan'],
                     datasets: [{
                         data: [statistics[type].completed, statistics[type].incomplete],
-                        backgroundColor: ['#007BFF', '#E0E0E0'],
-                        hoverOffset: 4
+                        backgroundColor: ['#fbb041', '#232E66'],
+                        hoverOffset: 4,
+                        borderWidth: 0 // Hilangkan border
                     }]
                 },
                 options: {
@@ -173,7 +183,7 @@
                             display: false
                         }
                     },
-                    cutout: '70%'
+                    cutout: '45%'
                 }
             });
         });

@@ -42,7 +42,6 @@ class UserDashboardController extends Controller
         // Ambil tugas pengguna
         $userTasks = UserTask::with('task')
             ->where('user_id', $user->id)
-            ->orderBy('id', 'desc')
             ->orderBy('status', 'asc')
             ->take(3) // Ambil maksimal 3 tugas
             ->get();

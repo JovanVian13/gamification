@@ -14,6 +14,8 @@ class UserTaskController extends Controller
         // Ambil semua tugas yang terkait dengan pengguna saat ini
         $userTasks = UserTask::with('task')
             ->where('user_id', auth()->id()) // Tugas hanya untuk user yang sedang login
+            ->orderBy('status', 'asc') // Urutkan berdasarkan status (incomplete terlebih dahulu)
+            ->orderBy('created_at', 'asc') // Tambahkan pengurutan tambahan (opsional)
             ->get();
 
         // Pastikan `userTasks` dikirim ke view

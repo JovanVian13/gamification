@@ -122,6 +122,18 @@
         .flex-grow-1 {
             flex: 1;
         }
+
+        .legend-box {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            color: #fbb041 !important; /* Warna teks saat di-hover */
+        }
     </style>
     @stack('styles')
 </head>
