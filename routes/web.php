@@ -123,6 +123,9 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
         Route::post('/', [BadgesController::class, 'createBadge'])->name('admin.badgecreate');
         Route::post('/{badge}/assign', [BadgesController::class, 'assignBadge'])->name('admin.badgeassign');
     });
+
+    // Testimonials
+    Route::get('/admin/testimonials', [TestimonialController::class, 'index'])->name('admin.testimonials');
 });
 
 // Tasks (User)

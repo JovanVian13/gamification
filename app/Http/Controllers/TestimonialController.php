@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class TestimonialController extends Controller
 {
+    public function index()
+    {
+        $testimonials = Testimonial::with('user')->latest()->get();
+
+        return view('admin.testimonials', compact('testimonials'));
+    }
     public function store(Request $request)
     {
         $request->validate([
