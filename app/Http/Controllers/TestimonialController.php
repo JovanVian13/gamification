@@ -27,4 +27,15 @@ class TestimonialController extends Controller
 
         return redirect()->back()->with('success', 'Testimonial Anda telah dikirim.');
     }
+
+    // Mengubah status featured testimonial
+    public function toggleFeatured($id)
+    {
+        $testimonial = Testimonial::findOrFail($id);
+        $testimonial->is_featured = !$testimonial->is_featured;
+        $testimonial->save();
+
+        return redirect()->route('admin.testimonials')
+                         ->with('success', 'Status testimonial berhasil diperbarui.');
+    }
 }

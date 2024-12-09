@@ -9,7 +9,7 @@ class Testimonial extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'message'];
+    protected $fillable = ['user_id', 'message', 'is_featured'];
 
     // Define relationship to User
     public function user()

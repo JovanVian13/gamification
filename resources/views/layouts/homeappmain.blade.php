@@ -145,7 +145,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="text-center text-white m-bg-secondary">
+    <footer class="text-center text-white py-3 m-bg-secondary ">
         <p>&copy; 2024 Gamification Platform. All rights reserved.</p>
     </footer>
 

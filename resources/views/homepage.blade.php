@@ -87,7 +87,7 @@
 <!-- Testimonials Section -->
 @php
     use App\Models\Testimonial;
-    $testimonials = Testimonial::with('user')->latest()->take(3)->get();
+    $testimonials = Testimonial::with('user')->where('is_featured', true)->latest()->take(3)->get();
 @endphp
 
 <section class="container my-5">

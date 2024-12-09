@@ -126,6 +126,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 
     // Testimonials
     Route::get('/admin/testimonials', [TestimonialController::class, 'index'])->name('admin.testimonials');
+    Route::patch('/admin/testimonials/{id}/toggle-featured', [TestimonialController::class, 'toggleFeatured'])->name('admin.toggle-featured');
 });
 
 // Tasks (User)

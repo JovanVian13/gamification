@@ -12,6 +12,7 @@ class CreateTestimonialsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id'); // Foreign key
             $table->text('message');
+            $table->boolean('is_featured')->default(false)->after('message');
             $table->timestamps();
 
             // Set foreign key constraint
