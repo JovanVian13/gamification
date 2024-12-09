@@ -19,8 +19,8 @@
                                     <img 
                                         src="{{ Auth::user()->profile_picture ? asset('storage/' . Auth::user()->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                         alt="Profile Photo" 
-                                        class="rounded-circle border border-white" 
-                                        style="width: 90px; height: 100px;"
+                                        class="rounded-circle shadow" 
+                                        style="width: 100px; height: 100px;"
                                     >
                                 </div>
                                 <!-- Informasi Pribadi -->
