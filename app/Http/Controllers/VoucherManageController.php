@@ -28,13 +28,14 @@ class VoucherManageController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'points_required' => 'required|integer|min:1',
+            'code' => 'required|string|max:255',
         ]);
 
         VoucherManage::create([
             'title' => $request->title,
             'description' => $request->description,
             'points_required' => $request->points_required,
-            'code' => strtoupper(uniqid('VC')), // Membuat kode unik dengan prefix "VC"
+            'code' => $request->code,
             'status' => 'active',
         ]);
 

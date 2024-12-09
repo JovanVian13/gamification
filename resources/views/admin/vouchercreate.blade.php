@@ -17,6 +17,10 @@
             <label for="points_required" class="form-label">Poin yang Dibutuhkan</label>
             <input type="number" class="form-control" id="points_required" name="points_required" value="{{ old('points_required') }}" required>
         </div>
+        <div class="mb-3">
+            <label for="code" class="form-label">Kode Voucher</label>
+            <input type="text" class="form-control" id="code" name="code" value="{{ old('code') }}" required>
+        </div>
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
 </div>
