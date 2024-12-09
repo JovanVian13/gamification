@@ -7,7 +7,7 @@
     <!-- Leaderboard Ranking -->
     <div class="card mb-4">
         <div class="card-header bg-gray text-white">
-            <h2 class="h4 mb-0">Ranking Pengguna</h2>
+            <h2 class="h4 mb-0 text-dark">Ranking Pengguna</h2>
         </div>
         <div class="card-body">
             @if (count($leaderboard) > 0)

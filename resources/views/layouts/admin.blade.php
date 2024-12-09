@@ -19,6 +19,42 @@
             font-family: 'Arial', sans-serif;
         }
 
+        .m-btn-primary {
+            background-color: #fbb041;
+            color: #ffffff;
+        }
+
+        .m-btn-primary:hover {
+            background-color: #fcc066;
+            color: #ffffff;
+        }
+
+        .m-btn-secondary {
+            background-color: #232E66;
+            color: #ffffff;
+        }
+
+        .m-btn-secondary:hover {
+            background-color: #4056A1;
+            color: #ffffff;
+        }
+
+        .m-bg-primary {
+            background-color: #fbb041;
+        }
+
+        .m-bg-secondary {
+            background-color: #232E66;
+        }
+
+        .m-p-primary {
+            color: #fbb041;
+        }
+
+        .m-p-secondary {
+            color: #232E66;
+        }
+
         .sidebar {
             background-color: #343a40;
             color: #ffffff;
