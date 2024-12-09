@@ -64,13 +64,13 @@
                                     aria-expanded="false" 
                                     aria-controls="collapseRedeemed{{ $index }}">
                                 <div class="row w-100">
-                                    <div class="col-6 d-flex align-items-center">
+                                    <div class="col-4 d-flex align-items-center">
                                         <strong>{{ $userVoucher->voucher->title }}</strong>
                                     </div>
-                                    <div class="col-3 d-flex justify-content-center align-items-center">
+                                    <div class="col-4 d-flex justify-content-center align-items-center">
                                         <span class="badge bg-info text-dark">{{ $userVoucher->status }}</span>
                                     </div>
-                                    <div class="col-3 d-flex justify-content-end align-items-center">
+                                    <div class="col-4 d-flex justify-content-end align-items-center">
                                         <small>{{ $userVoucher->redeemed_at ? $userVoucher->redeemed_at : 'Belum Ditukar' }}</small>
                                     </div>
                                 </div>
