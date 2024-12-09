@@ -49,27 +49,36 @@
         </div>
     </div>
 
-    <!-- Riwayat Penukaran Voucher -->
-    <div class="card shadow mb-5 border-2">
-        <div class="card-header text-white text-center py-3">
-            <h4 class="card-title m-p-secondary">Riwayat Penukaran Voucher</h4>
-        </div>
-        <div class="card-body">
-            <ul class="list-group">
-                @forelse($userVouchers as $userVoucher)
-                <li class="list-group-item d-flex justify-content-between align-items-center p-4">
-                    <div>
-                        <strong>{{ $userVoucher->voucher->title }}</strong> - 
+<!-- Riwayat Penukaran Voucher -->
+<div class="card shadow mb-5 border-2">
+    <div class="card-header text-white text-center py-3">
+        <h4 class="card-title m-p-secondary">Riwayat Penukaran Voucher</h4>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            @forelse($userVouchers as $userVoucher)
+            <li class="list-group-item p-4">
+                <div class="row align-items-center">
+                    <!-- Voucher Title -->
+                    <div class="col-md-4">
+                        <strong>{{ $userVoucher->voucher->title }}</strong>
+                    </div>
+                    <!-- Status -->
+                    <div class="col-md-4 text-center">
                         <span class="badge bg-info text-dark">{{ $userVoucher->status }}</span>
                     </div>
-                    <small class="ms-auto">{{ $userVoucher->redeemed_at ? 'Ditukar pada: ' . $userVoucher->redeemed_at : 'Belum Ditukar' }}</small>
-                </li>
-
-                @empty
-                    <li class="list-group-item text-muted">Belum ada riwayat penukaran voucher.</li>
-                @endforelse
-            </ul>
-        </div>
+                    <!-- Redeemed Date -->
+                    <div class="col-md-4 text-end">
+                        <small>{{ $userVoucher->redeemed_at ? 'Ditukar pada: ' . $userVoucher->redeemed_at : 'Belum Ditukar' }}</small>
+                    </div>
+                </div>
+            </li>
+            @empty
+            <li class="list-group-item text-muted">Belum ada riwayat penukaran voucher.</li>
+            @endforelse
+        </ul>
     </div>
+</div>
+
 </div>
 @endsection
