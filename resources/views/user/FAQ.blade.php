@@ -57,7 +57,7 @@
     <div class="container mt-5">
         <div class="card shadow-sm mb-5">
             <div class="card-body">
-                <h4 class="text-center mb-4">Kirim Testimonial Anda</h4>
+                <h4 class="text-center mb-4 m-p-secondary">Kirim Testimonial Anda</h4>
     
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
