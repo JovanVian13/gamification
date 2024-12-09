@@ -134,6 +134,18 @@
         .nav-link:hover {
             color: #fbb041 !important; /* Warna teks saat di-hover */
         }
+
+        .list-group-item {
+            display: flex;
+            flex-wrap: wrap; /* Untuk layar kecil, elemen bisa menyesuaikan */
+        }
+        .list-group-item > div {
+            flex: 1; /* Setiap elemen memiliki ruang proporsional */
+        }
+        .badge {
+            min-width: 80px; /* Ukuran minimum badge untuk keselarasan */
+            text-align: center;
+        }
     </style>
     @stack('styles')
 </head>

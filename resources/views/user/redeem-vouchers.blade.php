@@ -49,36 +49,52 @@
         </div>
     </div>
 
-<!-- Riwayat Penukaran Voucher -->
-<div class="card shadow mb-5 border-2">
-    <div class="card-header text-white text-center py-3">
-        <h4 class="card-title m-p-secondary">Riwayat Penukaran Voucher</h4>
+    <!-- Riwayat Penukaran Voucher -->
+    <div class="card shadow mb-5 border-2">
+        <div class="card-header text-white text-center py-3">
+            <h4 class="card-title m-p-secondary">Riwayat Penukaran Voucher</h4>
+        </div>
+        <div class="card-body">
+            <div class="accordion" id="redeemedVoucherAccordion">
+                @forelse($userVouchers as $index => $userVoucher)
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingRedeemed{{ $index }}">
+                            <button class="accordion-button collapsed" type="button" 
+                                    data-bs-toggle="collapse" data-bs-target="#collapseRedeemed{{ $index }}" 
+                                    aria-expanded="false" 
+                                    aria-controls="collapseRedeemed{{ $index }}">
+                                <div class="row w-100">
+                                    <div class="col-6 d-flex align-items-center">
+                                        <strong>{{ $userVoucher->voucher->title }}</strong>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-center align-items-center">
+                                        <span class="badge bg-info text-dark">{{ $userVoucher->status }}</span>
+                                    </div>
+                                    <div class="col-3 d-flex justify-content-end align-items-center">
+                                        <small>{{ $userVoucher->redeemed_at ? $userVoucher->redeemed_at : 'Belum Ditukar' }}</small>
+                                    </div>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="collapseRedeemed{{ $index }}" class="accordion-collapse collapse" 
+                            aria-labelledby="headingRedeemed{{ $index }}" 
+                            data-bs-parent="#redeemedVoucherAccordion">
+                            <div class="accordion-body">
+                                @if($userVoucher->status === 'redeemed')
+                                    <span class="text-success">Kode Voucher:</span> 
+                                    <strong>{{ $userVoucher->voucher->code }}</strong>
+                                @else
+                                    <span class="text-muted">Belum memiliki kode voucher.</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-muted">Belum ada riwayat penukaran voucher.</p>
+                @endforelse
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <ul class="list-group">
-            @forelse($userVouchers as $userVoucher)
-            <li class="list-group-item p-4">
-                <div class="row align-items-center">
-                    <!-- Voucher Title -->
-                    <div class="col-md-4">
-                        <strong>{{ $userVoucher->voucher->title }}</strong>
-                    </div>
-                    <!-- Status -->
-                    <div class="col-md-4 text-center">
-                        <span class="badge bg-info text-dark">{{ $userVoucher->status }}</span>
-                    </div>
-                    <!-- Redeemed Date -->
-                    <div class="col-md-4 text-end">
-                        <small>{{ $userVoucher->redeemed_at ? 'Ditukar pada: ' . $userVoucher->redeemed_at : 'Belum Ditukar' }}</small>
-                    </div>
-                </div>
-            </li>
-            @empty
-            <li class="list-group-item text-muted">Belum ada riwayat penukaran voucher.</li>
-            @endforelse
-        </ul>
-    </div>
-</div>
 
 </div>
 @endsection
