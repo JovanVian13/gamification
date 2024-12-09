@@ -13,6 +13,7 @@
 <!-- About Section -->
 <section class="container my-5">
     <div class="section-title m-p-secondary">
+    <div class="section-title m-p-secondary">
         <h2>What is Gamification?</h2>
         <p>Engage with exciting tasks, earn points, and unlock amazing rewards.</p>
     </div>

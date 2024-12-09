@@ -36,7 +36,7 @@
                                 @if($userPoints ?? 0 >= $voucher->points_required)
                                     <form action="{{ route('voucher.redeem.action', $voucher->id) }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn m-btn-secondary">Tukar Voucher</button>
+                                        <button type="submit" class="btn m-btn-primary">Tukar Voucher</button>
                                     </form>
                                 @else
                                     <p class="text-muted">Poin tidak cukup.</p>
