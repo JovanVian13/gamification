@@ -37,7 +37,7 @@
     <!-- User's Ranking -->
     @if ($rank !== null)
     <div class="card mb-4 shadow border-2">
-        <div class="card-header text-white text-center py-3">
+        <div class="card-header text-center py-3">
             <h2 class="h4 mb-0 m-p-secondary">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
@@ -55,7 +55,7 @@
     </div>
     @else
     <div class="card mb-4 shadow border-2">
-        <div class="card-header text-white text-center py-3">
+        <div class="card-header text-center py-3">
             <h2 class="h4 mb-0 m-p-secondary">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
@@ -75,8 +75,8 @@
 
     <!-- User's Badges -->
     <div class="card mt-4 mb-4 shadow border-2">
-        <div class="card-header text-white text-center py-3 m-bg-secondary">
-            <h2 class="h4 mb-0">Badges Anda</h2>
+        <div class="card-header text-center py-3">
+            <h2 class="h4 mb-0 m-p-secondary">Badges Anda</h2>
         </div>
         <div class="card-body">
             @if ($userBadges->count() > 0)

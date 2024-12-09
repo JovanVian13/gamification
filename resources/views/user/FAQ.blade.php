@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="card shadow rounded border-2 mb-4">
-        <div class="card-header text-white text-center p-4">
+        <div class="card-header text-center p-4">
             <h2 class="h4 mb-0 m-p-secondary">Frequently Asked Questions</h2>
         </div>
         <div class="accordion" id="faqAccordion">
@@ -56,8 +56,10 @@
     <!-- Form Testimonials -->
     <div class="container mt-5">
         <div class="card shadow-sm mb-5">
+            <div class="card-header text-center p-4">
+                <h2 class="h4 mb-0 m-p-secondary">Kirim Testimonial Anda</h2>
+            </div>
             <div class="card-body">
-                <h4 class="text-center mb-4 m-p-secondary">Kirim Testimonial Anda</h4>
     
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
