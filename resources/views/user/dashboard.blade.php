@@ -36,7 +36,7 @@
                 <div class="card-body d-flex align-items-center justify-content-between">
                     <!-- Bagian Poin -->
                     <div class="text-center px-4 shadow-sm border rounded">
-                        <p class="font-weight-bold m-text-primary mb-1">Total Poin Saya:<br><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
+                        <p class="font-weight-bold m-text-primary mb-1">Poin Saya:<br><strong>{{ $data['totalPoints'] ?? 'No points available' }}</strong></p>
                     </div>
                     <!-- Bagian Ranking -->
                     <div class="text-center shadow-sm px-4 border rounded">

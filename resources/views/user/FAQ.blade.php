@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="card shadow rounded border-2">
+    <div class="card shadow rounded border-2 mb-4">
         <div class="card-header text-white text-center p-4">
             <h2 class="h4 mb-0 m-p-secondary">Frequently Asked Questions</h2>
         </div>

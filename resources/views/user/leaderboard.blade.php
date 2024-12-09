@@ -75,24 +75,28 @@
 
     <!-- User's Badges -->
     <div class="card mt-4 mb-4 shadow border-2">
-        <div class="card-header text-white text-center py-3">
-            <h2 class="h4 mb-0 m-p-secondary">Badges Anda</h2>
+        <div class="card-header text-white text-center py-3 bg-primary">
+            <h2 class="h4 mb-0">Badges Anda</h2>
         </div>
         <div class="card-body">
             @if ($userBadges->count() > 0)
-                <div class="d-flex flex-wrap">
+                <div class="row g-3">
                     @foreach ($userBadges as $badge)
-                        <div class="badge-item text-center me-3 mb-3 p-4" style="width: 20%;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $badge->criteria }}<br>Earned: {{ $badge->pivot->earned_at ? \Carbon\Carbon::parse($badge->pivot->earned_at)->format('d F Y') : 'N/A' }}">
-                            <img src="{{ asset('storage/' . $badge->image) }}" 
-                                 alt="{{ $badge->name }}" 
-                                 class="rounded-circle shadow" 
-                                 style="width: 100px; height: 100px;">
-                            <p style="font-size: 1.25rem;font-weight: bold mt-2">{{ $badge->name }}</p>
+                        <div class="col-6 col-md-4 col-lg-3 text-center" data-bs-toggle="tooltip" 
+                            data-bs-html="true" 
+                            title="<strong>{{ $badge->criteria }}</strong><br>Earned: {{ $badge->pivot->earned_at ? \Carbon\Carbon::parse($badge->pivot->earned_at)->format('d F Y') : 'N/A' }}">
+                            <div class="badge-item p-2">
+                                <img src="{{ asset('storage/' . $badge->image) }}" 
+                                    alt="{{ $badge->name }}" 
+                                    class="rounded-circle shadow" 
+                                    style="width: 100px; height: 100px;">
+                                <p class="mt-2 mb-0 fw-bold">{{ $badge->name }}</p>
+                            </div>
                         </div>
                     @endforeach
                 </div>
             @else
-                <p class="text-muted">Anda belum memiliki badge.</p>
+                <p class="text-muted text-center">Anda belum memiliki badge.</p>
             @endif
         </div>
     </div>

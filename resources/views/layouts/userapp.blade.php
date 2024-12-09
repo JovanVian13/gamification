@@ -142,17 +142,70 @@
         .list-group-item > div {
             flex: 1; /* Setiap elemen memiliki ruang proporsional */
         }
+
+        /* Responsivitas untuk navbar */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1rem; /* Mengecilkan teks logo */
+            }
+
+            .navbar .nav-link {
+                font-size: 0.9rem; /* Mengecilkan ukuran teks link */
+            }
+
+            .dropdown-menu {
+                font-size: 0.85rem; /* Mengecilkan dropdown menu */
+            }
+        }
+
+        /* Responsivitas untuk tombol notifikasi */
+        @media (max-width: 576px) {
+            #notificationDropdown {
+                font-size: 0.9rem; /* Sesuaikan ukuran tombol */
+            }
+
+            #notificationDropdown .badge {
+                font-size: 0.75rem; /* Sesuaikan ukuran badge */
+            }
+        }
+
+        /* Responsivitas untuk konten hero-section */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh; /* Sesuaikan tinggi untuk layar kecil */
+                text-align: center;
+            }
+
+            .hero-section h1 {
+                font-size: 1.5rem; /* Mengecilkan ukuran font heading */
+            }
+
+            .hero-section .cta-button {
+                font-size: 0.9rem; /* Mengecilkan tombol CTA */
+                padding: 8px 16px; /* Sesuaikan padding */
+            }
+        }
+
+        /* Responsivitas untuk footer */
+        @media (max-width: 576px) {
+            footer {
+                font-size: 0.8rem; /* Mengecilkan teks footer */
+                padding: 10px; /* Mengurangi padding */
+            }
+        }
     </style>
     @stack('styles')
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg m-bg-secondary text-white">
+    <nav class="navbar navbar-expand-lg m-bg-secondary text-white shadow-sm py-3">
         <div class="container-fluid">
-            <img src="../../assets/img/logo.png" alt="logo" class="img-fluid" style="max-width: 5%;">
-            <a class="navbar-brand text-white" href="{{ route('user.dashboard') }}">Gamification</a>
-            <div class="position-relative">
+            <!-- Logo dan Nama Brand -->
+            <div class="d-flex align-items-center">
+                <img src="../../assets/img/logo.png" alt="logo" class="img-fluid me-2" style="max-width: 40px;">
+                <a class="navbar-brand text-white fw-bold me-3" href="{{ route('user.dashboard') }}">Gamification</a>
+
                 <!-- Dropdown Notifikasi -->
                 <div class="dropdown">
                     <button class="btn dropdown-toggle position-relative d-flex align-items-center text-white border-0 shadow-sm" 
@@ -175,23 +228,30 @@
                     </ul>
                 </div>
             </div>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'user.dashboard' ? 'm-p-primary' : 'text-white' }}" href="{{ route('user.dashboard') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'usertask' ? 'm-p-primary' : 'text-white' }}" href="{{ route('usertask') }}">Tasks</a></li>
-                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'user.leaderboard' ? 'm-p-primary' : 'text-white' }}" href="{{ route('user.leaderboard') }}">Leaderboard</a></li>
-                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'redeem.vouchers' ? 'm-p-primary' : 'text-white' }}" href="{{ route('redeem.vouchers') }}">Vouchers</a></li>
-                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'contact' ? 'm-p-primary' : 'text-white' }}" href="{{ route('contact') }}">Contact</a></li>
-                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'faq' ? 'm-p-primary' : 'text-white' }}" href="{{ route('faq') }}">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'profile.show' ? 'm-p-primary' : 'text-white' }}" href="{{ route('profile.show') }}">Profile</a></li>
-                <li class="nav-item">
-                    <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center">
-                        @csrf
-                        <button type="submit" class="btn nav-link text-white border-0" style="background: none;">
-                            Logout
-                        </button>
-                    </form>
-                </li>
-            </ul>
+
+            <!-- Toggle Button -->
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'user.dashboard' ? 'm-p-primary' : 'text-white' }}" href="{{ route('user.dashboard') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'usertask' ? 'm-p-primary' : 'text-white' }}" href="{{ route('usertask') }}">Tasks</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'user.leaderboard' ? 'm-p-primary' : 'text-white' }}" href="{{ route('user.leaderboard') }}">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'redeem.vouchers' ? 'm-p-primary' : 'text-white' }}" href="{{ route('redeem.vouchers') }}">Vouchers</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'contact' ? 'm-p-primary' : 'text-white' }}" href="{{ route('contact') }}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'faq' ? 'm-p-primary' : 'text-white' }}" href="{{ route('faq') }}">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Route::currentRouteName() == 'profile.show' ? 'm-p-primary' : 'text-white' }}" href="{{ route('profile.show') }}">Profile</a></li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn nav-link text-white border-0" style="background: none;">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
