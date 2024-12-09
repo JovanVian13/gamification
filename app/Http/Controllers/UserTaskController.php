@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserTask;
-use App\Models\Task;
 use App\Models\Points;
 
 class UserTaskController extends Controller
@@ -11,14 +10,12 @@ class UserTaskController extends Controller
     // Menampilkan daftar tugas pengguna
     public function index()
     {
-        // Ambil semua tugas yang terkait dengan pengguna saat ini
         $userTasks = UserTask::with('task')
-            ->where('user_id', auth()->id()) // Tugas hanya untuk user yang sedang login
-            ->orderBy('status', 'asc') // Urutkan berdasarkan status (incomplete terlebih dahulu)
-            ->orderBy('created_at', 'asc') // Tambahkan pengurutan tambahan (opsional)
+            ->where('user_id', auth()->id())
+            ->orderBy('status', 'asc')
+            ->orderBy('created_at', 'asc')
             ->get();
 
-        // Pastikan `userTasks` dikirim ke view
         return view('user.task', compact('userTasks'));
     }
 
@@ -27,47 +24,57 @@ class UserTaskController extends Controller
         $taskId = $request->input('task_id');
         $eventType = $request->input('event_type');
 
-        // Save interaction logic
+        // Jika event_type adalah 'completed', tandai tugas sebagai selesai
         if ($eventType === 'completed') {
             $userTask = UserTask::find($taskId);
+
             if ($userTask && $userTask->status === 'incomplete') {
+                // Menandai tugas sebagai selesai
                 $userTask->status = 'completed';
                 $userTask->save();
+
+                // Tambahkan poin ke tabel points
+                Points::create([
+                    'user_id' => $userTask->user_id,
+                    'points' => $userTask->task->points,
+                    'period' => 'daily',
+                    'date' => now()->toDateString(),
+                ]);
+
+                // Tambahkan poin ke pengguna
+                $user = $userTask->user;
+                if ($user) {
+                    $user->increment('points', $userTask->task->points);
+                }
             }
         }
 
+        // Kembalikan response JSON
         return response()->json(['message' => 'Interaction tracked successfully']);
     }
 
     // Menyelesaikan tugas
     public function markAsComplete($id)
     {
-        // Cari UserTask berdasarkan ID
         $userTask = UserTask::findOrFail($id);
-    
-        // Pastikan status masih pending sebelum mengubah
+
         if ($userTask->status !== 'completed') {
             $userTask->update(['status' => 'completed']);
         }
-    
-        // Tambahkan poin ke tabel points
+
         Points::create([
             'user_id' => $userTask->user_id,
             'points' => $userTask->task->points,
-            'period' => 'daily', // Atur period sesuai logika Anda
+            'period' => 'daily',
             'date' => now()->toDateString(),
         ]);
-    
-        // **Perbaikan di sini**: Tambahkan poin ke tabel users
-        $user = $userTask->user; // Ambil user yang terkait dengan userTask
+
+        $user = $userTask->user;
         if ($user) {
             $user->increment('points', $userTask->task->points);
         }
 
-    
-        // Redirect kembali ke halaman My Tasks dengan pesan sukses
         return redirect()->route('usertask')->with('success', 'Task marked as completed!');
     }
-    
-
 }
+

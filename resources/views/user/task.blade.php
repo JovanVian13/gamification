@@ -41,7 +41,8 @@
                                     <td>{{ $userTask->task->points }}</td>
                                     <td>
                                         @if (!empty($userTask->task->url))
-                                        <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none">
+                                        <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none"
+                                           onclick="markTaskAsComplete({{ $userTask->id }})">
                                             Watch Video
                                         </a>
                                         @else
@@ -71,4 +72,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    function markTaskAsComplete(taskId) {
+        // Menggunakan AJAX untuk menandai tugas sebagai selesai
+        fetch("{{ route('video.interaction') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                task_id: taskId,
+                event_type: 'completed'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Periksa apakah status berhasil diperbarui
+            if (data.message === 'Interaction tracked successfully') {
+                alert('Task marked as completed!');
+                location.reload(); // Reload halaman untuk memperbarui status tugas
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
 @endsection
