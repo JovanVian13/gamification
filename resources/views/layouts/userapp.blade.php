@@ -143,78 +143,13 @@
             flex: 1;
         }
 
-        /* Responsivitas untuk navbar */
-        @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1rem;
-            }
+        .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
 
-            .navbar .nav-link {
-                font-size: 0.9rem;
-            }
-
-            .dropdown-menu {
-                font-size: 0.85rem;
-            }
-        }
-
-
-        /* Default style (for larger screens) */
-        .user-profile-container .profile-content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        /* Media query for small screens (like mobile) */
-        @media (max-width: 768px) {
-            .user-profile-container .profile-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .user-profile-container .profile-picture {
-                margin-bottom: 15px;
-            }
-        }
-
-
-
-        /* Responsivitas untuk tombol notifikasi */
-        @media (max-width: 576px) {
-            #notificationDropdown {
-                font-size: 0.9rem;
-            }
-
-            #notificationDropdown .badge {
-                font-size: 0.75rem;
-            }
-        }
-
-        /* Responsivitas untuk konten hero-section */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 50vh;
-                text-align: center;
-            }
-
-            .hero-section h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero-section .cta-button {
-                font-size: 0.9rem;
-                padding: 8px 16px;
-            }
-        }
-
-        /* Responsivitas untuk footer */
-        @media (max-width: 576px) {
-            footer {
-                font-size: 0.8rem;
-                padding: 10px;
-            }
-        }
+    .navbar-toggler {
+        border: none; /* Menghilangkan border tombol */
+    }
     </style>
     @stack('styles')
 </head>
@@ -252,8 +187,8 @@
             </div>
 
             <!-- Toggle Button -->
-            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Navbar Links -->
