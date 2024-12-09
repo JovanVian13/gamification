@@ -12,16 +12,28 @@
     <!-- Bootstrap Icons (Optional for icons) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    @stack('styles') {{-- For additional styles --}}
+    @stack('styles')
     <style>
         body {
             background-color: #f8f9fa;
             font-family: 'Arial', sans-serif;
         }
+
         .sidebar {
             background-color: #343a40;
             color: #ffffff;
+            position: fixed;
+            z-index: 1050;
+            height: 100%;
+            width: 250px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
         }
+
+        .sidebar.show {
+            transform: translateX(0);
+        }
+
         .sidebar a {
             color: #adb5bd;
             text-decoration: none;
@@ -30,99 +42,84 @@
             border-radius: 5px;
             transition: all 0.2s ease-in-out;
         }
+
         .sidebar a:hover, .sidebar a.active {
             background-color: #495057;
             color: #ffffff;
         }
+
         .content {
             background-color: #ffffff;
             min-height: 100vh;
+            margin-left: 250px;
+            transition: margin-left 0.3s ease-in-out;
         }
+
+        .content.collapsed {
+            margin-left: 0;
+        }
+
         .navbar {
             background-color: #ffffff;
             border-bottom: 1px solid #e9ecef;
         }
+
         .navbar .nav-link {
             color: #495057;
         }
+
         .navbar .nav-link:hover {
             color: #007bff;
         }
 
-        .m-btn-primary {
-            background-color: #fbb041;
-            color: #ffffff;
+        /* Overlay untuk layar kecil */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1049;
         }
 
-        .m-btn-primary:hover {
-            background-color: #fcc066;
-            color: #ffffff;
+        .overlay.active {
+            display: block;
         }
 
-        .m-btn-secondary {
-            background-color: #232E66;
-            color: #ffffff;
+        @media (min-width: 769px) {
+            .sidebar {
+                transform: translateX(0); /* Sidebar selalu terlihat */
+            }
+
+            .content {
+                margin-left: 250px; /* Konten tidak terpengaruh sidebar */
+            }
+
+            .overlay {
+                display: none; /* Overlay tidak diperlukan di layar besar */
+            }
         }
 
-        .m-btn-secondary:hover {
-            background-color: #4056A1;
-            color: #ffffff;
-        }
-
-        .m-bg-primary {
-            background-color: #fbb041;
-        }
-
-        .m-bg-secondary {
-            background-color: #232E66;
-        }
-
-        .m-p-primary {
-            color: #fbb041;
-        }
-
-        .m-p-secondary {
-            color: #232E66;
-        }
-
-        .bg-gray {
-            background-color: #495057;
-        }
 
         @media (max-width: 768px) {
             .sidebar {
-                position: fixed;
-                z-index: 1050;
-                height: 100%;
-                width: 250px;
                 transform: translateX(-100%);
-                transition: transform 0.3s ease-in-out;
             }
+
             .sidebar.show {
                 transform: translateX(0);
             }
+
             .content {
                 margin-left: 0;
             }
         }
-        .pagination {
-            justify-content: center; /* Menyelaraskan pagination di tengah */
-        }
-
-        .pagination .page-item .page-link {
-            padding: 0.5rem 0.75rem; /* Ukuran tombol */
-            font-size: 0.875rem;     /* Ukuran font */
-            border-radius: 5px;      /* Membuat tombol lebih melengkung */
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: #007bff; /* Warna tombol aktif */
-            border-color: #007bff;
-            color: #fff;
-        }
-
-        .pagination .page-item .page-link:hover {
-            background-color: #f8f9fa; /* Warna tombol saat hover */
+        @media (min-width: 769px) {
+            #toggle-sidebar {
+                display: none; /* Sembunyikan tombol toggle */
+            }
         }
 
     </style>
@@ -152,10 +149,19 @@
             </ul>
         </nav>
 
-        <!-- Main Content -->
-        <div class="content flex-grow-1" style="">
-            <!-- Navbar -->
+        <!-- Overlay -->
+        <div id="overlay" class="overlay"></div>
 
+        <!-- Main Content -->
+        <div class="content flex-grow-1">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light" id="toggle-sidebar">
+                <div class="container-fluid">
+                    <button class="btn btn-outline-secondary me-3">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </nav>
 
             <!-- Page Content -->
             <main class="p-4">
@@ -167,10 +173,35 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('toggle-sidebar').addEventListener('click', function () {
-            document.getElementById('sidebar').classList.toggle('show');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const toggleSidebar = document.getElementById('toggle-sidebar');
+
+        // Tampilkan sidebar dan overlay untuk layar kecil
+        toggleSidebar.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('active');
         });
+
+        // Tutup sidebar jika overlay diklik
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('active');
+        });
+
+        // Perbaiki sidebar saat layar di-resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                // Layar besar: sidebar terlihat, overlay tidak aktif
+                sidebar.classList.add('show');
+                overlay.classList.remove('active');
+            } else {
+                // Layar kecil: sidebar tersembunyi
+                sidebar.classList.remove('show');
+            }
+        });
+
     </script>
-    @stack('scripts') {{-- For additional scripts --}}
+    @stack('scripts')
 </body>
 </html>
