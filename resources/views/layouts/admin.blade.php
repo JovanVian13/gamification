@@ -122,6 +122,21 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 35vh; /* Tinggi lebih kecil untuk layar kecil */
+            }
+
+            .btn {
+                font-size: 0.875rem; /* Ukuran teks tombol lebih kecil */
+                padding: 0.5rem 1rem; /* Padding tombol lebih kecil */
+            }
+
+            .card-body {
+                padding: 0.75rem; /* Kurangi padding di dalam kartu */
+            }
+        }
+
     </style>
 </head>
 <body>

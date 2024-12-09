@@ -11,7 +11,7 @@
 
         <!-- Statistik Pengguna -->
         <div class="row mb-4">
-            <div class="col-md-4">
+            <div class="col-md-6 col-lg-4 mb-3">
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Pengguna Aktif</h5>
@@ -22,8 +22,7 @@
                 </div>
             </div>
 
-            <!-- Statistik Voucher -->
-            <div class="col-md-4">
+            <div class="col-md-6 col-lg-4 mb-3">
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Voucher</h5>
@@ -34,29 +33,37 @@
         </div>
 
         <!-- Grafik Pendaftaran -->
-        <div class="mb-4">
-            <h5>Grafik Tren Pendaftaran</h5>
-            @if ($newUsers->count())
-            <canvas id="userRegistrationChart"></canvas>
-            @else
-            <p class="text-muted">Tidak ada data pendaftaran tersedia.</p>
-            @endif
+        <div class="row mb-4">
+            <div class="col-12">
+                <h5>Grafik Tren Pendaftaran</h5>
+                @if ($newUsers->count())
+                <div class="chart-container" style="position: relative; height: 50vh;">
+                    <canvas id="userRegistrationChart"></canvas>
+                </div>
+                @else
+                <p class="text-muted">Tidak ada data pendaftaran tersedia.</p>
+                @endif
+            </div>
         </div>
 
         <!-- Grafik Statistik Tugas -->
-        <div class="mb-4">
-            <h5>Statistik Tugas</h5>
-            @if ($taskStats->count())
-            <canvas id="taskStatsChart"></canvas>
-            @else
-            <p class="text-muted">Tidak ada data tugas tersedia.</p>
-            @endif
+        <div class="row mb-4">
+            <div class="col-12">
+                <h5>Statistik Tugas</h5>
+                @if ($taskStats->count())
+                <div class="chart-container" style="position: relative; height: 50vh;">
+                    <canvas id="taskStatsChart"></canvas>
+                </div>
+                @else
+                <p class="text-muted">Tidak ada data tugas tersedia.</p>
+                @endif
+            </div>
         </div>
 
         <!-- Tombol Ekspor -->
-        <div class="mt-4">
-            <a href="{{ route('exportcsv') }}" class="btn btn-primary">Export CSV</a>
-            <a href="{{ route('exportexcel') }}" class="btn btn-success">Export Excel</a>
+        <div class="mt-4 d-flex flex-column flex-md-row gap-2">
+            <a href="{{ route('exportcsv') }}" class="btn btn-primary w-100 w-md-auto">Export CSV</a>
+            <a href="{{ route('exportexcel') }}" class="btn btn-success w-100 w-md-auto">Export Excel</a>
         </div>
     </main>
 </div>
@@ -93,6 +100,16 @@
         new Chart(document.getElementById('userRegistrationChart'), {
             type: 'line',
             data: userRegistrationData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                }
+            }
         });
     }
 
@@ -100,6 +117,16 @@
         new Chart(document.getElementById('taskStatsChart'), {
             type: 'bar',
             data: taskStatsData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                }
+            }
         });
     }
 </script>
