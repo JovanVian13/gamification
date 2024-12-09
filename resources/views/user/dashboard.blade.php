@@ -61,9 +61,9 @@
                     <div class="col-12 col-md-6 d-flex justify-content-center align-items-center mb-3 mb-md-0">
                         <!-- Gambar Piala -->
                         <div class="d-flex flex-column justify-content-center align-items-center">
-                            @if(isset($leaderboard[1]))
+                            @if(isset($leaderboard[2]))
                             <img
-                                src="{{ $leaderboard[1]->profile_picture ? asset('storage/' . $leaderboard[1]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
+                                src="{{ $leaderboard[2]->profile_picture ? asset('storage/' . $leaderboard[2]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
@@ -77,7 +77,7 @@
                             >
                             @endif
                             <img
-                                src="{{ asset('assets/img/trophy2.png') }}" 
+                                src="{{ asset('assets/img/trophy3.png') }}" 
                                 alt="Trophy" 
                                 style="width: 90px; height: 90px;"
                             >
@@ -107,9 +107,9 @@
                         </div>
 
                         <div class="d-flex flex-column justify-content-center align-items-center">
-                            @if(isset($leaderboard[2]))
+                            @if(isset($leaderboard[1]))
                             <img
-                                src="{{ $leaderboard[2]->profile_picture ? asset('storage/' . $leaderboard[2]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
+                                src="{{ $leaderboard[1]->profile_picture ? asset('storage/' . $leaderboard[1]->profile_picture) : asset('assets/img/default-profile.jpg') }}" 
                                 alt="Profile Picture" 
                                 class="rounded-circle shadow" 
                                 style="width: 40px; height: 40px;"
@@ -123,7 +123,7 @@
                             >
                             @endif
                             <img 
-                                src="{{ asset('assets/img/trophy3.png') }}" 
+                                src="{{ asset('assets/img/trophy2.png') }}" 
                                 alt="Trophy" 
                                 style="width: 100px; height: 100px;"
                             >
@@ -137,9 +137,9 @@
                                     <!-- Informasi Leaderboard -->
                                     <div class="d-flex align-items-center">
                                         <span class="m-bg-primary px-2 rounded font-weight-bold text-white me-2">{{ $index + 1 }}</span>
-                                        <strong class="me-4">{{ $entry->name }}</strong>
+                                        <strong class="me-3">{{ $entry->name }}</strong>
                                     </div>
-                                    <span class="text-muted ms-4">{{ $entry->total_points }} poin</span>
+                                    <span class="text-muted ms-3">{{ $entry->total_points }} poin</span>
                                 </li>
                                 @endforeach
                             @else
