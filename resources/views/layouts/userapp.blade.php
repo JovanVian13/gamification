@@ -142,10 +142,6 @@
         .list-group-item > div {
             flex: 1; /* Setiap elemen memiliki ruang proporsional */
         }
-        .badge {
-            min-width: 80px; /* Ukuran minimum badge untuk keselarasan */
-            text-align: center;
-        }
     </style>
     @stack('styles')
 </head>
@@ -159,11 +155,13 @@
             <div class="position-relative">
                 <!-- Dropdown Notifikasi -->
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle position-relative d-flex align-items-center text-white" 
-                        type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-bell"></i>
+                    <button class="btn dropdown-toggle position-relative d-flex align-items-center text-white border-0 shadow-sm" 
+                            type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell fs-5"></i>
                         @if($notifications->where('read_status', 'unread')->count() > 0)
-                            <span class="badge bg-danger">{{ $notifications->where('read_status', 'unread')->count() }}</span>
+                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-circle">
+                                {{ $notifications->where('read_status', 'unread')->count() }}
+                            </span>
                         @endif
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
