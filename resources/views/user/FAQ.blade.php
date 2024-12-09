@@ -53,4 +53,24 @@
         </div>  
     </div>
 </div>
+    <!-- Form Testimonials -->
+    <div class="container mt-5">
+        <div class="card shadow-sm mb-5">
+            <div class="card-body">
+                <h4 class="text-center mb-4">Kirim Testimonial Anda</h4>
+    
+                @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+    
+                <form action="{{ route('testimonials.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn m-btn-primary w-100">Kirim Testimonial</button>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
