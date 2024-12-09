@@ -75,7 +75,7 @@
 
     <!-- User's Badges -->
     <div class="card mt-4 mb-4 shadow border-2">
-        <div class="card-header text-white text-center py-3 bg-primary">
+        <div class="card-header text-white text-center py-3 m-bg-secondary">
             <h2 class="h4 mb-0">Badges Anda</h2>
         </div>
         <div class="card-body">
