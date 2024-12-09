@@ -105,12 +105,12 @@
 
         /* Dropdown visibility */
         #notification-dropdown {
-            z-index: 1050; /* Ensure dropdown appears on top */
+            z-index: 1050;
         }
 
         /* Hover effect for dropdown items */
         #notification-dropdown .dropdown-item:hover {
-            background-color: #f8f9fa; /* Light gray background */
+            background-color: #f8f9fa;
             cursor: pointer;
         }
 
@@ -132,65 +132,87 @@
         }
 
         .nav-link:hover {
-            color: #fbb041 !important; /* Warna teks saat di-hover */
+            color: #fbb041 !important;
         }
 
         .list-group-item {
             display: flex;
-            flex-wrap: wrap; /* Untuk layar kecil, elemen bisa menyesuaikan */
+            flex-wrap: wrap;
         }
         .list-group-item > div {
-            flex: 1; /* Setiap elemen memiliki ruang proporsional */
+            flex: 1;
         }
 
         /* Responsivitas untuk navbar */
         @media (max-width: 768px) {
             .navbar-brand {
-                font-size: 1rem; /* Mengecilkan teks logo */
+                font-size: 1rem;
             }
 
             .navbar .nav-link {
-                font-size: 0.9rem; /* Mengecilkan ukuran teks link */
+                font-size: 0.9rem;
             }
 
             .dropdown-menu {
-                font-size: 0.85rem; /* Mengecilkan dropdown menu */
+                font-size: 0.85rem;
             }
         }
+
+
+        /* Default style (for larger screens) */
+        .user-profile-container .profile-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        /* Media query for small screens (like mobile) */
+        @media (max-width: 768px) {
+            .user-profile-container .profile-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .user-profile-container .profile-picture {
+                margin-bottom: 15px;
+            }
+        }
+
+
 
         /* Responsivitas untuk tombol notifikasi */
         @media (max-width: 576px) {
             #notificationDropdown {
-                font-size: 0.9rem; /* Sesuaikan ukuran tombol */
+                font-size: 0.9rem;
             }
 
             #notificationDropdown .badge {
-                font-size: 0.75rem; /* Sesuaikan ukuran badge */
+                font-size: 0.75rem;
             }
         }
 
         /* Responsivitas untuk konten hero-section */
         @media (max-width: 768px) {
             .hero-section {
-                height: 50vh; /* Sesuaikan tinggi untuk layar kecil */
+                height: 50vh;
                 text-align: center;
             }
 
             .hero-section h1 {
-                font-size: 1.5rem; /* Mengecilkan ukuran font heading */
+                font-size: 1.5rem;
             }
 
             .hero-section .cta-button {
-                font-size: 0.9rem; /* Mengecilkan tombol CTA */
-                padding: 8px 16px; /* Sesuaikan padding */
+                font-size: 0.9rem;
+                padding: 8px 16px;
             }
         }
 
         /* Responsivitas untuk footer */
         @media (max-width: 576px) {
             footer {
-                font-size: 0.8rem; /* Mengecilkan teks footer */
-                padding: 10px; /* Mengurangi padding */
+                font-size: 0.8rem;
+                padding: 10px;
             }
         }
     </style>
