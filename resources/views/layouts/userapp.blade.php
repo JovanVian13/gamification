@@ -142,57 +142,6 @@
         .list-group-item > div {
             flex: 1; /* Setiap elemen memiliki ruang proporsional */
         }
-
-        /* Responsivitas untuk navbar */
-        @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1rem; /* Mengecilkan teks logo */
-            }
-
-            .navbar .nav-link {
-                font-size: 0.9rem; /* Mengecilkan ukuran teks link */
-            }
-
-            .dropdown-menu {
-                font-size: 0.85rem; /* Mengecilkan dropdown menu */
-            }
-        }
-
-        /* Responsivitas untuk tombol notifikasi */
-        @media (max-width: 576px) {
-            #notificationDropdown {
-                font-size: 0.9rem; /* Sesuaikan ukuran tombol */
-            }
-
-            #notificationDropdown .badge {
-                font-size: 0.75rem; /* Sesuaikan ukuran badge */
-            }
-        }
-
-        /* Responsivitas untuk konten hero-section */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 50vh; /* Sesuaikan tinggi untuk layar kecil */
-                text-align: center;
-            }
-
-            .hero-section h1 {
-                font-size: 1.5rem; /* Mengecilkan ukuran font heading */
-            }
-
-            .hero-section .cta-button {
-                font-size: 0.9rem; /* Mengecilkan tombol CTA */
-                padding: 8px 16px; /* Sesuaikan padding */
-            }
-        }
-
-        /* Responsivitas untuk footer */
-        @media (max-width: 576px) {
-            footer {
-                font-size: 0.8rem; /* Mengecilkan teks footer */
-                padding: 10px; /* Mengurangi padding */
-            }
-        }
     </style>
     @stack('styles')
 </head>
