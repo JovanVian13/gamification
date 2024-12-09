@@ -25,25 +25,38 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $role = Auth::user()->role;
-            
-            ActivityLog::create([
-                'user_id' => Auth::id(),
-                'action' => 'User logged in',
-                'ip_address' => $request->ip(),
-                'user_agent' => $request->header('User-Agent'),
-            ]);
+        // Mengecek apakah email ada di database
+        $user = \App\Models\User::where('email', $request->email)->first();
 
-            if ($role === 'user') {
-                return redirect()->route('user.dashboard');
+        if ($user) {
+            // Jika ada, cek apakah passwordnya benar
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                $role = Auth::user()->role;
+                
+                // Log activity
+                ActivityLog::create([
+                    'user_id' => Auth::id(),
+                    'action' => 'User logged in',
+                    'ip_address' => $request->ip(),
+                    'user_agent' => $request->header('User-Agent'),
+                ]);
+
+                // Redirect berdasarkan role user
+                if ($role === 'user') {
+                    return redirect()->route('user.dashboard');
+                } else {
+                    return redirect()->route('admin.dashboard');
+                }
             } else {
-                return redirect()->route('admin.dashboard');
+                // Password salah
+                return back()->withErrors(['password' => 'Password salah.']);
             }
+        } else {
+            // Email tidak ditemukan
+            return back()->withErrors(['email' => 'Email tidak terdaftar.']);
         }
-
-        return back()->withErrors(['email' => 'Invalid credentials.']);
     }
+
 
     public function logout(Request $request)
     {

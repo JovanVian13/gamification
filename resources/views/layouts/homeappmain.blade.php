@@ -74,8 +74,8 @@
 
         .cta-button {
             /*background-color: #fbb041;*/
-            background-color: #232E66;
-            color: #fbb041;
+            background-color: #fbb041;
+            color: #232E66;
             padding: 16px 30px;
             font-size: 20px;
             border-radius: 5px;

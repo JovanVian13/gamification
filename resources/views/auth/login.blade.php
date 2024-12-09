@@ -8,6 +8,16 @@
     <div class="card shadow-lg border-0 mb-4 mt-5 card-login">
         <div class="card-body p-5">
             <h2 class="card-title text-center mb-4">Login</h2>
+
+            <!-- Menampilkan pesan error jika ada -->
+            @if($errors->any())
+                <div class="alert alert-danger text-center mb-3">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3 mt-5">

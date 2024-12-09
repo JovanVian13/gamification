@@ -88,17 +88,18 @@
     use App\Models\Testimonial;
     $testimonials = Testimonial::with('user')->latest()->take(3)->get();
 @endphp
+
 <section class="container my-5">
     <div class="section-title m-p-secondary">
         <h2>What Our Users Say</h2>
     </div>
-    <div class="row">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         @forelse($testimonials as $testimonial)
-            <div class="col-md-4">
-                <div class="card feature-card">
-                    <div class="card-body text-center">
-                        <p>"{{ $testimonial->message }}"</p>
-                        <h5>- {{ $testimonial->user->name }}</h5>
+            <div class="col">
+                <div class="card feature-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <p class="flex-grow-1 text-center">"{{ $testimonial->message }}"</p>
+                        <h5 class="mt-auto text-center">- {{ $testimonial->user->name }}</h5>
                     </div>
                 </div>
             </div>
@@ -109,5 +110,6 @@
         @endforelse
     </div>
 </section>
+
 
 @endsection
