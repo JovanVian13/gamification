@@ -84,35 +84,30 @@
 </section>
 
 <!-- Testimonials Section -->
+@php
+    use App\Models\Testimonial;
+    $testimonials = Testimonial::with('user')->latest()->take(3)->get();
+@endphp
 <section class="container my-5">
     <div class="section-title m-p-secondary">
         <h2>What Our Users Say</h2>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div class="card feature-card">
-                <div class="card-body text-center">
-                    <p>"This platform is amazing! I’ve earned so many rewards just by watching videos!"</p>
-                    <h5>- User 1</h5>
+        @forelse($testimonials as $testimonial)
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center">
+                        <p>"{{ $testimonial->message }}"</p>
+                        <h5>- {{ $testimonial->user->name }}</h5>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card feature-card">
-                <div class="card-body text-center">
-                    <p>"I love how easy it is to earn points and convert them into vouchers."</p>
-                    <h5>- User 2</h5>
-                </div>
+        @empty
+            <div class="col-12 text-center">
+                <p class="text-muted">Belum ada testimonial.</p>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card feature-card">
-                <div class="card-body text-center">
-                    <p>"The tasks are fun and I enjoy competing on the leaderboard!"</p>
-                    <h5>- User 3</h5>
-                </div>
-            </div>
-        </div>
+        @endforelse
     </div>
 </section>
+
 @endsection

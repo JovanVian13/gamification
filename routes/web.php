@@ -7,10 +7,9 @@ use App\Http\Controllers\{
     NotificationController, UserVoucherController, AdminLeaderBoardController, BadgesController, 
     LeaderBoardController, UserTaskController, ReportController, SecurityLogController, 
     SettingsController, TaskManageController, UserManageController, VoucherManageController, 
-    AuthController
+    AuthController, TestimonialController
 };
 use App\Http\Middleware\RoleMiddleware;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +21,11 @@ use App\Http\Middleware\RoleMiddleware;
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 Route::get('/faq', [FeedbackController::class, 'showFaq'])->name('faq');
 Route::get('/contact', [FeedbackController::class, 'contactSupport'])->name('contact');
+Route::post('/testimonials', [TestimonialController::class, 'store'])
+    ->middleware('auth')
+    ->name('testimonials.store');
+
+
 
 // Feedback
 Route::get('/feedback', [FeedbackController::class, 'showForm'])->name('feedback.form');
