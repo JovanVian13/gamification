@@ -19,6 +19,7 @@ class CreateUserVoucherTable extends Migration
             $table->unsignedBigInteger('voucher_id'); // Foreign key ke vouchers
             $table->enum('status', ['redeemed', 'pending'])->default('pending'); // Status penukaran
             $table->timestamp('redeemed_at')->nullable(); // Waktu penukaran
+            $table->timestamp('expired_at')->nullable();
             $table->timestamps(); // Timestamps
     
             // Foreign key constraints

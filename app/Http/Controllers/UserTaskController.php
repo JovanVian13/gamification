@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserTask;
 use App\Models\Points;
+use App\Models\Notification;
 use App\Helpers\UserActivityHelper;
 
 class UserTaskController extends Controller
@@ -32,6 +33,7 @@ class UserTaskController extends Controller
             if ($userTask && $userTask->status === 'incomplete') {
                 // Menandai tugas sebagai selesai
                 $userTask->status = 'completed';
+                $userTask->completed_at = now();
                 $userTask->save();
 
                 // Tambahkan poin ke tabel points
@@ -50,6 +52,14 @@ class UserTaskController extends Controller
             }
         }
 
+        // Buat notifikasi
+        Notification::create([
+            'user_id' => $userTask->user_id,
+            'title' => 'Task Completed',
+            'message' => 'You have completed the task: ' . $userTask->task->title,
+            'read_status' => 'unread',
+        ]);
+
         // Kembalikan response JSON
         return response()->json(['message' => 'Interaction tracked successfully']);
     }
@@ -60,7 +70,10 @@ class UserTaskController extends Controller
         $userTask = UserTask::findOrFail($id);
 
         if ($userTask->status !== 'completed') {
-            $userTask->update(['status' => 'completed']);
+            $userTask->update([
+                'status' => 'completed',
+                'completed_at' => now(),
+            ]);
         }
 
         Points::create([
@@ -76,6 +89,14 @@ class UserTaskController extends Controller
         }
 
         UserActivityHelper::log($user->id, 'task_completed', $userTask->task->type, $userTask->task->points);
+
+        // Buat notifikasi
+        Notification::create([
+            'user_id' => $userTask->user_id,
+            'title' => 'Task Completed',
+            'message' => 'You have completed the task: ' . $userTask->task->title,
+            'read_status' => 'unread',
+        ]);
 
         return redirect()->route('usertask')->with('success', 'Task marked as completed!');
     }

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Voucher;
 use App\Models\VoucherRedemption;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,14 @@ class VoucherController extends Controller
         // Kurangi poin pengguna
         $user->points -= $voucher->points_required;
         $user->save();
+
+        // Buat notifikasi
+        Notification::create([
+            'user_id' => $user->id,
+            'title' => 'Voucher Redeemed',
+            'message' => 'You have successfully redeemed the voucher: ' . $voucher->title,
+            'read_status' => 'unread',
+        ]);
     
         // Tambahkan catatan penukaran ke tabel pivot
         $user->vouchers()->attach($voucher->id, [
