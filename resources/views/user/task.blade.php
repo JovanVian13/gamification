@@ -20,10 +20,10 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                <th>Status</th>
                                 <th>Points</th>
                                 <th>Link Tugas</th>
-                                <th>Action</th>
+                                <th>Video</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,36 +31,56 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $userTask->task->title }}</td>
+                                    <td>{{ $userTask->task->points }}</td>
+                                    <td>
+                                        @if (!empty($userTask->task->url))
+                                            @if ($userTask->task->type === 'video')
+                                                <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none"
+                                                    onclick="markTaskAsComplete({{ $userTask->id }})">
+                                                    Watch Video
+                                                </a>
+                                            @elseif ($userTask->task->type === 'like')
+                                                <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-success text-decoration-none"
+                                                    onclick="markTaskAsComplete({{ $userTask->id }})">
+                                                    Like Post
+                                                </a>
+                                            @elseif ($userTask->task->type === 'comment')
+                                                <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-info text-decoration-none"
+                                                    onclick="markTaskAsComplete({{ $userTask->id }})">
+                                                    Comment on Post
+                                                </a>
+                                            @elseif ($userTask->task->type === 'share')
+                                                <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-warning text-decoration-none"
+                                                    onclick="markTaskAsComplete({{ $userTask->id }})">
+                                                    Share Post
+                                                </a>
+                                            @endif
+                                        @else
+                                            <span class="text-muted">No Link Available</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (!empty($userTask->task->url)) 
+                                            <!-- Jika URL YouTube ada, tampilkan iframe -->
+                                            <iframe 
+                                                width="200" 
+                                                height="100" 
+                                                src="{{ Str::replace('watch?v=', 'embed/', $userTask->task->url) }}" 
+                                                title="YouTube video player" 
+                                                frameborder="0" 
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                                allowfullscreen>
+                                            </iframe>
+                                        @else
+                                            <!-- Jika URL YouTube kosong -->
+                                            <span class="text-muted">No video available</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if($userTask->status === 'completed')
                                             <span class="badge bg-success">Completed</span>
                                         @else
                                             <span class="badge bg-warning text-dark">Pending</span>
-                                        @endif
-                                    </td>
-                                    <td>{{ $userTask->task->points }}</td>
-                                    <td>
-                                        @if (!empty($userTask->task->url))
-                                        <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none"
-                                           onclick="markTaskAsComplete({{ $userTask->id }})">
-                                            Watch Video
-                                        </a>
-                                        @else
-                                        <span class="text-muted">No Video</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($userTask->status === 'incomplete')
-                                            <form action="{{ route('usertask.complete', $userTask->id) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                <button type="submit" class="btn btn-success btn-sm">
-                                                    <i class="bi bi-check-circle"></i> Complete
-                                                </button>
-                                            </form>
-                                        @else
-                                            <button class="btn btn-secondary btn-sm" disabled>
-                                                <i class="bi bi-check-circle-fill"></i> Completed
-                                            </button>
                                         @endif
                                     </td>
                                 </tr>
