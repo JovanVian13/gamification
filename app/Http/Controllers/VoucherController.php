@@ -6,6 +6,7 @@ use App\Models\VoucherRedemption;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\UserActivityHelper;
 
 class VoucherController extends Controller
 {
@@ -55,6 +56,13 @@ class VoucherController extends Controller
             'points_used' => $voucher->points_required, 
             'status' => 'redeemed',  // Status penukaran voucher
         ]);
+
+        UserActivityHelper::log(
+            $user->id,
+            'point_conversion',
+            $voucher->title,
+            -$voucher->points_required
+        );
     
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Voucher berhasil ditukarkan!');

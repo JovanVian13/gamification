@@ -7,8 +7,9 @@ use App\Http\Controllers\{
     NotificationController, UserVoucherController, AdminLeaderBoardController, BadgesController, 
     LeaderBoardController, UserTaskController, ReportController, SecurityLogController, 
     SettingsController, TaskManageController, UserManageController, VoucherManageController, 
-    AuthController, TestimonialController
+    AuthController, TestimonialController,
 };
+use App\Http\Controllers\UserActivityController;
 use App\Http\Middleware\RoleMiddleware;
 /*
 |--------------------------------------------------------------------------
@@ -127,6 +128,10 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     // Testimonials
     Route::get('/admin/testimonials', [TestimonialController::class, 'index'])->name('admin.testimonials');
     Route::patch('/admin/testimonials/{id}/toggle-featured', [TestimonialController::class, 'toggleFeatured'])->name('admin.toggle-featured');
+
+    // User Activity
+    Route::get('/admin/user-activities', [UserActivityController::class, 'index'])->name('admin.useractivities');
+    Route::get('/admin/activity-chart-data', [UserActivityController::class, 'activityChartData'])->name('admin.activitychart');
 });
 
 // Tasks (User)

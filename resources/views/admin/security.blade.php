@@ -33,7 +33,7 @@
                             <tbody>
                                 @forelse ($logs as $log)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $logs->firstItem() + $loop->index }}</td> <!-- Adjust numbering -->
                                     <td>{{ $log->user->name ?? 'System' }}</td>
                                     <td>{{ $log->action }}</td>
                                     <td>{{ $log->ip_address }}</td>
@@ -47,6 +47,10 @@
                                 @endforelse
                             </tbody>
                         </table>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="d-flex justify-content-center">
+                        {{ $logs->links() }}
                     </div>
                 </div>
             </div>

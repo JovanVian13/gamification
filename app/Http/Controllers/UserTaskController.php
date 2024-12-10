@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserTask;
 use App\Models\Points;
+use App\Helpers\UserActivityHelper;
 
 class UserTaskController extends Controller
 {
@@ -73,6 +74,8 @@ class UserTaskController extends Controller
         if ($user) {
             $user->increment('points', $userTask->task->points);
         }
+
+        UserActivityHelper::log($user->id, 'task_completed', $userTask->task->type, $userTask->task->points);
 
         return redirect()->route('usertask')->with('success', 'Task marked as completed!');
     }

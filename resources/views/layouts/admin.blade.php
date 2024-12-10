@@ -188,6 +188,7 @@
                 <li><a href="{{ route('admin.voucher') }}" class="nav-link {{ Request::is('admin/voucher') ? 'active' : '' }}"><i class="bi bi-gift"></i> Voucher Management</a></li>
                 <li><a href="{{ route('admin.leaderboard') }}" class="nav-link {{ Request::is('admin/leaderboard') ? 'active' : '' }}"><i class="bi bi-trophy"></i> Leaderboard</a></li>
                 <li><a href="{{ route('admin.badge') }}" class="nav-link {{ Request::is('admin/badge') ? 'active' : '' }}"><i class="bi bi-award"></i> Badge Management</a></li>
+                <li><a href="{{ route('admin.useractivities') }}" class="nav-link {{ Request::is('admin/useractivities') ? 'active' : '' }}"><i class="bi bi-person-workspace"></i> User Activity</a></li>
                 <li><a href="{{ route('admin.testimonials') }}" class="nav-link {{ Request::is('admin/testimonials') ? 'active' : '' }}"><i class="bi bi-chat-dots"></i> Testimonials</a></li>
                 <li><a href="{{ route('admin.securityLogs') }}" class="nav-link {{ Request::is('admin/securityLogs') ? 'active' : '' }}"><i class="bi bi-shield-lock"></i> Security Logs</a></li>
                 <li>
@@ -223,6 +224,7 @@
     </div>
 
     <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const sidebar = document.getElementById('sidebar');
