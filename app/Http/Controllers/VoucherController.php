@@ -39,7 +39,7 @@ class VoucherController extends Controller
         $user->save();
 
         $redeemedAt = now();
-        $expiredAt = $redeemedAt->addDays(7);
+        $expiredAt = (clone $redeemedAt)->addDays(7);
 
         $user->vouchers()->attach($voucher->id, [
             'status' => 'redeemed',
