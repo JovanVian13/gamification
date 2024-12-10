@@ -186,11 +186,29 @@
                             <td>{{ $task->task->points ?? '0' }}</td>
                             <td>
                                 @if (!empty($task->task->url))
-                                <a href="{{ $task->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none">
-                                    Watch Video
-                                </a>
-                                @else
-                                <span class="text-muted">No Video</span>
+                                    @if ($task->task->type === 'video')
+                                        <a href="{{ $task->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none"
+                                            onclick="markTaskAsComplete({{ $task->id }})">
+                                            Watch Video
+                                        </a>
+                                    @elseif ($task->task->type === 'like')
+                                        <a href="{{ $task->task->url }}" target="_blank" class="btn btn-link text-success text-decoration-none"
+                                            onclick="markTaskAsComplete({{ $task->id }})">
+                                            Like Post
+                                        </a>
+                                    @elseif ($task->task->type === 'comment')
+                                        <a href="{{ $task->task->url }}" target="_blank" class="btn btn-link text-info text-decoration-none"
+                                            onclick="markTaskAsComplete({{ $task->id }})">
+                                            Comment on Post
+                                        </a>
+                                    @elseif ($task->task->type === 'share')
+                                        <a href="{{ $task->task->url }}" target="_blank" class="btn btn-link text-warning text-decoration-none"
+                                            onclick="markTaskAsComplete({{ $task->id }})">
+                                            Share Post
+                                        </a>
+                                    @endif
+                                 @else
+                                    <span class="text-muted">No Link Available</span>
                                 @endif
                             </td>
                         </tr>
@@ -209,4 +227,31 @@
         </div>
     </div>
 </div>
+
+<script>
+    function markTaskAsComplete(taskId) {
+        // Menggunakan AJAX untuk menandai tugas sebagai selesai
+        fetch("{{ route('video.interaction') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                task_id: taskId,
+                event_type: 'completed'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Periksa apakah status berhasil diperbarui
+            if (data.message === 'Interaction tracked successfully') {
+                alert('Task marked as completed!');
+                location.reload(); // Reload halaman untuk memperbarui status tugas
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
 @endsection

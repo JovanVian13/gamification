@@ -42,6 +42,9 @@ class VoucherController extends Controller
         $user->points -= $voucher->points_required;
         $user->save();
 
+        $redeemedAt = now();
+        $expiredAt = (clone $redeemedAt)->addDays(7);
+
         // Buat notifikasi
         Notification::create([
             'user_id' => $user->id,
@@ -53,9 +56,10 @@ class VoucherController extends Controller
         // Tambahkan catatan penukaran ke tabel pivot
         $user->vouchers()->attach($voucher->id, [
             'status' => 'redeemed', // Status voucher (misalnya: redeemed)
-            'redeemed_at' => now(), // Menyimpan waktu penukaran voucher
+            'redeemed_at' => $redeemedAt, // Menyimpan waktu penukaran voucher
             'created_at' => now(),   // Timestamp otomatis
             'updated_at' => now(),
+            'expired_at' => $expiredAt,
         ]);
     
         // Catat transaksi di tabel VoucherRedemption
