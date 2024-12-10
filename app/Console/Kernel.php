@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('tasks:assign-new-users')->daily(); // Jalankan setiap hari
+        $schedule->command('vouchers:expire')->daily();
     }
 
 

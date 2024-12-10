@@ -24,6 +24,7 @@
                                 <th>Link Tugas</th>
                                 <th>Video</th>
                                 <th>Status</th>
+                                <th>Deadline</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,6 +84,7 @@
                                             <span class="badge bg-warning text-dark">Pending</span>
                                         @endif
                                     </td>
+                                    <td>{{ $userTask->task->deadline }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

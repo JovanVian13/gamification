@@ -27,5 +27,11 @@ class Task extends Model
         return $this->hasMany(UserTask::class);
     }
 
+    // Task.php
+    public function completedTasks()
+    {
+        return $this->hasMany(UserTask::class)->where('status', 'completed');
+    }
+
 }
 

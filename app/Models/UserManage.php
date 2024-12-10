@@ -27,7 +27,9 @@ class UserManage extends Authenticatable
         'name',
         'email',
         'password',
-        'is_active', // Custom field to track active/inactive status
+        'age',         // Tambahkan kolom age
+        'location',    // Tambahkan kolom location
+        'is_active',   // Custom field to track active/inactive status
     ];
 
     /**
@@ -48,5 +50,6 @@ class UserManage extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'is_active' => 'boolean',
+        'age' => 'integer',      // Pastikan age dikonversi ke integer
     ];
 }
