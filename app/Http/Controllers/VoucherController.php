@@ -24,28 +24,28 @@ class VoucherController extends Controller
     // Redeem a voucher
     public function redeemVoucher($voucherId)
     {
-        $user = Auth::user(); // Ambil pengguna yang sedang login
-        $voucher = Voucher::findOrFail($voucherId); // Ambil voucher berdasarkan ID
-    
-        // Periksa apakah poin pengguna mencukupi
+        $user = Auth::user();
+        $voucher = Voucher::findOrFail($voucherId);
+
         if ($user->points < $voucher->points_required) {
             return redirect()->back()->with('error', 'Poin tidak cukup untuk menukarkan voucher ini.');
         }
-    
-        // Periksa apakah voucher sudah pernah ditukarkan oleh pengguna
+
         if ($user->vouchers()->where('voucher_id', $voucherId)->exists()) {
             return redirect()->back()->with('error', 'Anda sudah menukarkan voucher ini sebelumnya.');
         }
-    
-        // Kurangi poin pengguna
+
         $user->points -= $voucher->points_required;
         $user->save();
-    
-        // Tambahkan catatan penukaran ke tabel pivot
+
+        $redeemedAt = now();
+        $expiredAt = $redeemedAt->addDays(7);
+
         $user->vouchers()->attach($voucher->id, [
-            'status' => 'redeemed', // Status voucher (misalnya: redeemed)
-            'redeemed_at' => now(), // Menyimpan waktu penukaran voucher
-            'created_at' => now(),   // Timestamp otomatis
+            'status' => 'redeemed',
+            'redeemed_at' => $redeemedAt,
+            'expired_at' => $expiredAt,
+            'created_at' => now(),
             'updated_at' => now(),
         ]);
     
@@ -67,8 +67,5 @@ class VoucherController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Voucher berhasil ditukarkan!');
     }
-
-    
-    
 }
 
