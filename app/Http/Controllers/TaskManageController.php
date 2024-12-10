@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\TaskManage;
 use App\Models\UserTask;
 use App\Models\User;
+use App\Models\Task;
 
 class TaskManageController extends Controller
 {
@@ -150,4 +151,12 @@ class TaskManageController extends Controller
 
         return redirect()->route('admin.tasks')->with('success', 'Task deleted successfully.');
     }
+
+    public function taskManagement()
+    {
+        $tasks = Task::withCount(['userTasks as assigned_count', 'completedTasks as completed_count'])->paginate(10);
+        $users = User::all(); // Untuk opsi assign
+        return view('admin.taskmanagement', compact('tasks', 'users'));
+    }
+
 }

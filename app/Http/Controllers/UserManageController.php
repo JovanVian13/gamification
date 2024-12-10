@@ -25,9 +25,11 @@ class UserManageController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
+            'age' => 'required|integer|min:1',
+            'location' => 'required|string|max:255',
         ]);
 
-        $user->update($request->only(['name', 'email']));
+        $user->update($request->only(['name', 'email', 'age', 'location']));
 
         return redirect()->route('admin.users')->with('success', 'User updated successfully.');
     }

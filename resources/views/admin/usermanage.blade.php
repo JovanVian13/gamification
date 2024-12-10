@@ -12,6 +12,9 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Age</th>
+                <th>Location</th>
+                <th>Role</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,6 +24,9 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $user->age }}</td>
+                    <td>{{ $user->location }}</td>
+                    <td>{{ $user->role }}</td>
                     <td>
                         <a href="{{ route('admin.useredit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('admin.userdelete', $user->id) }}" method="POST" class="d-inline">

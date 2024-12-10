@@ -21,6 +21,7 @@
                     <th>URL</th>
                     <th>Assigned Users</th>
                     <th>Deadline</th>
+                    <th>Completed</th>
                     <th>Assign</th>
                     <th>Actions</th>
                 </tr>
@@ -39,14 +40,15 @@
                             No URL
                         @endif
                     </td>
-                    <td>{{ $task->userTasks->count() }} Users</td>
+                    <td>{{ $task->assigned_count ?? 0 }} Users</td> <!-- Total assigned users -->
                     <td>{{ $task->deadline ? $task->deadline->format('Y-m-d H:i') : 'No Deadline' }}</td>
+                    <td>{{ $task->completed_count ?? 0 }} Completed</td> <!-- Total completed tasks -->
                     <td>
                         <form action="{{ route('admin.tasksassign', $task->id) }}" method="POST">
                             @csrf
                             <select name="user_id" required>
                                 <option value="">Select User</option>
-                                <option value="all">All Users</option> <!-- Tambahkan opsi All Users -->
+                                <option value="all">All Users</option>
                                 @foreach($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach
