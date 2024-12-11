@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Voucher;
 use App\Models\VoucherRedemption;
 use App\Models\Notification;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\UserActivityHelper;
 
@@ -15,9 +13,9 @@ class VoucherController extends Controller
     public function showVouchers()
     {
         $user = Auth::user();
-        $userPoints = $user->points; // assuming the points are stored in the users table
-        $vouchers = Voucher::all(); // Get all available vouchers
-        $redemptions = VoucherRedemption::where('user_id', $user->id)->get(); // Get user's redemption history
+        $userPoints = $user->points; 
+        $vouchers = Voucher::all(); 
+        $redemptions = VoucherRedemption::where('user_id', $user->id)->get(); 
 
         return view('user.redeem-vouchers', compact('vouchers', 'userPoints', 'redemptions'));
     }
@@ -26,7 +24,7 @@ class VoucherController extends Controller
     public function redeemVoucher($voucherId)
     {
         $user = Auth::user(); // Ambil pengguna yang sedang login
-        $voucher = Voucher::findOrFail($voucherId); // Ambil voucher berdasarkan ID
+        $voucher = Voucher::findOrFail($voucherId); 
     
         // Periksa apakah poin pengguna mencukupi
         if ($user->points < $voucher->points_required) {
@@ -55,9 +53,9 @@ class VoucherController extends Controller
     
         // Tambahkan catatan penukaran ke tabel pivot
         $user->vouchers()->attach($voucher->id, [
-            'status' => 'redeemed', // Status voucher (misalnya: redeemed)
-            'redeemed_at' => $redeemedAt, // Menyimpan waktu penukaran voucher
-            'created_at' => now(),   // Timestamp otomatis
+            'status' => 'redeemed', 
+            'redeemed_at' => $redeemedAt,
+            'created_at' => now(),
             'updated_at' => now(),
             'expired_at' => $expiredAt,
         ]);
@@ -67,7 +65,7 @@ class VoucherController extends Controller
             'user_id' => $user->id,
             'voucher_id' => $voucher->id,
             'points_used' => $voucher->points_required, 
-            'status' => 'redeemed',  // Status penukaran voucher
+            'status' => 'redeemed',
         ]);
 
         UserActivityHelper::log(

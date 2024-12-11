@@ -11,7 +11,7 @@ class LeaderBoardController extends Controller
     // Show leaderboard
     public function showLeaderboard(Request $request)
     {
-        $period = $request->input('period', 'weekly'); // Default period
+        $period = $request->input('period', 'weekly');
         $user = Auth::user();
 
         // Ambil leaderboard dengan join tabel points
@@ -35,7 +35,7 @@ class LeaderBoardController extends Controller
             return $item->id == $user->id;
         });
     
-        $rank = $rank !== false ? $rank + 1 : null; // Ranking dimulai dari 1
+        $rank = $rank !== false ? $rank + 1 : null;
 
         $userBadges = auth()->user()->badges;
 

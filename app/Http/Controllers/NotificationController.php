@@ -27,7 +27,7 @@ class NotificationController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'message' => 'required|string',
-            'user_id' => 'required', // Can be "all" or a specific user ID
+            'user_id' => 'required',
         ]);
 
         if ($request->user_id === 'all') {
@@ -56,7 +56,7 @@ class NotificationController extends Controller
 
     public function userNotifications()
     {
-        $userId = auth()->id(); // Mendapatkan ID pengguna yang sedang login
+        $userId = auth()->id();
         $notifications = Notification::where('user_id', $userId)
             ->latest()
             ->take(3)
@@ -85,8 +85,8 @@ class NotificationController extends Controller
 
     public function editNotification($id)
     {
-        $notification = Notification::findOrFail($id); // Fetch notification by ID
-        $users = User::all(); // Pass users to the view for recipient selection
+        $notification = Notification::findOrFail($id);
+        $users = User::all();
         return view('admin.notificationedit', compact('notification', 'users'));
     }
 

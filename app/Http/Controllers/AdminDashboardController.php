@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserTask;
 use App\Models\VoucherRedemption;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ReportExport;
 

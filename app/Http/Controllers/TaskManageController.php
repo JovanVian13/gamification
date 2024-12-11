@@ -13,8 +13,7 @@ class TaskManageController extends Controller
     // Tampilkan semua tugas
     public function manageTasks()
     {
-        $tasks = TaskManage::paginate(10); // Menampilkan 10 tugas per halaman
-        $users = User::all();
+        $tasks = TaskManage::paginate(10);
         return view('admin.taskmanage', compact('tasks', 'users'));
     }
 
@@ -57,7 +56,7 @@ class TaskManageController extends Controller
     {
         TaskManage::chunk(50, function ($tasks) {
             foreach ($tasks as $task) {
-                $newUsers = User::where('role', '!=', 'admin') // Filter non-admin
+                $newUsers = User::where('role', '!=', 'admin')
                     ->whereDoesntHave('userTasks', function ($query) use ($task) {
                         $query->where('task_id', $task->id);
                     })->pluck('id');
@@ -155,7 +154,7 @@ class TaskManageController extends Controller
     public function taskManagement()
     {
         $tasks = Task::withCount(['userTasks as assigned_count', 'completedTasks as completed_count'])->paginate(10);
-        $users = User::all(); // Untuk opsi assign
+        $users = User::all();
         return view('admin.taskmanagement', compact('tasks', 'users'));
     }
 

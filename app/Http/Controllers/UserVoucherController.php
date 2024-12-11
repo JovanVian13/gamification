@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Voucher;
-use App\Models\UserVoucher;
-use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Http\Request;
 
 class UserVoucherController extends Controller
 {

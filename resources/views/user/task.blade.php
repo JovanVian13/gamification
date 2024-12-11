@@ -114,7 +114,7 @@
             // Periksa apakah status berhasil diperbarui
             if (data.message === 'Interaction tracked successfully') {
                 alert('Task marked as completed!');
-                location.reload(); // Reload halaman untuk memperbarui status tugas
+                location.reload();
             }
         })
         .catch(error => console.error('Error:', error));

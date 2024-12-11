@@ -8,7 +8,7 @@
 
     <form action="{{ route('admin.userupdate', $user->id) }}" method="POST">
         @csrf
-        @method('PATCH') <!-- Specify PATCH to match the route -->
+        @method('PATCH')
         
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>

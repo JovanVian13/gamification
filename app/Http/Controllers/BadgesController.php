@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Badge;
-use App\Models\Point;
 
 class BadgesController extends Controller
 {
     public function manageBadges()
     {
         $badges = Badge::all();
-        $users = User::all(); // Fetch all users
+        $users = User::all();
         return view('admin.badges', compact('badges', 'users'));
     }
 
@@ -22,7 +21,7 @@ class BadgesController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'criteria' => 'required|string',
-            'image' => 'required|image|max:2048', // Max 2MB
+            'image' => 'required|image|max:2048',
         ]);
 
         $path = $request->file('image')->store('badges', 'public');

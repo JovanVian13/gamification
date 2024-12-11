@@ -5,7 +5,7 @@ use App\Http\Controllers\{
     HomepageController, RegisterController, LoginController, UserDashboardController, 
     AdminDashboardController, ProfileController, VoucherController, FeedbackController, 
     NotificationController, UserVoucherController, AdminLeaderBoardController, BadgesController, 
-    LeaderBoardController, UserTaskController, ReportController, SecurityLogController, 
+    LeaderBoardController, UserTaskController, SecurityLogController, 
     SettingsController, TaskManageController, UserManageController, VoucherManageController, 
     AuthController, TestimonialController,
 };

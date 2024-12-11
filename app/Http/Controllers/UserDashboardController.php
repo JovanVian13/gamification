@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Models\Task;
 use App\Models\VoucherRedemption;
 use App\Models\User;
 use App\Models\UserTask;
@@ -37,20 +35,20 @@ class UserDashboardController extends Controller
             return $item->id == $user->id;
         });
     
-        $rank = $rank !== false ? $rank + 1 : null; // Ranking dimulai dari 1
+        $rank = $rank !== false ? $rank + 1 : null;
 
         // Ambil tugas pengguna
         $userTasks = UserTask::with('task')
             ->where('user_id', $user->id)
             ->orderBy('status', 'asc')
-            ->take(3) // Ambil maksimal 3 tugas
+            ->take(3)
             ->get();
 
         // Data untuk dashboard
         $data = [
-            'totalPoints' => $user->points ?? 0, // Total poin pengguna
-            'tasks' => $userTasks, // Masukkan tugas ke data
-            'rank' => $rank, // Masukkan tugas ke data
+            'totalPoints' => $user->points ?? 0,
+            'tasks' => $userTasks,
+            'rank' => $rank,
         ];
 
         // Kirim data ke view

@@ -62,10 +62,9 @@ class ProfileController extends Controller
     public function editProfile()
     {
         $user = Auth::user();
-        return view('user.edit-profile', compact('user')); // Create an edit-profile view
+        return view('user.edit-profile', compact('user'));
     }
 
-    // Update the user's profile information
     // Update the user's profile information
     public function updateProfile(Request $request)
     {
@@ -83,7 +82,7 @@ class ProfileController extends Controller
             'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
             'age' => 'required|integer|min:1',
             'location' => 'required|string|max:255',
-            'profile_picture' => 'nullable|image|max:2048', // Validate image file
+            'profile_picture' => 'nullable|image|max:2048',
         ]);
 
         $user = Auth::user();
@@ -108,7 +107,7 @@ class ProfileController extends Controller
             $user->profile_picture = $path;
         }
 
-        $user->save(); // Save updated user info
+        $user->save();
 
         return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
     }   
