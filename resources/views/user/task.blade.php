@@ -30,7 +30,7 @@
                         <tbody>
                             @foreach ($userTasks as $userTask)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $loop->iteration + ($userTasks->currentPage() - 1) * $userTasks->perPage() }}</td>
                                     <td>{{ $userTask->task->title }}</td>
                                     <td>{{ $userTask->task->points }}</td>
                                     <td>
@@ -62,7 +62,6 @@
                                     </td>
                                     <td>
                                         @if (!empty($userTask->task->url)) 
-                                            <!-- Jika URL YouTube ada, tampilkan iframe -->
                                             <iframe 
                                                 width="200" 
                                                 height="100" 
@@ -73,7 +72,6 @@
                                                 allowfullscreen>
                                             </iframe>
                                         @else
-                                            <!-- Jika URL YouTube kosong -->
                                             <span class="text-muted">No video available</span>
                                         @endif
                                     </td>
@@ -90,6 +88,11 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Pagination Links -->
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $userTasks->links('pagination::bootstrap-5') }}
+                </div>
             @endif
         </div>
     </div>
@@ -97,7 +100,6 @@
 
 <script>
     function markTaskAsComplete(taskId) {
-        // Menggunakan AJAX untuk menandai tugas sebagai selesai
         fetch("{{ route('video.interaction') }}", {
             method: 'POST',
             headers: {
@@ -111,7 +113,6 @@
         })
         .then(response => response.json())
         .then(data => {
-            // Periksa apakah status berhasil diperbarui
             if (data.message === 'Interaction tracked successfully') {
                 alert('Task marked as completed!');
                 location.reload();

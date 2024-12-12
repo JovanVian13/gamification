@@ -16,7 +16,7 @@ class UserTaskController extends Controller
             ->where('user_id', auth()->id())
             ->orderBy('status', 'asc')
             ->orderBy('created_at', 'asc')
-            ->get();
+            ->paginate(10);
 
         return view('user.task', compact('userTasks'));
     }
