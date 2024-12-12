@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($notifications as $notification)
+            @forelse ($notifications as $notification)
             <tr>
                 <td>{{ $notification->title }}</td>
                 <td>{{ $notification->message }}</td>
@@ -36,8 +36,15 @@
                     </form>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="6" class="text-center">{{ __('No notifications available.') }}</td>
+            </tr>
+            @endforelse
         </tbody>
     </table>
+    <div>
+        {{ $notifications->links() }}
+    </div>
 </div>
 @endsection

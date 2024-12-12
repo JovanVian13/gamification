@@ -19,7 +19,7 @@
 
         <div class="mb-3">
             <label for="user_id" class="form-label">Recipient</label>
-            <select name="user_id" id="user_id" class="form-control" required>
+            <select name="user_id" id="user_id" class="form-select" required>
                 <option value="all">All Users</option>
                 @foreach ($users as $user)
                 <option value="{{ $user->id }}">{{ $user->name }} ({{ $user->email }})</option>

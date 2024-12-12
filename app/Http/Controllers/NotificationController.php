@@ -11,7 +11,7 @@ class NotificationController extends Controller
     public function manageNotification()
     {
         // Fetch notifications for all users with user relationship
-        $notifications = Notification::with('user')->latest()->get();
+        $notifications = Notification::with('user')->latest()->paginate(10);
         return view('admin.notification', compact('notifications'));
     }
 
@@ -31,18 +31,18 @@ class NotificationController extends Controller
         ]);
 
         if ($request->user_id === 'all') {
-            // Kirim ke semua pengguna
-            $users = User::all();
-            foreach ($users as $user) {
-                Notification::create([
-                    'user_id' => $user->id,
+            $notifications = User::pluck('id')->map(function ($userId) use ($request) {
+                return [
+                    'user_id' => $userId,
                     'title' => $request->title,
                     'message' => $request->message,
                     'read_status' => 'unread',
-                ]);
-            }
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            });
+            Notification::insert($notifications->toArray());
         } else {
-            // Kirim ke satu pengguna
             Notification::create([
                 'user_id' => $request->user_id,
                 'title' => $request->title,
