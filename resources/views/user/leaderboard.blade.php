@@ -16,6 +16,11 @@
                         <th>No</th>
                         <th>User</th>
                         <th>Points</th>
+                        <th>Total Tasks</th>
+                        <th>Watch</th>
+                        <th>Like</th>
+                        <th>Share</th>
+                        <th>Comment</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +29,11 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $entry->name }}</td>
                             <td>{{ $entry->points }}</td>
+                            <td>{{ $entry->total_tasks }}</td>
+                            <td>{{ $entry->watch_frequency }}</td>
+                            <td>{{ $entry->like_frequency }}</td>
+                            <td>{{ $entry->share_frequency }}</td>
+                            <td>{{ $entry->comment_frequency }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -103,7 +113,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Initialize all tooltips
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle=\"tooltip\"]'));
         tooltipTriggerList.forEach(function (tooltipTriggerEl) {
             new bootstrap.Tooltip(tooltipTriggerEl, {
                 html: true
