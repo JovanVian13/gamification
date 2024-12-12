@@ -13,27 +13,27 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th class="text-center">No</th>
                         <th>User</th>
-                        <th>Points</th>
-                        <th>Total Tasks</th>
-                        <th>Watch</th>
-                        <th>Like</th>
-                        <th>Share</th>
-                        <th>Comment</th>
+                        <th class="text-center">Points</th>
+                        <th class="text-center">Total Tasks</th>
+                        <th class="text-center">Watch</th>
+                        <th class="text-center">Like</th>
+                        <th class="text-center">Share</th>
+                        <th class="text-center">Comment</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($leaderboard as $index => $entry)
                         <tr>
-                            <td>{{ $index + 1 }}</td>
+                            <td class="text-center fw-bold">{{ $index + 1 }}</td>
                             <td>{{ $entry->name }}</td>
-                            <td>{{ $entry->points }}</td>
-                            <td>{{ $entry->total_tasks }}</td>
-                            <td>{{ $entry->watch_frequency }}</td>
-                            <td>{{ $entry->like_frequency }}</td>
-                            <td>{{ $entry->share_frequency }}</td>
-                            <td>{{ $entry->comment_frequency }}</td>
+                            <td class="text-center">{{ $entry->points }}</td>
+                            <td class="text-center">{{ $entry->total_tasks }}</td>
+                            <td class="text-center">{{ $entry->watch_frequency }}</td>
+                            <td class="text-center">{{ $entry->like_frequency }}</td>
+                            <td class="text-center">{{ $entry->share_frequency }}</td>
+                            <td class="text-center">{{ $entry->comment_frequency }}</td>
                         </tr>
                     @endforeach
                 </tbody>
