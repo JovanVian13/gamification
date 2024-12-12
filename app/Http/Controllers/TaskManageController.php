@@ -14,6 +14,7 @@ class TaskManageController extends Controller
     public function manageTasks()
     {
         $tasks = TaskManage::paginate(10);
+        $users = User::all();
         return view('admin.taskmanage', compact('tasks', 'users'));
     }
 
