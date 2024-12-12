@@ -14,6 +14,15 @@ class TaskManageController extends Controller
     public function manageTasks()
     {
         $tasks = TaskManage::paginate(10);
+        $users = User::all();
+
+        $tasks = Task::withCount([
+            'userTasks as assigned_count', // Count of assigned users
+            'completedTasks as completed_count' // Count of completed tasks
+        ])->paginate(10);
+    
+        $users = User::all();
+    
         return view('admin.taskmanage', compact('tasks', 'users'));
     }
 
