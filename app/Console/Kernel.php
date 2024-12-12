@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('tasks:assign-new-users')->daily(); // Jalankan setiap hari
         $schedule->command('vouchers:expire')->daily();
+        $schedule->command('backup:run')->dailyAt('02:00'); // Backup aplikasi gamification setiap pukul 02:00
     }
 
 
