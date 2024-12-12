@@ -11,7 +11,7 @@ class VoucherManageController extends Controller
     // 1. Menampilkan daftar voucher
     public function manageVoucher()
     {
-        $vouchers = VoucherManage::orderBy('created_at', 'desc')->get();
+        $vouchers = VoucherManage::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.vouchermanage', compact('vouchers'));
     }
 

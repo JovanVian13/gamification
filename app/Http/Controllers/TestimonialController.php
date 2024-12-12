@@ -10,7 +10,7 @@ class TestimonialController extends Controller
 {
     public function index()
     {
-        $testimonials = Testimonial::with('user')->latest()->get();
+        $testimonials = Testimonial::with('user')->latest()->paginate(10);
 
         return view('admin.testimonials', compact('testimonials'));
     }

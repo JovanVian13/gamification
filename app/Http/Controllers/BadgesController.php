@@ -10,13 +10,21 @@ class BadgesController extends Controller
 {
     public function manageBadges()
     {
-        $badges = Badge::all();
+        $badges = Badge::paginate(10);
         $users = User::all();
         return view('admin.badges', compact('badges', 'users'));
     }
 
     // Create a new badge
-    public function createBadge(Request $request)
+    public function createBadge()
+    {
+        // Ambil semua pengguna dari database
+        $users = User::all();
+
+        // Kirim data ke view
+        return view('admin.badgescreate', compact('users'));
+    }
+    public function storeBadge(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -33,6 +41,34 @@ class BadgesController extends Controller
         ]);
 
         return redirect()->route('admin.badge')->with('success', 'Badge created successfully.');
+    }
+
+    public function editBadge(Badge $badge)
+    {
+        return view('admin.badgesedit', compact('badge'));
+    }
+
+    public function updateBadge(Request $request, Badge $badge)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'criteria' => 'required|string',
+            'image' => 'nullable|image|max:2048', // Image optional
+        ]);
+
+        // Update badge data
+        $badge->name = $request->name;
+        $badge->criteria = $request->criteria;
+
+        // Update image if a new one is uploaded
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('badges', 'public');
+            $badge->image = $path;
+        }
+
+        $badge->save();
+
+        return redirect()->route('admin.badge')->with('success', 'Badge updated successfully.');
     }
 
     // Assign badge to a user

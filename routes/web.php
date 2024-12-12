@@ -121,8 +121,11 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
     // Badges
     Route::prefix('admin/badges')->group(function () {
         Route::get('/', [BadgesController::class, 'manageBadges'])->name('admin.badge');
-        Route::post('/', [BadgesController::class, 'createBadge'])->name('admin.badgecreate');
+        Route::get('/create', [BadgesController::class, 'createBadge'])->name('admin.badgecreate');
+        Route::post('/', [BadgesController::class, 'storeBadge'])->name('admin.badgestore');
         Route::post('/{badge}/assign', [BadgesController::class, 'assignBadge'])->name('admin.badgeassign');
+        Route::get('/{badge}/edit', [BadgesController::class, 'editBadge'])->name('admin.badgeedit');
+        Route::put('/{badge}', [BadgesController::class, 'updateBadge'])->name('admin.badgeupdate');
     });
 
     // Testimonials

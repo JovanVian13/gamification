@@ -44,5 +44,6 @@
             @endforeach
         </tbody>
     </table>
+    {{ $vouchers->links() }}
 </div>
 @endsection
