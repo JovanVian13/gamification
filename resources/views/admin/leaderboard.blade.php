@@ -17,6 +17,11 @@
                         <th scope="col">Rank</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Poin</th>
+                        <th scope="col">Total Tasks</th>
+                        <th scope="col">Watch</th>
+                        <th scope="col">Like</th>
+                        <th scope="col">Share</th>
+                        <th scope="col">Comment</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,10 +30,16 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $leader->name }}</td>
                         <td class="text-primary font-weight-bold">{{ $leader->points }} poin</td>
+                        <td class="text-center">{{ $leader->total_tasks }}</td>
+                        <td class="text-center">{{ $leader->watch_frequency }}</td>
+                        <td class="text-center">{{ $leader->like_frequency }}</td>
+                        <td class="text-center">{{ $leader->share_frequency }}</td>
+                        <td class="text-center">{{ $leader->comment_frequency }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            {{ $leaderboard->links() }}
             @else
             <p class="text-muted">Belum ada data leaderboard tersedia.</p>
             @endif
