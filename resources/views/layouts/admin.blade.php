@@ -108,7 +108,6 @@
             color: #007bff;
         }
 
-        /* Overlay untuk layar kecil */
         .overlay {
             display: none;
             position: fixed;
@@ -126,15 +125,15 @@
 
         @media (min-width: 769px) {
             .sidebar {
-                transform: translateX(0); /* Sidebar selalu terlihat */
+                transform: translateX(0);
             }
 
             .content {
-                margin-left: 250px; /* Konten tidak terpengaruh sidebar */
+                margin-left: 250px;
             }
 
             .overlay {
-                display: none; /* Overlay tidak diperlukan di layar besar */
+                display: none;
             }
         }
 
@@ -154,22 +153,22 @@
         }
         @media (min-width: 769px) {
             #toggle-sidebar {
-                display: none; /* Sembunyikan tombol toggle */
+                display: none;
             }
         }
 
         @media (max-width: 768px) {
             .chart-container {
-                height: 35vh; /* Tinggi lebih kecil untuk layar kecil */
+                height: 35vh;
             }
 
             .btn {
-                font-size: 0.875rem; /* Ukuran teks tombol lebih kecil */
-                padding: 0.5rem 1rem; /* Padding tombol lebih kecil */
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
             }
 
             .card-body {
-                padding: 0.75rem; /* Kurangi padding di dalam kartu */
+                padding: 0.75rem;
             }
         }
 

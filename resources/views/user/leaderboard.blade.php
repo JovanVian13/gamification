@@ -41,12 +41,10 @@
             <h2 class="h4 mb-0 m-p-secondary">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
-            <!-- Rank in a Circle -->
             <div class="rounded-circle text-white d-flex justify-content-center align-items-center mx-auto m-bg-primary" 
                 style="width: 120px; height: 120px; font-size: 2.5rem; font-weight: bold;">
                 {{ $rank }}
             </div>
-            <!-- Points Below the Circle -->
             <div class="mt-3" style="font-size: 1.5rem;">
                 <strong>{{ $leaderboard->where('id', Auth::id())->first()->points ?? 0 }}</strong>
                 <span>Points</span>
@@ -59,12 +57,10 @@
             <h2 class="h4 mb-0 m-p-secondary">Ranking Anda</h2>
         </div>
         <div class="card-body text-center">
-            <!-- Rank in a Circle -->
             <div class="rounded-circle text-white d-flex justify-content-center align-items-center mx-auto m-bg-primary" 
                 style="width: 120px; height: 120px; font-size: 2.5rem; font-weight: bold;">
                 N/A
             </div>
-            <!-- Points Below the Circle -->
             <div class="mt-3" style="font-size: 1.5rem;">
                 <strong>{{ $leaderboard->where('id', Auth::id())->first()->points ?? 0 }}</strong>
                 <span>Points</span>

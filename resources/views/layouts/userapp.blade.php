@@ -148,7 +148,7 @@
         }
 
         .navbar-toggler {
-            border: none; /* Menghilangkan border tombol */
+            border: none;
         }
     </style>
     @stack('styles')

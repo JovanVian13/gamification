@@ -9,13 +9,13 @@ class UserManageController extends Controller
 {
     public function manageUsers()
     {
-        $users = UserManage::paginate(10); // Paginate user list (10 users per page)
+        $users = UserManage::paginate(10);
         return view('admin.usermanage', compact('users'));
     }
 
     public function editUser($id)
     {
-        $user = UserManage::findOrFail($id); // Find user or fail if not found
+        $user = UserManage::findOrFail($id);
         return view('admin.useredit', compact('user'));
     }
 

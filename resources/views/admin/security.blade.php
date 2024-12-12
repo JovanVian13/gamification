@@ -33,7 +33,7 @@
                             <tbody>
                                 @forelse ($logs as $log)
                                 <tr>
-                                    <td>{{ $logs->firstItem() + $loop->index }}</td> <!-- Adjust numbering -->
+                                    <td>{{ $logs->firstItem() + $loop->index }}</td>
                                     <td>{{ $log->user->name ?? 'System' }}</td>
                                     <td>{{ $log->action }}</td>
                                     <td>{{ $log->ip_address }}</td>
