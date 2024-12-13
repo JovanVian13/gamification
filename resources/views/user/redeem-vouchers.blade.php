@@ -139,11 +139,11 @@
                 </div>
             </div>
             <!-- Carousel Controls -->
-            <button class="carousel-control-prev btn m-btn-primary" type="button" data-bs-target="#redeemedVoucherCarousel" data-bs-slide="prev" style="width: 45px; height: 45px; top: 42%; left: -1rem;">
+            <button class="carousel-control-prev btn m-btn-primary" type="button" data-bs-target="#redeemedVoucherCarousel" data-bs-slide="prev" style="width: 45px; height: 45px; top: 42%; left: -1rem; z-index:3;">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next btn m-btn-primary" type="button" data-bs-target="#redeemedVoucherCarousel" data-bs-slide="next" style="width: 45px; height: 45px; top: 42%; right: -1rem;">
+            <button class="carousel-control-next btn m-btn-primary" type="button" data-bs-target="#redeemedVoucherCarousel" data-bs-slide="next" style="width: 45px; height: 45px; top: 42%; right: -1rem; z-index:3;">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
