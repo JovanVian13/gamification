@@ -29,6 +29,7 @@ class VoucherManageController extends Controller
             'description' => 'nullable|string',
             'points_required' => 'required|integer|min:1',
             'code' => 'required|string|max:255',
+            'expired_date' => 'required|date|after:today',
         ]);
 
         VoucherManage::create([
@@ -37,6 +38,7 @@ class VoucherManageController extends Controller
             'points_required' => $request->points_required,
             'code' => $request->code,
             'status' => 'active',
+            'expired_date' => $request->expired_date,
         ]);
 
         return redirect()->route('admin.voucher')->with('success', 'Voucher berhasil dibuat.');
@@ -56,6 +58,7 @@ class VoucherManageController extends Controller
             'description' => 'nullable|string',
             'points_required' => 'required|integer|min:1',
             'status' => 'required|in:active,expired',
+            'expired_at' => 'required|date|after:today',
         ]);
 
         $voucher->update($request->all());
@@ -63,7 +66,7 @@ class VoucherManageController extends Controller
         return redirect()->route('admin.voucher')->with('success', 'Voucher berhasil diperbarui.');
     }
 
-    // 6. Menghapus voucher
+
     public function deleteVoucher(VoucherManage $voucher)
     {
         $voucher->delete();

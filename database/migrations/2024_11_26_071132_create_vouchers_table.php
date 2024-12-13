@@ -15,6 +15,7 @@ class CreateVouchersTable extends Migration
             $table->integer('points_required');
             $table->string('code')->unique();
             $table->enum('status', ['active', 'expired'])->default('active');
+            $table->date('expired_date')->nullable();
             $table->timestamps();
         });
     }

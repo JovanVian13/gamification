@@ -16,6 +16,7 @@
                 <th>Nama Voucher</th>
                 <th>Kode</th>
                 <th>Poin</th>
+                <th>Tanggal Kadaluarsa</th>
                 <th>Status</th>
                 <th>Aksi</th>
             </tr>
@@ -27,6 +28,7 @@
                     <td>{{ $voucher->title }}</td>
                     <td>{{ $voucher->code }}</td>
                     <td>{{ $voucher->points_required }}</td>
+                    <td>{{ $voucher->expired_date }}</td>
                     <td>
                         <span class="badge bg-{{ $voucher->status === 'active' ? 'success' : 'secondary' }}">
                             {{ ucfirst($voucher->status) }}
