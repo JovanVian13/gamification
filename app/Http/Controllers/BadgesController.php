@@ -71,18 +71,31 @@ class BadgesController extends Controller
         return redirect()->route('admin.badge')->with('success', 'Badge updated successfully.');
     }
 
-    // Assign badge to a user
+    // Assign badge to selected users or all users
     public function assignBadge(Request $request, Badge $badge)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'required', // Validasi user_id harus ada
         ]);
 
+        if ($request->user_id === 'all') {
+            // Assign badge ke semua user yang belum memilikinya
+            $users = User::whereDoesntHave('badges', function ($query) use ($badge) {
+                $query->where('badge_id', $badge->id);
+            })->get();
+
+            foreach ($users as $user) {
+                $user->badges()->attach($badge->id, ['earned_at' => now()]);
+            }
+
+            return redirect()->route('admin.badge')->with('success', 'Badge assigned to all users successfully.');
+        }
+
+        // Assign badge ke user tertentu
         $user = User::findOrFail($request->user_id);
 
         if ($user->badges->contains($badge->id)) {
-            return redirect()->route('admin.badge')
-                            ->with('error', 'Badge already assigned to this user.');
+            return redirect()->route('admin.badge')->with('error', 'Badge already assigned to this user.');
         }
 
         $user->badges()->attach($badge->id, ['earned_at' => now()]);

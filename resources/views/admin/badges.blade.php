@@ -28,6 +28,8 @@
                 <form action="{{ route('admin.badgeassign', $badge) }}" method="POST">
                     @csrf
                     <select name="user_id" class="form-select mb-2">
+                        <option value="">Select User</option>
+                        <option value="all">All Users</option>
                         @foreach($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach
