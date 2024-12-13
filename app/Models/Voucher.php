@@ -9,21 +9,29 @@ class Voucher extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'points_required', 'code', 'status', 'expired_date',];
+    protected $fillable = [
+        'title', 
+        'description', 
+        'points_required', 
+        'code', 
+        'status', 
+        'expired_date',
+    ];
 
-    // Relasi dengan User
+    // Relasi dengan User (many-to-many)
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_voucher')
-            ->withPivot('status', 'redeemed_at')
+            ->withPivot('redeemed_at')
             ->withTimestamps();
     }
     
+    // Status otomatis berdasarkan expired_date
     public function getStatusAttribute($value)
     {
         if ($this->expired_date && Carbon::now()->greaterThanOrEqualTo($this->expired_date)) {
             return 'expired';
         }
-        return $value;
+        return $value ?: 'active'; // Status default "active" jika tidak ada nilai
     }
 }

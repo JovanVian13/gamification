@@ -18,7 +18,6 @@ class CreateVoucherRedemptionsTable extends Migration
             $table->unsignedBigInteger('user_id'); // Foreign key ke tabel users
             $table->unsignedBigInteger('voucher_id'); // Foreign key ke tabel vouchers
             $table->integer('points_used'); // Poin yang digunakan
-            $table->string('status'); // Kolom status ditambahkan
             $table->timestamps();
         
             // Relasi foreign key

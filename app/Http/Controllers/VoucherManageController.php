@@ -5,23 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\VoucherManage;
 
-
 class VoucherManageController extends Controller
 {
-    // 1. Menampilkan daftar voucher
+    // Menampilkan daftar voucher
     public function manageVoucher()
     {
         $vouchers = VoucherManage::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.vouchermanage', compact('vouchers'));
     }
 
-    // 2. Form untuk membuat voucher baru
+    // Form untuk membuat voucher baru
     public function createVoucher()
     {
         return view('admin.vouchercreate');
     }
 
-    // 3. Menyimpan voucher baru
+    // Menyimpan voucher baru
     public function storeVoucher(Request $request)
     {
         $request->validate([
@@ -44,13 +43,13 @@ class VoucherManageController extends Controller
         return redirect()->route('admin.voucher')->with('success', 'Voucher berhasil dibuat.');
     }
 
-    // 4. Form untuk mengedit voucher
+    // Form untuk mengedit voucher
     public function editVoucher(VoucherManage $voucher)
     {
         return view('admin.voucheredit', compact('voucher'));
     }
 
-    // 5. Memperbarui voucher
+    // Memperbarui voucher
     public function updateVoucher(Request $request, VoucherManage $voucher)
     {
         $request->validate([
@@ -65,7 +64,7 @@ class VoucherManageController extends Controller
         return redirect()->route('admin.voucher')->with('success', 'Voucher berhasil diperbarui.');
     }
 
-
+    // Menghapus voucher
     public function deleteVoucher(VoucherManage $voucher)
     {
         $voucher->delete();

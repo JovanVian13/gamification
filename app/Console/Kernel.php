@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('tasks:assign-new-users')->daily();
-        $schedule->command('vouchers:update-status')->daily();
+        $schedule->command('voucher:update-status')->daily();
         $schedule->command('backup:run')->dailyAt('02:00');
     }
 
