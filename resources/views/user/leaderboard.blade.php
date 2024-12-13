@@ -13,7 +13,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
+                        <th class="text-center">Rank</th>
                         <th>User</th>
                         <th class="text-center">Points</th>
                         <th class="text-center">Total Tasks</th>
@@ -28,7 +28,7 @@
                         <tr>
                             <td class="text-center fw-bold">{{ $index + 1 }}</td>
                             <td>{{ $entry->name }}</td>
-                            <td class="text-center">{{ $entry->points }}</td>
+                            <td class="text-primary font-weight-bold text-center">{{ $entry->points }} poin</td>
                             <td class="text-center">{{ $entry->total_tasks }}</td>
                             <td class="text-center">{{ $entry->watch_frequency }}</td>
                             <td class="text-center">{{ $entry->like_frequency }}</td>

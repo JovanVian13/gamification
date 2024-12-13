@@ -14,22 +14,22 @@
             <table class="table table-striped table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">Rank</th>
+                        <th scope="col" class="text-center">Rank</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Poin</th>
-                        <th scope="col">Total Tasks</th>
-                        <th scope="col">Watch</th>
-                        <th scope="col">Like</th>
-                        <th scope="col">Share</th>
-                        <th scope="col">Comment</th>
+                        <th scope="col" class="text-center">Poin</th>
+                        <th scope="col" class="text-center">Total Tasks</th>
+                        <th scope="col" class="text-center">Watch</th>
+                        <th scope="col" class="text-center">Like</th>
+                        <th scope="col" class="text-center">Share</th>
+                        <th scope="col" class="text-center">Comment</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($leaderboard as $index => $leader)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td class="text-center">{{ $index + 1 }}</td>
                         <td>{{ $leader->name }}</td>
-                        <td class="text-primary font-weight-bold">{{ $leader->points }} poin</td>
+                        <td class="text-primary font-weight-bold text-center">{{ $leader->points }} poin</td>
                         <td class="text-center">{{ $leader->total_tasks }}</td>
                         <td class="text-center">{{ $leader->watch_frequency }}</td>
                         <td class="text-center">{{ $leader->like_frequency }}</td>

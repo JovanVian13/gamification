@@ -168,19 +168,21 @@
                     <button class="btn dropdown-toggle position-relative d-flex align-items-center text-white border-0 shadow-sm" 
                             type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-bell fs-5"></i>
-                        @if($notifications->where('read_status', 'unread')->count() > 0)
+                        @if($totalUnreadCount > 0)
                             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-circle">
-                                {{ $notifications->where('read_status', 'unread')->count() }}
+                                {{ $totalUnreadCount }}
                             </span>
                         @endif
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
-                        @foreach ($notifications as $notification)
-                        <li class="dropdown-item">
-                            <strong>{{ $notification->title }}</strong>
-                            <p>{{ $notification->message }}</p>
-                        </li>
-                        @endforeach
+                        @forelse ($recentUnreadNotifications as $notification)
+                            <li class="dropdown-item border-dark border-bottom">
+                                <strong>{{ $notification->title }}</strong>
+                                <p>{{ $notification->message }}</p>
+                            </li>
+                        @empty
+                            <li class="dropdown-item text-muted">No unread notifications</li>
+                        @endforelse
                         <li><a href="{{ route('user.notifications') }}" class="dropdown-item text-center">View All Notifications</a></li>
                     </ul>
                 </div>

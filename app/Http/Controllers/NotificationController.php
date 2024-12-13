@@ -57,9 +57,10 @@ class NotificationController extends Controller
     public function userNotifications()
     {
         $userId = auth()->id();
+        // Hanya mengambil notifikasi yang belum dibaca
         $notifications = Notification::where('user_id', $userId)
+            ->where('read_status', 'unread')
             ->latest()
-            ->take(3)
             ->get();
 
         $allNotifications = Notification::where('user_id', $userId)->latest()->get();
