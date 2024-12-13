@@ -174,7 +174,7 @@
                             </span>
                         @endif
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="notificationDropdown">
+                    <ul class="dropdown-menu border-2" aria-labelledby="notificationDropdown">
                         @forelse ($recentUnreadNotifications as $notification)
                             <li class="dropdown-item border-dark border-bottom">
                                 <strong>{{ $notification->title }}</strong>
