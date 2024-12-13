@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Voucher;
+use Illuminate\Http\Request;
 use App\Models\VoucherRedemption;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,7 @@ class VoucherController extends Controller
         $user->save();
 
         $redeemedAt = now();
-        $expiredAt = (clone $redeemedAt)->addDays(7);
+        $expired_date = $voucher->expired_date;
 
         // Buat notifikasi
         Notification::create([
@@ -50,6 +51,7 @@ class VoucherController extends Controller
             'message' => 'You have successfully redeemed the voucher: ' . $voucher->title,
             'read_status' => 'unread',
         ]);
+
     
         // Tambahkan catatan penukaran ke tabel pivot
         $user->vouchers()->attach($voucher->id, [
@@ -57,7 +59,7 @@ class VoucherController extends Controller
             'redeemed_at' => $redeemedAt,
             'created_at' => now(),
             'updated_at' => now(),
-            'expired_at' => $expiredAt,
+            'expired_date' => $expired_date,
         ]);
     
         // Catat transaksi di tabel VoucherRedemption

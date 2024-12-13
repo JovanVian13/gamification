@@ -108,7 +108,7 @@
                                                     <span class="text-success">Kode Voucher:</span>
                                                     <strong>{{ $userVoucher->voucher->code }}</strong>
                                                     <p><span class="text-danger">Berlaku hingga:</span>
-                                                        <strong>{{ \Carbon\Carbon::parse($userVoucher->expired_at)->format('d-m-Y') }}</strong>
+                                                        <strong>{{ \Carbon\Carbon::parse($userVoucher->expired_date)->format('d-m-Y') }}</strong>
                                                     </p>
                                                 @else
                                                     <span class="text-muted">Belum memiliki kode voucher.</span>

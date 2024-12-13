@@ -57,8 +57,7 @@ class VoucherManageController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'points_required' => 'required|integer|min:1',
-            'status' => 'required|in:active,expired',
-            'expired_at' => 'required|date|after:today',
+            'expired_date' => 'required|date|after:today',
         ]);
 
         $voucher->update($request->all());

@@ -52,8 +52,8 @@ class User extends Authenticatable
     public function vouchers()
     {
         return $this->belongsToMany(Voucher::class, 'user_voucher')
-            ->withPivot('status', 'redeemed_at') // Kolom tambahan di tabel pivot
-            ->withTimestamps(); // Untuk timestamps otomatis
+            ->withPivot('status', 'redeemed_at')
+            ->withTimestamps();
     }
     
 
@@ -65,13 +65,13 @@ class User extends Authenticatable
     public function badges()
     {
         return $this->belongsToMany(Badge::class, 'user_badges')
-                    ->withPivot('earned_at') // Kolom tambahan di tabel pivot
-                    ->withTimestamps(); // Untuk otomatis mengelola timestamps
+                    ->withPivot('earned_at')
+                    ->withTimestamps();
     }
 
     public function points()
     {
-        return $this->hasMany(Points::class, 'user_id'); // Relasi one-to-many
+        return $this->hasMany(Points::class, 'user_id');
     }
 
     public function role()
@@ -88,8 +88,8 @@ class User extends Authenticatable
     {
         $this->points()->create([
             'points' => $points,
-            'period' => now()->format('F Y'), // Bulan dan tahun
-            'date' => now(), // Tanggal poin diberikan
+            'period' => now()->format('F Y'),
+            'date' => now(),
         ]);
     }
 

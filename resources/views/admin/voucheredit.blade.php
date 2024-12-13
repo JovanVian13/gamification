@@ -23,11 +23,8 @@
             <input type="text" class="form-control" id="code" name="code" value="{{ $voucher->code }}" required>
         </div>
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
-            <select class="form-control" id="status" name="status" required>
-                <option value="active" {{ $voucher->status == 'active' ? 'selected' : '' }}>Aktif</option>
-                <option value="expired" {{ $voucher->status == 'expired' ? 'selected' : '' }}>Kedaluwarsa</option>
-            </select>
+            <label for="expired_date" class="form-label">Tanggal Kadaluarsa</label>
+            <input type="date" class="form-control" id="expired_date" name="expired_date" value="{{ $voucher->expired_date }}" required>
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
