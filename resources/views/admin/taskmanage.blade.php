@@ -29,7 +29,7 @@
             <tbody>
                 @foreach ($tasks as $task)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
                     <td>{{ $task->title }}</td>
                     <td>{{ ucfirst($task->type) }}</td>
                     <td>{{ $task->points }}</td>

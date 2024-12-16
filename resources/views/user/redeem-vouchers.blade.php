@@ -37,11 +37,13 @@
                                                 <p class="card-text">Berlaku hingga: <strong>{{ \Carbon\Carbon::parse($voucher->expired_date)->format('d F Y') }}</strong></p>
                                                 <p class="card-text"><strong>{{ $voucher->points_required }} poin</strong></p>
     
-                                                @if($userPoints >= $voucher->points_required)
+                                                @if($userPoints >= $voucher->points_required && $voucher->status == 'active')
                                                     <form action="{{ route('voucher.redeem.action', $voucher->id) }}" method="POST">
                                                         @csrf
                                                         <button type="submit" class="btn m-btn-primary">Tukar Voucher</button>
                                                     </form>
+                                                @elseif($voucher->status == 'expired')
+                                                    <p class="text-danger">Voucher telah kedaluwarsa.</p>
                                                 @else
                                                     <p class="text-muted">Poin tidak cukup.</p>
                                                 @endif
@@ -88,7 +90,7 @@
                                 @endphp
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingRedeemed{{ $chunkIndex }}{{ $index }}">
-                                        <button class="accordion-button {{ $isExpired ? 'disabled' : 'collapsed' }}" type="button"
+                                        <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#collapseRedeemed{{ $chunkIndex }}{{ $index }}"
                                                 aria-expanded="false"
