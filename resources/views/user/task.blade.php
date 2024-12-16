@@ -72,7 +72,15 @@
                                                 allowfullscreen>
                                             </iframe>
                                         @else
-                                            <span class="text-muted">No video available</span>
+                                            <iframe 
+                                                width="200" 
+                                                height="100" 
+                                                src="https://youtube/1jowqejdojqe" 
+                                                title="YouTube video player" 
+                                                frameborder="0" 
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                                allowfullscreen>
+                                            </iframe>
                                         @endif
                                     </td>
                                     <td>
