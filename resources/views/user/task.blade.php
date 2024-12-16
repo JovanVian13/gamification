@@ -34,7 +34,7 @@
                                     <td>{{ $userTask->task->title }}</td>
                                     <td>{{ $userTask->task->points }}</td>
                                     <td>
-                                        @if (!empty($userTask->task->url))
+                                        @if (!empty($userTask->task->url) && $userTask->status !== 'expired')
                                             @if ($userTask->task->type === 'video')
                                                 <a href="{{ $userTask->task->url }}" target="_blank" class="btn btn-link text-primary text-decoration-none"
                                                     onclick="markTaskAsComplete({{ $userTask->id }})">
@@ -61,7 +61,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if (!empty($userTask->task->url)) 
+                                        @if (!empty($userTask->task->url) && $userTask->status !== 'expired') 
                                             <iframe 
                                                 width="200" 
                                                 height="100" 
@@ -78,11 +78,15 @@
                                     <td>
                                         @if($userTask->status === 'completed')
                                             <span class="badge bg-success">Completed</span>
+                                        @elseif($userTask->status === 'expired')
+                                            <span class="badge bg-danger">Expired</span>
                                         @else
                                             <span class="badge bg-warning text-dark">Pending</span>
                                         @endif
                                     </td>
-                                    <td>{{ $userTask->task->deadline }}</td>
+                                    <td>
+                                        {{ $userTask->task->deadline ? \Carbon\Carbon::parse($userTask->task->deadline)->format('d F Y') : 'No Deadline' }}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -41,7 +41,7 @@
                         @endif
                     </td>
                     <td>{{ $task->assigned_count ?? 0 }} Users</td>
-                    <td>{{ $task->deadline ? \Carbon\Carbon::parse($task->deadline)->format('Y-m-d H:i') : 'No Deadline' }}</td>
+                    <td>{{ $task->deadline ?? 'No Deadline' }}</td>
                     <td>{{ $task->completed_count ?? 0 }} Completed</td>
                     <td>
                         <form action="{{ route('admin.tasksassign', $task->id) }}" method="POST">

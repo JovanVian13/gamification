@@ -57,8 +57,8 @@
 
         <div class="mb-3">
             <label for="deadline" class="form-label">Deadline</label>
-            <input type="datetime-local" class="form-control" name="deadline" 
-                   value="{{ old('deadline', $task->deadline ? $task->deadline->format('Y-m-d\TH:i') : '') }}">
+            <input type="date" class="form-control" name="deadline" 
+                   value="{{ old('deadline', $task->deadline ) }}">
         </div>
         
         <button type="submit" class="btn btn-success">Save Changes</button>

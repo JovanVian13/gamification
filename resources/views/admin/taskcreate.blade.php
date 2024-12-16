@@ -30,7 +30,7 @@
         </div>
         <div class="mb-3">
             <label for="deadline" class="form-label">Deadline</label>
-            <input type="datetime-local" class="form-control" name="deadline">
+            <input type="date" class="form-control" name="deadline">
         </div>
         <button type="submit" class="btn m-btn-primary">Create Task</button>
     </form>

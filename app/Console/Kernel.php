@@ -15,9 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('tasks:assign-new-users')->daily();
         $schedule->command('voucher:update-status')->daily();
         $schedule->command('backup:run')->dailyAt('02:00');
+        $schedule->command('tasks:expire-and-delete')->daily();
     }
 
 
@@ -34,6 +34,7 @@ class Kernel extends ConsoleKernel
     }
 
     protected $commands = [
-        \App\Console\Commands\AssignTasksToNewUsers::class,
+        Commands\AssignTasksToNewUsers::class,
+        Commands\ExpireAndDeleteTasks::class,
     ];    
 }

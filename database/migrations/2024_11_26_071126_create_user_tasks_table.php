@@ -12,7 +12,7 @@ class CreateUserTasksTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('task_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['incomplete', 'completed'])->default('incomplete');
+            $table->enum('status', ['incomplete', 'completed', 'expired'])->default('incomplete');
             $table->timestamp('completed_at')->nullable();
             $table->timestamps();
         });

@@ -35,4 +35,21 @@ class UserTask extends Model
         // Tambahkan poin ke pengguna
         $this->user->addPoints($this->task->points);
     }
+
+    public function scopeCheckExpired($query)
+    {
+        $query->where('status', 'incomplete')
+            ->whereHas('task', function ($q) {
+                $q->where('deadline', '<', now());
+            })
+            ->update(['status' => 'expired']);
+    }
+
+    // Hapus tugas yang expired lebih dari 7 hari
+    public function scopeDeleteExpired($query)
+    {
+        $query->where('status', 'expired')
+            ->where('updated_at', '<', now()->subDays(3))
+            ->delete();
+    }
 }

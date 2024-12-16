@@ -20,9 +20,6 @@ class TaskManage extends Model
     ];
 
     // Ensure 'deadline' is cast to a Carbon instance
-    protected $casts = [
-        'deadline' => 'datetime',
-    ];
 
     // Relasi dengan UserTask
     public function users()

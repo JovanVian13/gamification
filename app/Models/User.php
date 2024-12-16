@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
@@ -93,4 +93,24 @@ class User extends Authenticatable
         ]);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Event: Assign tasks to new user when account is created
+        static::created(function ($user) {
+            // Ambil semua tugas yang tersedia dan belum melewati deadline
+            $tasks = TaskManage::where('deadline', '>=', now())->get();
+
+            foreach ($tasks as $task) {
+                // Assign tugas ke pengguna baru
+                UserTask::create([
+                    'user_id' => $user->id,
+                    'task_id' => $task->id,
+                ]);
+            }
+
+            Log::info("Tasks assigned to new user: {$user->id}");
+        });
+    }
 }
