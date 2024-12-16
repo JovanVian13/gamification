@@ -28,7 +28,7 @@
         <tbody>
             @forelse ($vouchers as $voucher)
                 <tr>
-                    <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
+                    <td>{{ $loop->iteration + $vouchers->firstItem() - 1 }}</td>
                     <td>{{ $voucher->title }}</td>
                     <td>{{ $voucher->code }}</td>
                     <td>{{ $voucher->points_required }}</td>

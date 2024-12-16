@@ -22,7 +22,6 @@
             <label for="user_id">Recipient</label>
             <select name="user_id" id="user_id" class="form-control" required>
                 <option value="">Select User</option>
-                <option value="all" {{ old('user_id', $notification->user_id) == 'all' ? 'selected' : '' }}>All Users</option>
                 @foreach ($users as $user)
                     <option value="{{ $user->id }}" {{ old('user_id', $notification->user_id) == $user->id ? 'selected' : '' }}>
                         {{ $user->name }} ({{ $user->email }})
