@@ -41,7 +41,7 @@
                     <p class="card-text text-muted">
                         Hubungi kami melalui WhatsApp untuk respons cepat.
                     </p>
-                    <a href="https://web.whatsapp.com/" class="btn btn-success">
+                    <a href="https://wa.me/6287776930875/" class="btn btn-success">
                         Kirim Pesan
                     </a>
                 </div>
