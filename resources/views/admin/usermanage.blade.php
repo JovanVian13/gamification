@@ -21,7 +21,7 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->age }}</td>

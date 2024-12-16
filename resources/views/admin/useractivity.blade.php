@@ -17,7 +17,7 @@
         <tbody>
             @forelse ($activities as $activity)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
                     <td>{{ $activity->user->name }}</td>
                     <td>{{ $activity->activity_type }}</td>
                     <td>{{ $activity->activity_detail }}</td>

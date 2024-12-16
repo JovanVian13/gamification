@@ -24,7 +24,7 @@
         <tbody>
             @forelse ($testimonials as $testimonial)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
                     <td>{{ $testimonial->user->name }}</td>
                     <td>{{ $testimonial->message }}</td>
                     <td>{{ $testimonial->created_at->format('d M Y H:i') }}</td>
