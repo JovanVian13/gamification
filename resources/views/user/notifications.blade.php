@@ -12,8 +12,13 @@
             {{ session('success') }}
         </div>
         @endif
-        
+
         <div class="card-body">
+            @if($notifications->isEmpty())
+                <div class="text-center">
+                    <strong>No Notification Available.</strong>
+                </div>
+            @else
             <table class="table">
                 <thead>
                     <tr>
@@ -51,6 +56,7 @@
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
     </div>
 </div>
