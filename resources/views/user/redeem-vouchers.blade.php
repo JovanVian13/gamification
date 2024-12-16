@@ -88,7 +88,7 @@
                                 @endphp
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingRedeemed{{ $chunkIndex }}{{ $index }}">
-                                        <button class="accordion-button {{ $isExpired ? 'disabled' : 'collapsed' }}" type="button"
+                                        <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#collapseRedeemed{{ $chunkIndex }}{{ $index }}"
                                                 aria-expanded="false"
