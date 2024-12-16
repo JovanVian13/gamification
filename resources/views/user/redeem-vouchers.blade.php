@@ -17,7 +17,7 @@
     @endif
 
     <!-- Katalog Voucher -->
-    <div class="card shadow mb-4 border-2" style="min-height: 480px;">
+    <div class="card shadow mb-4 border-2" style="min-height: 570px;">
         <div class="card-header text-white text-center py-3">
             <h2 class="h4 mb-0 m-p-secondary">Voucher Shop</h2>
         </div>
